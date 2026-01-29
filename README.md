@@ -22,6 +22,7 @@ An online food ordering system that allows customers to scan a QR code, view the
 - [x] Cart & order placement
 - [x] Real-time order tracking for kitchen staff
 - [x] Admin dashboard for order management
+- [x] Testing stripe payments
 - [ ] Online payments such as PayMaya or GCash
 
 ## 🛠️ Project Setup (Local)
