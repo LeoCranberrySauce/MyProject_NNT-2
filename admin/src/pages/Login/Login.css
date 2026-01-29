@@ -1,0 +1,139 @@
+.admin-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f6e6ff 0%, #d388ff 100%);
+  padding: 20px;
+}
+
+.admin-login-container {
+  display: flex;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 600px;
+}
+
+.admin-login-left {
+  flex: 1;
+  background: linear-gradient(135deg, #5800a1 0%, #7a008a 100%);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.admin-login-logo {
+  width: 150px;
+  margin-bottom: 30px;
+}
+
+.admin-login-left h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-family: 'DynaPuff', cursive;
+}
+
+.admin-login-left p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.admin-login-right {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-login-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.admin-login-form h2 {
+  color: #5800a1;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  font-family: 'DynaPuff', cursive;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e2e2e2;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #5800a1;
+  box-shadow: 0 0 0 3px rgba(88, 0, 161, 0.1);
+}
+
+.login-button {
+  width: 100%;
+  padding: 14px;
+  background: #5800a1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background: #7a008a;
+  transform: translateY(-2px);
+}
+
+.login-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .admin-login-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .admin-login-left {
+    padding: 30px;
+  }
+
+  .admin-login-right {
+    padding: 30px;
+  }
+
+  .admin-login-logo {
+    width: 120px;
+  }
+
+  .admin-login-left h1 {
+    font-size: 2rem;
+  }
+} 

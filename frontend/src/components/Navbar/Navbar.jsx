@@ -1,0 +1,88 @@
+import React, { useContext, useState, useEffect } from 'react'
+import './Navbar.css'
+import { assets } from '../../assets/assets'
+import { Link, useNavigate } from 'react-router-dom';
+import { StoreContext } from '../../context/StoreContext';
+
+const Navbar = ({ setShowLogin }) => {
+
+  const [menu, setMenu] = useState("menu");
+  const [scrolled, setScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 50;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [scrolled]);
+
+  const logout = () => {
+    setToken("");
+    localStorage.removeItem("token");
+    navigate("/")
+  }
+
+  return (
+    <div className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+
+      <button className="menu-icon" aria-label="Toggle menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        {isMenuOpen ? (
+          // Close (X) SVG
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        ) : (
+          // Hamburger SVG
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        )}
+      </button>
+
+      <Link to='/'> <img src={assets.logo} alt="" className="logo" /> </Link>
+      {/* Overlay for mobile menu */}
+      <div className={`mobile-menu-overlay${isMenuOpen ? ' active' : ''}`} onClick={() => setIsMenuOpen(false)}></div>
+      <ul className={`navbar-menu${isMenuOpen ? ' active' : ''}`} onClick={() => setIsMenuOpen(false)}>
+        <Link to='/' onClick={() => setMenu("home")} className={menu === "home" ? "active" : ""}>Home</Link>
+        <a href='#explore-menu' onClick={() => setMenu("menu")} className={menu === "menu" ? "active" : ""}>Menu</a>
+        <a href='#qr-code' onClick={() => setMenu("qr-code")} className={menu === "qr-code" ? "active" : ""}>Scan QR Code</a>
+        <a href='#footer' onClick={() => setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>Contact Us</a>
+      </ul>
+      <div className="navbar-right">
+        <div className="navbar-search-icon">
+          <Link to='/cart'> <img src={assets.basket_icon} alt="" /> </Link>
+          <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
+        </div>
+        {!token ? <button onClick={() => setShowLogin(true)}>Sign In</button> :
+          <div className="navbar-profile">
+            <img src={assets.profile_icon} alt="" />
+            <ul className="nav-profile-dropdown">
+              <li onClick={() => navigate("/my-orders")}><img src={assets.bag_icon} alt="" />
+                <p>My Orders</p>
+              </li>
+              <hr />
+              <li onClick={logout}><img src={assets.logout_icon} alt="" />
+                <p>Logout</p>
+              </li>
+            </ul>
+          </div>
+        }
+      </div>
+    </div>
+  )
+}
+
+export default Navbar
