@@ -9,6 +9,7 @@ import LoginPopup from './components/LoginPopup/LoginPopup'
 import Verify from './pages/Verify/Verify'
 import MyOrders from './pages/MyOrders/MyOrders'
 import QRCode from './components/QRCode/QRCode'
+import MapDisplay from './pages/MapDisplay/MapDisplay'
 
 const App = () => {
 
@@ -38,6 +39,7 @@ const App = () => {
           <Route path='/verify' element={<Verify />} />
           <Route path='/my-orders' element={<MyOrders />} />
           <Route path='/qr-code' element={<QRCode />} />
+          <Route path='/map' element={<MapDisplay />} />
         </Routes>
       </div>
       <Footer />

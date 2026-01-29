@@ -10,6 +10,14 @@ const StoreContextProvider = (props) => {
     const [token, setToken] = useState("");
     const [food_list, setFoodList] = useState([]);
     const [category_list, setCategoryList] = useState([])
+    
+    // GPS and Location states
+    const [userLocation, setUserLocation] = useState(null);
+    const [restaurantLocations, setRestaurantLocations] = useState([]);
+    const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+    const [deliveryAddress, setDeliveryAddress] = useState(null);
+    const [orderDeliveryLocation, setOrderDeliveryLocation] = useState(null);
+    const [locationPermission, setLocationPermission] = useState(false);
 
     const addToCart = async (itemId) => {
         const item = food_list.find((product) => product._id === itemId);
@@ -67,9 +75,153 @@ const StoreContextProvider = (props) => {
         setCartItems(response.data.cartData);
     }
 
+    // Get user's current GPS location
+    const getUserLocation = async () => {
+        return new Promise((resolve, reject) => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const location = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                            name: "My Location",
+                        };
+                        setUserLocation(location);
+                        setLocationPermission(true);
+                        resolve(location);
+                    },
+                    (error) => {
+                        console.log("Geolocation error:", error);
+                        setLocationPermission(false);
+                        reject(error);
+                    }
+                );
+            } else {
+                reject(new Error("Geolocation not supported"));
+            }
+        });
+    };
+
+    // Fetch nearby restaurants
+    const fetchNearbyRestaurants = async (latitude, longitude, radius = 5) => {
+        try {
+            const response = await axios.post(url + "/api/location/nearby", {
+                latitude,
+                longitude,
+                radius,
+            });
+            if (response.data.success) {
+                const formattedLocations = response.data.data.map((location) => ({
+                    lat: location.latitude,
+                    lng: location.longitude,
+                    name: location.name,
+                    address: location.address,
+                    rating: location.rating,
+                    deliveryTime: location.deliveryTime,
+                }));
+                setRestaurantLocations(formattedLocations);
+                return formattedLocations;
+            }
+        } catch (error) {
+            console.log("Error fetching nearby restaurants:", error);
+        }
+    };
+
+    // Fetch all restaurant locations
+    const fetchRestaurantLocations = async () => {
+        try {
+            const response = await axios.get(url + "/api/location/restaurants");
+            if (response.data.success) {
+                const formattedLocations = response.data.data.map((location) => ({
+                    lat: location.latitude,
+                    lng: location.longitude,
+                    name: location.name,
+                    address: location.address,
+                    rating: location.rating,
+                    deliveryTime: location.deliveryTime,
+                }));
+                setRestaurantLocations(formattedLocations);
+                return formattedLocations;
+            }
+        } catch (error) {
+            console.log("Error fetching restaurant locations:", error);
+        }
+    };
+
+    // Save delivery address with GPS coordinates
+    const saveDeliveryAddress = async (address, latitude, longitude) => {
+        try {
+            const deliveryData = {
+                address,
+                lat: latitude,
+                lng: longitude,
+            };
+            setDeliveryAddress(deliveryData);
+            
+            if (token) {
+                await axios.post(
+                    url + "/api/location/save-location",
+                    {
+                        name: "Delivery Address",
+                        address,
+                        latitude,
+                        longitude,
+                    },
+                    { headers: { token } }
+                );
+            }
+            return deliveryData;
+        } catch (error) {
+            console.log("Error saving delivery address:", error);
+        }
+    };
+
+    // Get delivery tracking location
+    const getDeliveryLocation = async (orderId) => {
+        try {
+            const response = await axios.post(url + "/api/location/delivery-location", {
+                orderId,
+            });
+            if (response.data.success) {
+                const location = {
+                    lat: response.data.data.latitude,
+                    lng: response.data.data.longitude,
+                    name: response.data.data.name,
+                };
+                setOrderDeliveryLocation(location);
+                return location;
+            }
+        } catch (error) {
+            console.log("Error fetching delivery location:", error);
+        }
+    };
+
+    // Update delivery location (for live tracking)
+    const updateDeliveryLocation = async (orderId, latitude, longitude) => {
+        try {
+            const response = await axios.post(url + "/api/location/update-delivery", {
+                orderId,
+                latitude,
+                longitude,
+            });
+            if (response.data.success) {
+                const location = {
+                    lat: response.data.data.latitude,
+                    lng: response.data.data.longitude,
+                    name: response.data.data.name,
+                };
+                setOrderDeliveryLocation(location);
+                return location;
+            }
+        } catch (error) {
+            console.log("Error updating delivery location:", error);
+        }
+    };
+
     useEffect(() => {
         async function loadData(){
             await fetchFoodList();
+            await fetchRestaurantLocations();
             if(localStorage.getItem("token")){
                 setToken(localStorage.getItem("token"));
                 await loadCartData(localStorage.getItem("token"))
@@ -93,7 +245,25 @@ const StoreContextProvider = (props) => {
         getTotalCartAmount,
         url,
         token,
-        setToken
+        setToken,
+        // Location/GPS methods and states
+        userLocation,
+        setUserLocation,
+        restaurantLocations,
+        setRestaurantLocations,
+        selectedRestaurant,
+        setSelectedRestaurant,
+        deliveryAddress,
+        setDeliveryAddress,
+        orderDeliveryLocation,
+        setOrderDeliveryLocation,
+        locationPermission,
+        getUserLocation,
+        fetchNearbyRestaurants,
+        fetchRestaurantLocations,
+        saveDeliveryAddress,
+        getDeliveryLocation,
+        updateDeliveryLocation,
     }
 
 
