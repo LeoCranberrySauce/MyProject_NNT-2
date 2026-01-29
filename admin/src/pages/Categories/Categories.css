@@ -1,9 +1,5 @@
 .categories-add {
-<<<<<<< HEAD
     width: 100%;
-=======
-    width: 70%;
->>>>>>> b3cd17d125d0fa13bcff27a285ed9e1ad6dc8d50
     color:#40004d;
     font-size: 18px;
 }
@@ -25,11 +21,7 @@
 }
 
 .categories-add-name {
-<<<<<<< HEAD
     width: max(60%, 720px);
-=======
-    width: max(40%, 280px);
->>>>>>> b3cd17d125d0fa13bcff27a285ed9e1ad6dc8d50
 }
 
 .categories-add-name input {
@@ -87,7 +79,6 @@
     margin-top: 20px;
 }
 
-<<<<<<< HEAD
 .categories-container {
   display: flex;
   gap: 0px;
@@ -111,11 +102,6 @@
 
 .categories-table {
   width: 100%;
-=======
-.categories-table {
-    margin-bottom: 100px;
-    gap: 25px;
->>>>>>> b3cd17d125d0fa13bcff27a285ed9e1ad6dc8d50
 }
 
 .categories-table-format {

@@ -33,19 +33,11 @@ const MyOrders = () => {
                         <div className='my-order-card' key={index}>
                             <img src={assets.parcel_icon} alt= "" />
                             <div className='order-items'>
-<<<<<<< HEAD
                                     {order.items.map((item,index) => (
                                         <p key={index}><span>&#x25cf;</span> {item.name} x {item.quantity}</p>
                                     ))}
                                 </div>
                                 <p>{formatCurrency2(order.amount)}</p>
-=======
-                                {order.items.map((item,index) => (
-                                    <p key={index}><span>&#x25cf;</span> {item.name} x {item.quantity}</p>
-                                ))}
-                            </div>
-                            <p>{formatCurrency2(item.amount)}.00</p>
->>>>>>> b3cd17d125d0fa13bcff27a285ed9e1ad6dc8d50
                             <p>Items: {order.items.length}</p>
                             <p>Order Date: {order.createdAt}</p>
                             <p><span>&#x25cf;</span> <b>{order.status}</b></p>
