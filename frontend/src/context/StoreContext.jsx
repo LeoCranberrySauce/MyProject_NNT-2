@@ -19,24 +19,24 @@ const StoreContextProvider = (props) => {
     const [orderDeliveryLocation, setOrderDeliveryLocation] = useState(null);
     const [locationPermission, setLocationPermission] = useState(false);
 
-    const addToCart = async (itemId) => {
+    const addToCart = async (itemId, quantityToAdd = 1) => {
         const item = food_list.find((product) => product._id === itemId);
         if (!item) return;
 
-        // Check if we can add more items based on stock
+        // Check if we can add the requested quantity based on stock
         const currentQuantity = cartItems[itemId] || 0;
-        if (currentQuantity >= item.stock) {
+        if (currentQuantity + quantityToAdd > item.stock) {
             return; // Can't add more items than available stock
         }
 
         if (!cartItems[itemId]) {
-            setCartItems((prev) => ({ ...prev, [itemId]: 1 }))
+            setCartItems((prev) => ({ ...prev, [itemId]: quantityToAdd }))
         }
         else {
-            setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }))
+            setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + quantityToAdd }))
         }
         if (token) {
-            await axios.post(url+"/api/cart/add",{itemId},{headers:{token}})
+            await axios.post(url+"/api/cart/add",{itemId, quantity: quantityToAdd},{headers:{token}})
         }
     }
 

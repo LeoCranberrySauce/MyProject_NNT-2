@@ -23,7 +23,7 @@ const Cart = () => {
   };
 
   return (
-    <div className='cart'>
+    <div className='cart' id='cart-section'>
       <h1>My Cart</h1>
       <div className="cart-items">
         <div className="cart-items-title">
