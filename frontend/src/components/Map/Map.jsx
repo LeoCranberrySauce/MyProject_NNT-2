@@ -109,7 +109,7 @@ const Map = ({
           </Marker>
         )}
 
-        {/* Restaurant Locations */}
+        {/* Restaurant Locations
         {restaurantLocations && restaurantLocations.length > 0 && (
           restaurantLocations.map((restaurant, index) => (
             <Marker
@@ -127,7 +127,7 @@ const Map = ({
               </Popup>
             </Marker>
           ))
-        )}
+        )} */}
 
         {/* Delivery Address */}
         {deliveryAddress && deliveryAddress.lat && deliveryAddress.lng && (
