@@ -10,7 +10,7 @@ const Navbar = ({ setShowLogin }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+  const { getTotalCartAmount, token, setToken, cartItems } = useContext(StoreContext);
 
   const navigate = useNavigate();
 
@@ -56,6 +56,41 @@ const Navbar = ({ setShowLogin }) => {
     }, 150);
   };
 
+  const handleCartClick = (e) => {
+    setMenu("cart");
+    const totalAmount = getTotalCartAmount();
+    
+    // If cart is empty, just navigate to cart page
+    if (totalAmount === 0) {
+      return;
+    }
+
+    // If already on cart page, scroll to Cart section with offset for navbar
+    if (window.location.pathname === '/cart') {
+      e.preventDefault();
+      setTimeout(() => {
+        const cartEl = document.querySelector('.cart');
+        if (cartEl) {
+          const elementPosition = cartEl.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = elementPosition - 200; // Adjust 100px offset as needed
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      }, 100);
+      return;
+    }
+
+    // If on a different page, navigate to cart first
+    navigate('/cart');
+    setTimeout(() => {
+      const cartEl = document.querySelector('.cart');
+      if (cartEl) {
+        const elementPosition = cartEl.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - 200; // Adjust 100px offset as needed
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+    }, 300);
+  };
+
   return (
     <div className={`navbar ${scrolled ? 'scrolled' : ''}`}>
 
@@ -81,12 +116,6 @@ const Navbar = ({ setShowLogin }) => {
       <div className={`mobile-menu-overlay${isMenuOpen ? ' active' : ''}`} onClick={() => setIsMenuOpen(false)}></div>
       <ul className={`navbar-menu${isMenuOpen ? ' active' : ''}`} onClick={() => setIsMenuOpen(false)}>
         <a href='/' onClick={handleHomeClick} className={menu === "home" ? "active" : ""}>Home</a>
-        {/*
-        <a href='#promotional-banner' onClick={() => setMenu("promotional-banner")} className={menu === "promotional-banner" ? "active" : ""}>Promo</a>
-        */}
-        {/*
-        <a href='#trending-section' onClick={() => setMenu("trending-section")} className={menu === "trending-section" ? "active" : ""}>Trending</a>
-        */}
         <a href='#explore-menu' onClick={() => setMenu("menu")} className={menu === "menu" ? "active" : ""}>Menu</a>
         <a href='#qr-code' onClick={() => setMenu("qr-code")} className={menu === "qr-code" ? "active" : ""}>Scan QR Code</a>
         <a href='#recent-reviews' onClick={() => setMenu("recent-reviews")} className={menu === "recent-reviews" ? "active" : ""}>Reviews</a>
@@ -95,7 +124,7 @@ const Navbar = ({ setShowLogin }) => {
       </ul>
       <div className="navbar-right">
         <div className="navbar-search-icon">
-          <Link to='/cart'> <img src={assets.basket_icon} alt="" /> </Link>
+          <Link to='/cart' onClick={handleCartClick} className={menu === "cart" ? "active" : ""}> <img src={assets.basket_icon} alt="" /> </Link>
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
         {!token ? <button onClick={() => setShowLogin(true)}>Sign In</button> :
