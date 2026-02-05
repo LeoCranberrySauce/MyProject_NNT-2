@@ -32,6 +32,30 @@ const Navbar = ({ setShowLogin }) => {
     navigate("/")
   }
 
+  const handleHomeClick = (e) => {
+    setMenu("home");
+    // If already on home route, prevent navigation and smooth-scroll to header
+    if (window.location.pathname === '/') {
+      e.preventDefault();
+      const headerEl = document.querySelector('.header');
+      if (headerEl) {
+        headerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+
+    // Otherwise navigate to home and scroll shortly after navigation
+    e.preventDefault();
+    navigate('/');
+    setTimeout(() => {
+      const headerEl = document.querySelector('.header');
+      if (headerEl) headerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 150);
+  };
+
   return (
     <div className={`navbar ${scrolled ? 'scrolled' : ''}`}>
 
@@ -56,11 +80,18 @@ const Navbar = ({ setShowLogin }) => {
       {/* Overlay for mobile menu */}
       <div className={`mobile-menu-overlay${isMenuOpen ? ' active' : ''}`} onClick={() => setIsMenuOpen(false)}></div>
       <ul className={`navbar-menu${isMenuOpen ? ' active' : ''}`} onClick={() => setIsMenuOpen(false)}>
-        <Link to='/' onClick={() => setMenu("home")} className={menu === "home" ? "active" : ""}>Home</Link>
+        <a href='/' onClick={handleHomeClick} className={menu === "home" ? "active" : ""}>Home</a>
+        {/*
+        <a href='#promotional-banner' onClick={() => setMenu("promotional-banner")} className={menu === "promotional-banner" ? "active" : ""}>Promo</a>
+        */}
+        {/*
+        <a href='#trending-section' onClick={() => setMenu("trending-section")} className={menu === "trending-section" ? "active" : ""}>Trending</a>
+        */}
         <a href='#explore-menu' onClick={() => setMenu("menu")} className={menu === "menu" ? "active" : ""}>Menu</a>
         <a href='#qr-code' onClick={() => setMenu("qr-code")} className={menu === "qr-code" ? "active" : ""}>Scan QR Code</a>
-        <Link to='/map' onClick={() => setMenu("map")} className={menu === "map" ? "active" : ""}>📍 Map</Link>
+        <a href='#recent-reviews' onClick={() => setMenu("recent-reviews")} className={menu === "recent-reviews" ? "active" : ""}>Reviews</a>
         <a href='#footer' onClick={() => setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>Contact Us</a>
+        <Link to='/map' onClick={() => setMenu("map")} className={menu === "map" ? "active" : ""}>📍 Map</Link>
       </ul>
       <div className="navbar-right">
         <div className="navbar-search-icon">

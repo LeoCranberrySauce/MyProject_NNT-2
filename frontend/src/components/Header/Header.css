@@ -3,9 +3,12 @@
     margin: 30px auto;
     background: url('/header_img.jpg') transparent;
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     position: relative;
-    overflow: auto;
+    overflow: hidden;
     margin-top: 8rem;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .header::before {
@@ -15,8 +18,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(169, 33, 223, 0.1) 100%);
     z-index: 1;
+    animation: overlayShift 6s ease-in-out infinite;
 }
 
 .header-contents {
@@ -30,26 +34,41 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: fadeIn 1s ease-out;
+    animation: containerFadeInScale 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     text-align: center;
     z-index: 2;
 }
 
 .header-contents h1 {
-    text-shadow: 5px 5px 6px #000;
+    text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);
     font-weight: 500px;
     color: #a921df;
     font-size: 75px !important;
     font-family: DynaPuff;
-    animation: slideUp 1s ease-out 0.2s both;
+    animation: titleSlideInRotate 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both;
+    letter-spacing: 0.02em;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.header-contents h1:hover {
+    transform: scale(1.02) skewY(-1deg);
+    text-shadow: 8px 8px 12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(169, 33, 223, 0.3);
 }
 
 .header-contents p {
     color: #d1b0df;
-    text-shadow: 2px 2px 3px #000;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
     font-size: 33px !important;
     font-family: Merriweather Sans;
-    animation: slideUp 1s ease-out 0.4s both;
+    animation: subtitleSlideInFade 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s both;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    letter-spacing: 0.01em;
+}
+
+.header-contents p:hover {
+    color: #e6c6ff;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px);
 }
 
 .header-contents button {
@@ -58,28 +77,106 @@
     font-weight: 500;
     color: rgb(70, 45, 128);
     background-color: #f7e3ff;
-    border: none;
+    border: 2px solid transparent;
     padding: 1vw 2.4vw;
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.4s ease;
-    animation: slideUp 1s ease-out 0.6s both;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: buttonBounceIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.55s both;
+    box-shadow: 0 4px 15px rgba(169, 33, 223, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.header-contents button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    pointer-events: none;
+}
+
+.header-contents button:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .header-contents button:hover {
-    transform: scale(1.05);
+    transform: scale(1.08) translateY(-3px);
     background-color: #e6c6ff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(169, 33, 223, 0.4);
+    border-color: #d1b0df;
 }
 
-@keyframes slideUp {
+.header-contents button:active {
+    transform: scale(0.98) translateY(-1px);
+}
+
+/* Enhanced Keyframe Animations */
+
+@keyframes containerFadeInScale {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translate(-50%, -50%) scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes titleSlideInRotate {
+    from {
+        opacity: 0;
+        transform: translateY(40px) rotateX(20deg);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg);
+        filter: blur(0px);
+    }
+}
+
+@keyframes subtitleSlideInFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+        letter-spacing: 0.1em;
     }
     to {
         opacity: 1;
         transform: translateY(0);
+        letter-spacing: 0.01em;
+    }
+}
+
+@keyframes buttonBounceIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+    }
+    50% {
+        transform: translateY(-5px) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes overlayShift {
+    0%, 100% {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(169, 33, 223, 0.1) 100%);
+    }
+    50% {
+        background: linear-gradient(135deg, rgba(169, 33, 223, 0.15) 0%, rgba(255, 255, 255, 0.15) 100%);
     }
 }
 
