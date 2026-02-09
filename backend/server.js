@@ -19,7 +19,15 @@ const port = 4000
 // middlewares
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
-app.use(cors())
+app.use(cors({
+  origin: function(origin, callback) {
+    // Allow any origin including localhost, network IPs, and no origin (like mobile apps)
+    callback(null, true);
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true,
+  optionsSuccessStatus: 200
+}));
 
 // db connection
 connectDB();
@@ -39,6 +47,6 @@ app.get("/", (req, res) => {
      res.send("API working")
 });
 
-app.listen(port, () => {
-     console.log(`Server Started on http://localhost:${port}`)
+app.listen(port, '0.0.0.0', () => {
+     console.log(`Server Started on http://192.168.100.120:${port}`)
 });
