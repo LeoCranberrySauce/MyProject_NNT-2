@@ -6,7 +6,8 @@ export const StoreContext = createContext(null)
 const StoreContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
-    const url = "http://localhost:4000";
+    // Dynamically set the URL based on the current host
+    const url = `http://${window.location.hostname}:4000`;
     const [token, setToken] = useState("");
     const [food_list, setFoodList] = useState([]);
     const [category_list, setCategoryList] = useState([])
@@ -94,6 +95,11 @@ const StoreContextProvider = (props) => {
                         console.log("Geolocation error:", error);
                         setLocationPermission(false);
                         reject(error);
+                    },
+                    {
+                        enableHighAccuracy: false,
+                        timeout: 10000,
+                        maximumAge: 0
                     }
                 );
             } else {

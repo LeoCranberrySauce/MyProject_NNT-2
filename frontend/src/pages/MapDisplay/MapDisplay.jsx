@@ -36,7 +36,9 @@ const MapDisplay = () => {
       const location = await getUserLocation();
       setMapCenter([location.lat, location.lng]);
     } catch (error) {
-      alert('Unable to get your location. Please enable location permission.');
+      console.log('Geolocation error:', error);
+      // If geolocation fails (e.g., on network addresses), ask user to click on map
+      alert('Unable to access your location automatically.\n\nPlease click on the map to select your location, or check:\n- Browser permissions\n- Using HTTPS for network addresses\n- Location services are enabled on your device');
     } finally {
       setLoading(false);
     }
