@@ -8,7 +8,7 @@ const PersonalizedRecommendations = () => {
   // Get personalized recommendations based on cart items
   const getRecommendations = () => {
     const carted = Object.keys(cartItems).filter(itemId => cartItems[itemId] > 0)
-    
+
     if (carted.length === 0) {
       // Show random items if cart is empty
       return food_list.slice(0, 4)
@@ -44,14 +44,14 @@ const PersonalizedRecommendations = () => {
         {recommendations.map(item => (
           <div key={item._id} className='recommendation-card'>
             <div className='rec-image-wrapper'>
-              <img src={url+"/images/"+item.image} alt={item.name} className='rec-image' />
+              <img src={url + "/images/" + item.image} alt={item.name} className='rec-image' />
               <div className='rec-badge'>✨ For You</div>
             </div>
 
             <div className='rec-content'>
               <h3 className='rec-name'>{item.name} {item.size && `(${item.size})`}</h3>
               <p className='rec-description'>{item.description.substring(0, 50)}...</p>
-              
+
               <div className='rec-meta'>
                 <span className='rec-category'>{item.category}</span>
                 <span className='rec-stock'>Stock: {item.stock}</span>
