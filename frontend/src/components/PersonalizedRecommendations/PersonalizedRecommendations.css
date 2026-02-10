@@ -1,9 +1,9 @@
 .personalized-recommendations {
     width: 100%;
-    padding: 40px 20px;
+    padding: 24px 12px;
     background: linear-gradient(135deg, #fff5e6 0%, #ffe6f0 100%);
-    border-radius: 12px;
-    margin: 40px 0;
+    border-radius: 10px;
+    margin: 24px 0;
 }
 
 .recommendations-header {
@@ -26,8 +26,8 @@
 
 .recommendations-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 14px;
 }
 
 .recommendation-card {
@@ -39,13 +39,14 @@
     border: 1px solid #f0f0f0;
     display: flex;
     flex-direction: column;
-    /* Make the whole card square based on its width */
-    aspect-ratio: 1 / 1;
+    /* make card more compact (slightly taller than wide) */
+    aspect-ratio: 3 / 5;
+    max-width: 300px;
     height: auto;
 }
 
 .recommendation-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-6px);    
     box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
     border-color: #667eea;
 }
@@ -54,7 +55,7 @@
     position: relative;
     width: 100%;
     /* let the image area take roughly the top half of the square card */
-    flex: 0 0 55%;
+    flex: 0 0 50%;
     overflow: hidden;
     background: #f5f5f5;
 }
@@ -85,14 +86,14 @@
 .rec-content {
     padding: 15px;
     /* occupy remaining space in the square card */
-    flex: 1 1 45%;
+    flex: 1 1 50%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
 .rec-name {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     margin: 0 0 8px 0;
     color: #333;
@@ -141,13 +142,13 @@
 }
 
 .rec-price {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     color: #667eea;
 }
 
 .rec-add-btn {
-    padding: 8px 12px;
+    padding: 6px 10px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
@@ -166,49 +167,49 @@
 
 @media (max-width: 768px) {
     .personalized-recommendations {
-        padding: 30px 15px;
-        margin: 30px 0;
+        padding: 20px 12px;
+        margin: 20px 0;
     }
 
     .recommendations-header h2 {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .recommendations-grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
     }
 
     .rec-image-wrapper {
-        height: 150px;
+        height: 130px;
     }
 
     .rec-name {
-        font-size: 14px;
+        font-size: 13px;
     }
 }
 
 @media (max-width: 480px) {
     .personalized-recommendations {
-        padding: 20px 10px;
-        margin: 20px 0;
+        padding: 14px 8px;
+        margin: 14px 0;
     }
 
     .recommendations-header h2 {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .recommendations-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 8px;
     }
 
     .rec-image-wrapper {
-        height: 120px;
+        height: 110px;
     }
 
     .rec-content {
-        padding: 12px;
+        padding: 10px;
     }
 
     .rec-name {
@@ -216,15 +217,15 @@
     }
 
     .rec-description {
-        font-size: 11px;
+        font-size: 10px;
     }
 
     .rec-price {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .rec-add-btn {
-        padding: 6px 10px;
+        padding: 6px 8px;
         font-size: 10px;
     }
 }
