@@ -55,7 +55,7 @@ const FoodItem = ({id,name,size,price,description,image,stock}) => {
           {isOutOfStock ? (
             <div className="out-of-stock-badge">Out of Stock</div>
           ) : (
-            <div className="view-details-badge">View Details</div>
+            <div className="view-details-badge">Click the image to add to cart</div>
           )}
         </div>
         <div className="food-item-info">
