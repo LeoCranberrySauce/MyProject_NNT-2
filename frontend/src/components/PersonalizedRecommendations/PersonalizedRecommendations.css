@@ -40,7 +40,7 @@
     display: flex;
     flex-direction: column;
     /* make card more compact (slightly taller than wide) */
-    aspect-ratio: 3 / 5;
+    aspect-ratio: 3.5 / 5;
     max-width: 300px;
     height: auto;
 }

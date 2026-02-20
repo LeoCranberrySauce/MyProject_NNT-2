@@ -1,41 +1,39 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import './TrendingSection.css'
+import { StoreContext } from '../../context/StoreContext'
 
 const TrendingSection = ({ onClose }) => {
-  const [trendingItems, setTrendingItems] = useState([
-    {
-      id: 1,
-      name: 'Spicy Lumpia',
-      rating: 4.8,
-      reviews: 324,
-      trend: '↑ 45%',
-      badge: '🔥 Trending'
-    },
-    {
-      id: 2,
-      name: 'Chicken BBQ',
-      rating: 4.7,
-      reviews: 298,
-      trend: '↑ 38%',
-      badge: '⭐ Popular'
-    },
-    {
-      id: 3,
-      name: 'Sinigang Pork',
-      rating: 4.6,
-      reviews: 267,
-      trend: '↑ 32%',
-      badge: '❤️ Loved'
-    }
-  ])
-
+  const { food_list, url } = useContext(StoreContext)
+  const [trendingItems, setTrendingItems] = useState([])
   const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveIndex(prev => (prev + 1) % trendingItems.length)
-    }, 5000)
-    return () => clearInterval(timer)
+    // Get trending food items from the food list
+    if (food_list && food_list.length > 0) {
+      // Select random items or first few items as trending
+      const trending = food_list.slice(0, 6).map((food, index) => ({
+        id: food._id,
+        name: `${food.name} (${food.size})`,
+        price: food.price,
+        image: food.image,
+        description: food.description,
+        category: food.category,
+        rating: (4.5 + Math.random() * 0.5).toFixed(1), // Random rating between 4.5-5.0
+        reviews: Math.floor(200 + Math.random() * 200), // Random reviews 200-400
+        trend: `↑ ${Math.floor(30 + Math.random() * 20)}%`, // Random trend 30-50%
+        badge: index === 0 ? '🔥 Trending' : index === 1 ? '⭐ Popular' : '❤️ Loved'
+      }))
+      setTrendingItems(trending)
+    }
+  }, [food_list])
+
+  useEffect(() => {
+    if (trendingItems.length > 0) {
+      const timer = setInterval(() => {
+        setActiveIndex(prev => (prev + 1) % trendingItems.length)
+      }, 5000)
+      return () => clearInterval(timer)
+    }
   }, [trendingItems.length])
 
   return (
@@ -46,23 +44,34 @@ const TrendingSection = ({ onClose }) => {
       </div>
 
       <div className='trending-carousel'>
-        {trendingItems.map((item, index) => (
-          <div
-            key={item.id}
-            className={`trending-card ${index === activeIndex ? 'active' : ''}`}
-          >
-            <div className='trending-badge'>{item.badge}</div>
-            <div className='trending-content'>
-              <h3>{item.name}</h3>
-              <div className='trending-stats'>
-                <span className='rating'>⭐ {item.rating}</span>
-                <span className='reviews'>({item.reviews} reviews)</span>
+        {trendingItems.length > 0 ? (
+          trendingItems.map((item, index) => (
+            <div
+              key={item.id}
+              className={`trending-card ${index === activeIndex ? 'active' : ''}`}
+            >
+              <div className='trending-badge'>{item.badge}</div>
+              {item.image && (
+                <div className='trending-image'>
+                  <img src={`${url}/images/${item.image}`} alt={item.name} />
+                </div>
+              )}
+              <div className='trending-content'>
+                <h3>{item.name}</h3>
+                <p className='trending-category'>{item.category}</p>
+                <p className='trending-price'>₱{item.price}</p>
+                <div className='trending-stats'>
+                  <span className='rating'>⭐ {item.rating}</span>
+                  <span className='reviews'>({item.reviews} reviews)</span>
+                </div>
+                <div className='trending-growth'>{item.trend} this week</div>
+                <button className='trending-btn'>View Item</button>
               </div>
-              <div className='trending-growth'>{item.trend} this week</div>
-              <button className='trending-btn'>View Item</button>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <div className='trending-loading'>Loading trending items...</div>
+        )}
       </div>
 
       <div className='trending-indicators'>
