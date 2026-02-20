@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './MyOrders.css'
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
 import { assets } from '../../assets/assets';
+import Map from '../../components/Map/Map';
 
 const MyOrders = () => {
 
@@ -24,6 +25,50 @@ const MyOrders = () => {
         }
     },[token])
     
+    const [showMap, setShowMap] = useState(false);
+    const [trackingLocation, setTrackingLocation] = useState(null);
+    const [trackingDeliveryAddress, setTrackingDeliveryAddress] = useState(null);
+    const trackingIntervalRef = useRef(null);
+
+    const startTracking = async (order) => {
+        setShowMap(true);
+        setTrackingDeliveryAddress(order.address || null);
+        // fetch once and then poll
+        await fetchTrackOnce(order._id);
+        // clear any existing interval
+        if (trackingIntervalRef.current) clearInterval(trackingIntervalRef.current);
+        trackingIntervalRef.current = setInterval(() => {
+            fetchTrackOnce(order._id);
+        }, 5000);
+    }
+
+    const stopTracking = () => {
+        setShowMap(false);
+        setTrackingLocation(null);
+        setTrackingDeliveryAddress(null);
+        if (trackingIntervalRef.current) {
+            clearInterval(trackingIntervalRef.current);
+            trackingIntervalRef.current = null;
+        }
+    }
+
+    const fetchTrackOnce = async (orderId) => {
+        try {
+            const res = await axios.get(url+`/api/order/track/${orderId}`,{headers:{token}});
+            if (res.data && res.data.success && res.data.location) {
+                setTrackingLocation(res.data.location);
+            }
+        } catch (err) {
+            console.log('Track error', err);
+        }
+    }
+
+    useEffect(() => {
+        return () => {
+            if (trackingIntervalRef.current) clearInterval(trackingIntervalRef.current);
+        }
+    },[])
+    
     return (
         <div className='my-orders'>
             <h1>My Orders</h1>
@@ -41,11 +86,31 @@ const MyOrders = () => {
                             <p>Items: {order.items.length}</p>
                             <p>Order Date: {order.createdAt}</p>
                             <p><span>&#x25cf;</span> <b>{order.status}</b></p>
-                            <button onClick={fetchOrders}>Track Order</button>
+                            <div style={{display:'flex',gap:8}}>
+                                <button onClick={() => startTracking(order)}>Track Order</button>
+                                <button onClick={fetchOrders}>Refresh</button>
+                            </div>
                         </div>
                     )
                 })}
             </div>
+
+            {showMap && (
+                <div className="tracking-overlay">
+                    <div className="tracking-header">
+                        <h3>Order Tracking</h3>
+                        <button className="close-btn" onClick={stopTracking}>Close</button>
+                    </div>
+                    <div className="tracking-map">
+                        <Map
+                            deliveryAddress={trackingDeliveryAddress}
+                            orderLocation={trackingLocation}
+                            zoom={13}
+                            className="tracking-map-container"
+                        />
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

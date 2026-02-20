@@ -106,5 +106,48 @@ const updateOrderStatus = async (req,res) => {
     }
 }
 
+// Update currentLocation for an order (used by drivers or demo scripts)
+const updateOrderLocation = async (req,res) => {
+    try {
+        const { orderId, location } = req.body;
+        if (!orderId || !location) return res.json({success:false,message:'orderId and location required'});
+        await orderModel.findByIdAndUpdate(orderId,{currentLocation:location});
+        res.json({success:true,message:'Location updated'});
+    } catch (error) {
+        console.log(error);
+        res.json({success:false,message:"Internal server error"});
+    }
+}
 
-export {placeOrder,verifyOrder,userOrders,listOrders,updateOrderStatus};
+
+export {placeOrder,verifyOrder,userOrders,listOrders,updateOrderStatus,trackOrder,updateOrderLocation};
+
+// Return current tracking location for an order (if available) or delivery address / simulated location
+const trackOrder = async (req,res) => {
+    try {
+        const orderId = req.params.orderId;
+        const order = await orderModel.findById(orderId);
+        if (!order) return res.json({success:false,message:'Order not found'});
+
+        if (order.currentLocation && order.currentLocation.lat && order.currentLocation.lng) {
+            return res.json({success:true,location:order.currentLocation});
+        }
+
+        // If order.address contains lat/lng, return that as delivery address location
+        if (order.address && order.address.lat && order.address.lng) {
+            return res.json({success:true,location:{lat:order.address.lat,lng:order.address.lng,name:order.address.address || 'Delivery Address'}});
+        }
+
+        // Fallback: return a simulated location (small random offset)
+        const baseLat = 14.5995; // Manila center fallback
+        const baseLng = 120.9842;
+        const lat = baseLat + (Math.random()-0.5)*0.02;
+        const lng = baseLng + (Math.random()-0.5)*0.02;
+        return res.json({success:true,location:{lat,lng,name:'Simulated order location'}});
+    } catch (error) {
+        console.log(error);
+        res.json({success:false,message:"Internal server error"});
+    }
+}
+
+ 
