@@ -41,14 +41,28 @@ const RecentReviews = () => {
   ]
 
   const timeOptions = [
-    '5 minutes ago', '15 minutes ago', '30 minutes ago', '1 hour ago',
-    '2 hours ago', '3 hours ago', '5 hours ago', '8 hours ago',
-    '12 hours ago', '1 day ago', '2 days ago', '3 days ago', '4 days ago', 
-    '5 days ago', '6 days ago', '7 days ago', '8 days ago', '9 days ago',
-     '10 days ago', '1 week ago', '2 weeks ago', '3 weeks ago', '1 month ago',
-      '2 months ago', '3 months ago', '4 months ago', '5 months ago',
-       '6 months ago', '7 months ago', '8 months ago', '9 months ago',
-        '10 months ago', '1 year ago', '2 years ago', '3 years ago'
+    '1 minute ago', '2 minutes ago', '3 minutes ago', '4 minutes ago', '5 minutes ago',
+    '6 minutes ago', '7 minutes ago', '8 minutes ago', '9 minutes ago', '10 minutes ago',
+    '11 minutes ago', '12 minutes ago', '13 minutes ago', '14 minutes ago', '15 minutes ago',
+    '16 minutes ago', '17 minutes ago', '18 minutes ago', '19 minutes ago', '20 minutes ago',
+    '21 minutes ago', '22 minutes ago', '23 minutes ago', '24 minutes ago', '25 minutes ago', 
+    '26 minutes ago', '27 minutes ago', '28 minutes ago', '29 minutes ago', '30 minutes ago', 
+    '31 minutes ago', '32 minutes ago', '33 minutes ago', '34 minutes ago', '35 minutes ago',
+    '36 minutes ago', '37 minutes ago', '38 minutes ago', '39 minutes ago', '40 minutes ago',
+    '41 minutes ago', '42 minutes ago', '43 minutes ago', '44 minutes ago', '45 minutes ago',
+    '46 minutes ago', '47 minutes ago', '48 minutes ago', '49 minutes ago', '50 minutes ago', 
+    '51 minutes ago', '52 minutes ago', '53 minutes ago', '54 minutes ago', '55 minutes ago',
+    '56 minutes ago', '57 minutes ago', '58 minutes ago', '59 minutes ago', 
+    '1 hour ago', '2 hours ago', '3 hours ago', '4 hours ago', '5 hours ago', '6 hours ago', 
+    '7 hours ago', '8 hours ago', '9 hours ago', '10 hours ago', '11 hours ago', '12 hours ago', 
+    '13 hours ago', '14 hours ago', '15 hours ago', '16 hours ago', '17 hours ago', '18 hours ago', 
+    '19 hours ago', '20 hours ago', '21 hours ago', '22 hours ago', '23 hours ago', 
+    '1 day ago', '2 days ago', '3 days ago', '4 days ago', 
+    '5 days ago', '6 days ago', '7 days ago', '8 days ago', '9 days ago', 
+    '10 days ago', '1 week ago', '2 weeks ago', '3 weeks ago', '1 month ago', 
+    '2 months ago', '3 months ago', '4 months ago', '5 months ago', 
+    '6 months ago', '7 months ago', '8 months ago', '9 months ago', 
+    '10 months ago', '1 year ago', '2 years ago', '3 years ago'
   ]
 
   // Function to generate random reviews

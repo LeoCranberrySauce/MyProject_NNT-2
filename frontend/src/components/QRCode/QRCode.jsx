@@ -8,17 +8,17 @@ const QRCode = () => {
 
   return (
     <div className="qr-code" id='qr-code'>
-        <hr />
-      <h1>Scan QR Code</h1>
+      <div className='qr-code-header'>
+        <h2> 𖣯 Scan QR Code</h2>
+        <p className='qr-code-subtitle'> Scan this QR code with your mobile device to visit our website and learn more about our services.</p>
+      </div>
       <div className="qr-code-container">
         <QRCodeSVG
           value={websiteUrl}
-          size={256}
-          level="H"
-          includeMargin={true}
+          size={128}
+          level='M'
         />
       </div>
-      <p>Scan this QR code with your mobile device to visit our website and learn more about our services.</p>
     </div>
   );
 };

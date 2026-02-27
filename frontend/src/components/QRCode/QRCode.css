@@ -5,6 +5,31 @@
   justify-content: center;
   padding: 1rem;
   text-align: center;
+  width: 100%;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #fdcbcb 0%, #fac7c7 100%);
+  border-radius: 12px;
+  margin: 40px 0;
+  /* Ensure anchor targets land beneath the fixed navbar */
+  scroll-margin-top: 140px;
+}
+
+.qr-code-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.qr-code-subtitle {
+    font-size: 14px;
+    color: #858585;
+    margin: 0;
+}
+
+.qr-code-header h2 {
+  font-size: 28px;
+  margin: 0 0 10px 0;
+  color: #333;
+  font-weight: 700;
 }
 
 .qr-code-container {
@@ -15,6 +40,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* 
+
 .qr-code h1 {
   margin-top: 8rem;
   color:rgb(122, 0, 138);
@@ -24,7 +51,4 @@
   text-align: center;
 }
 
-.qr-code p {
-  color: #666;
-  margin-top: 1rem;
-} 
+*/

@@ -1,7 +1,7 @@
 .recent-reviews-section {
     width: 100%;
     padding: 40px 20px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #f0f4ff 100%);
+    background: linear-gradient(135deg, #e0ebfa 0%, #d4def8 100%);
     border-radius: 12px;
     margin: 40px 0;
     /* Ensure anchor targets land beneath the fixed navbar */
@@ -86,12 +86,13 @@
 }
 
 .reviews-scroll-container::-webkit-scrollbar-thumb {
-    background: #ddd;
+    background: #939bff;
     border-radius: 3px;
 }
 
 .reviews-scroll-container::-webkit-scrollbar-thumb:hover {
-    background: #667eea;
+    background: #3519a7;
+    cursor: move;
 }
 
 .review-card {
