@@ -3,6 +3,38 @@ import './FoodDisplay.css'
 import { StoreContext } from '../../context/StoreContext'
 import FoodItem from '../FoodItem/FoodItem'
 
+// Category to icon mapping
+const categoryIcons = {
+  "All": "🥡",
+  "Beverages": "🥤",
+  "Iced Coffee": "🧊☕",
+  "Tea": "🍵",
+  "Fruit Tea": "🍹",
+  "Milk Tea": "🧋",
+  "Soda": "🥤",
+  "Shakes": "🥛🍨",
+  "Yoghurt": "🥛",
+  "Yogurt": "🥛",
+  "Fruit Soda": "🍸",
+  "Frappe": "☕",
+  "Food": "🍔",
+  "Takoyaki": "🦑",
+  "Pizza": "🍕",
+  "Desserts": "🍰",
+  "Snacks": "🍿",
+  "Healthy": "🥗",
+  "Vegan": "🌱",
+  "Spicy": "🌶️",
+  "Sweet": "🍬",
+  "Savory": "🧂",
+  "Hot": "🔥",
+  "Cold": "❄️",
+  "New": "🆕",
+  "Popular": "⭐",
+  "Recommended": "🎯",
+  "Special": "✨"
+}
+
 const FoodDisplay = ({
   category,
   searchQuery = '',
@@ -18,7 +50,7 @@ const FoodDisplay = ({
       const categoryMatch = category === "All" || category === item.category
 
       // Search filter
-      const searchMatch = searchQuery === '' || 
+      const searchMatch = searchQuery === '' ||
         item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.description.toLowerCase().includes(searchQuery.toLowerCase())
 
@@ -29,7 +61,7 @@ const FoodDisplay = ({
     })
 
     // Sorting
-    switch(sortBy) {
+    switch (sortBy) {
       case 'price-low':
         items.sort((a, b) => a.price - b.price)
         break
@@ -53,7 +85,7 @@ const FoodDisplay = ({
   return (
     <div className='food-display' id='food-display'>
       <div className='food-display-header'>
-        <h2>{category === "All" ? "All Categories" : category}</h2>
+        <h2>{categoryIcons[category] || "🥡"} {category === "All" ? "All Categories" : category}</h2>
         <span className='items-count'>({filteredItems.length} items)</span>
       </div>
 
@@ -65,16 +97,16 @@ const FoodDisplay = ({
       ) : (
         <div className="food-display-list">
           {filteredItems.map((item, index) => (
-            <FoodItem 
-              key={item._id} 
-              id={item._id} 
-              name={item.name} 
-              description={item.description} 
-              price={item.price} 
-              size={item.size} 
+            <FoodItem
+              key={item._id}
+              id={item._id}
+              name={item.name}
+              description={item.description}
+              price={item.price}
+              size={item.size}
               image={item.image}
               stock={item.stock}
-            />                
+            />
           ))}
         </div>
       )}
