@@ -117,8 +117,8 @@ const Navbar = ({ setShowLogin }) => {
       <ul className={`navbar-menu${isMenuOpen ? ' active' : ''}`} onClick={() => setIsMenuOpen(false)}>
         <a href='/' onClick={handleHomeClick} className={menu === "home" ? "active" : ""}>Home</a>
         <a href='#explore-menu' onClick={() => setMenu("menu")} className={menu === "menu" ? "active" : ""}>Menu</a>
-        <a href='#qr-code' onClick={() => setMenu("qr-code")} className={menu === "qr-code" ? "active" : ""}>Scan QR Code</a>
         <a href='#recent-reviews' onClick={() => setMenu("recent-reviews")} className={menu === "recent-reviews" ? "active" : ""}>Reviews</a>
+        <a href='#qr-code' onClick={() => setMenu("qr-code")} className={menu === "qr-code" ? "active" : ""}>Scan QR Code</a>
         <a href='#footer' onClick={() => setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>Contact Us</a>
         <Link to='/map' onClick={() => setMenu("map")} className={menu === "map" ? "active" : ""}>📍 Map</Link>
       </ul>
