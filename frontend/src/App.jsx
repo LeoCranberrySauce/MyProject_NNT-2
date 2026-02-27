@@ -10,6 +10,7 @@ import Verify from './pages/Verify/Verify'
 import MyOrders from './pages/MyOrders/MyOrders'
 import QRCode from './components/QRCode/QRCode'
 import MapDisplay from './pages/MapDisplay/MapDisplay'
+import AboutUs from './pages/AboutUs/AboutUs'
 
 const App = () => {
 
@@ -40,6 +41,7 @@ const App = () => {
           <Route path='/my-orders' element={<MyOrders />} />
           <Route path='/qr-code' element={<QRCode />} />
           <Route path='/map' element={<MapDisplay />} />
+          <Route path='/about-us' element={<AboutUs />} />
         </Routes>
       </div>
       <Footer />
