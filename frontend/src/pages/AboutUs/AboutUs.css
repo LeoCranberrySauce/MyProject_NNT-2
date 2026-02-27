@@ -1,0 +1,36 @@
+.about-us {
+    align-items:center;
+    justify-content: space-between;
+    gap: 50px;
+    margin-top: 200px;
+}
+
+.about-us h1 {
+    margin-bottom: 50px;
+    color:rgb(122, 0, 138);
+    font-weight: 500;
+    font-family: DynaPuff;
+    text-shadow: 0px 0px 3px #000;
+    text-align: center;
+}
+
+.about-us-text p {
+    font-size: 16px;
+    color: #797979;
+    margin: 0;
+}
+
+.about-us-text h2 {
+    font-size: 28px;
+    margin: 0 0 10px 0;
+    color: #333333;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.about-us-text h3 {
+    font-size: 24px;
+    margin: 0 0 10px 0;
+    color: #42006e;
+    font-weight: 700;
+}
