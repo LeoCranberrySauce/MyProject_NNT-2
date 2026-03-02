@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext  } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import './RecentReviews.css'
 import { StoreContext } from '../../context/StoreContext'
 
@@ -14,8 +14,8 @@ const RecentReviews = () => {
     'Coco Nut Martin', 'Maria Dela Cruz', 'Curly Vizcaya', 'Jose Mario Tiyan',
     'Donaldo Tramp', 'Rodrigo Durante', 'Felix Pusa', 'Sofia Garcia', 'Liam Wilson',
     'Tanggol Monte Cristo', 'Rigor Duwag', 'Tomas Sayang', 'Fidel Clara Castro',
-    'Mary Grace Popcorn', 'Ricky Mango', 'Fiona Gandara', 'Xiamen Lee', 'Carlos Mendoza', 
-    'Emily Santos', 'Anthony Cruz', 'Olivia Garcia', 'Michael Wilson', 'Sophia Martez', 
+    'Mary Grace Popcorn', 'Ricky Mango', 'Fiona Gandara', 'Xiamen Lee', 'Carlos Mendoza',
+    'Emily Santos', 'Anthony Cruz', 'Olivia Garcia', 'Michael Wilson', 'Sophia Martez',
     'David Guinto', 'Isabella Masa', 'James Nguyen', 'Mia Reyes', 'Daniel Kim Roja',
     'Charlotte Lupa', 'Christopher Brown', 'Amelia Nut Martin', 'Ethan Dela Cruz',
     'Ava Vizcaya', 'Alexander Tiyan'
@@ -45,23 +45,23 @@ const RecentReviews = () => {
     '6 minutes ago', '7 minutes ago', '8 minutes ago', '9 minutes ago', '10 minutes ago',
     '11 minutes ago', '12 minutes ago', '13 minutes ago', '14 minutes ago', '15 minutes ago',
     '16 minutes ago', '17 minutes ago', '18 minutes ago', '19 minutes ago', '20 minutes ago',
-    '21 minutes ago', '22 minutes ago', '23 minutes ago', '24 minutes ago', '25 minutes ago', 
-    '26 minutes ago', '27 minutes ago', '28 minutes ago', '29 minutes ago', '30 minutes ago', 
+    '21 minutes ago', '22 minutes ago', '23 minutes ago', '24 minutes ago', '25 minutes ago',
+    '26 minutes ago', '27 minutes ago', '28 minutes ago', '29 minutes ago', '30 minutes ago',
     '31 minutes ago', '32 minutes ago', '33 minutes ago', '34 minutes ago', '35 minutes ago',
     '36 minutes ago', '37 minutes ago', '38 minutes ago', '39 minutes ago', '40 minutes ago',
     '41 minutes ago', '42 minutes ago', '43 minutes ago', '44 minutes ago', '45 minutes ago',
-    '46 minutes ago', '47 minutes ago', '48 minutes ago', '49 minutes ago', '50 minutes ago', 
+    '46 minutes ago', '47 minutes ago', '48 minutes ago', '49 minutes ago', '50 minutes ago',
     '51 minutes ago', '52 minutes ago', '53 minutes ago', '54 minutes ago', '55 minutes ago',
-    '56 minutes ago', '57 minutes ago', '58 minutes ago', '59 minutes ago', 
-    '1 hour ago', '2 hours ago', '3 hours ago', '4 hours ago', '5 hours ago', '6 hours ago', 
-    '7 hours ago', '8 hours ago', '9 hours ago', '10 hours ago', '11 hours ago', '12 hours ago', 
-    '13 hours ago', '14 hours ago', '15 hours ago', '16 hours ago', '17 hours ago', '18 hours ago', 
-    '19 hours ago', '20 hours ago', '21 hours ago', '22 hours ago', '23 hours ago', 
-    '1 day ago', '2 days ago', '3 days ago', '4 days ago', 
-    '5 days ago', '6 days ago', '7 days ago', '8 days ago', '9 days ago', 
-    '10 days ago', '1 week ago', '2 weeks ago', '3 weeks ago', '1 month ago', 
-    '2 months ago', '3 months ago', '4 months ago', '5 months ago', 
-    '6 months ago', '7 months ago', '8 months ago', '9 months ago', 
+    '56 minutes ago', '57 minutes ago', '58 minutes ago', '59 minutes ago',
+    '1 hour ago', '2 hours ago', '3 hours ago', '4 hours ago', '5 hours ago', '6 hours ago',
+    '7 hours ago', '8 hours ago', '9 hours ago', '10 hours ago', '11 hours ago', '12 hours ago',
+    '13 hours ago', '14 hours ago', '15 hours ago', '16 hours ago', '17 hours ago', '18 hours ago',
+    '19 hours ago', '20 hours ago', '21 hours ago', '22 hours ago', '23 hours ago',
+    '1 day ago', '2 days ago', '3 days ago', '4 days ago',
+    '5 days ago', '6 days ago', '7 days ago', '8 days ago', '9 days ago',
+    '10 days ago', '1 week ago', '2 weeks ago', '3 weeks ago', '1 month ago',
+    '2 months ago', '3 months ago', '4 months ago', '5 months ago',
+    '6 months ago', '7 months ago', '8 months ago', '9 months ago',
     '10 months ago', '1 year ago', '2 years ago', '3 years ago'
   ]
 
@@ -73,7 +73,7 @@ const RecentReviews = () => {
     for (let i = 0; i < count; i++) {
       let combination
       let attempts = 0
-      
+
       // Try to create unique combinations
       do {
         const randomName = names[Math.floor(Math.random() * names.length)]
@@ -88,7 +88,7 @@ const RecentReviews = () => {
 
       const [name, food] = combination.split('-')
       const rating = Math.random() > 0.3 ? 5 : (Math.random() > 0.5 ? 4.5 : 4) // Mostly 5 stars
-      
+
       generatedReviews.push({
         id: i + 1,
         author: name,
@@ -104,11 +104,22 @@ const RecentReviews = () => {
   }
 
   const [reviews, setReviews] = useState([])
+  const [loading, setLoading] = useState(true)
 
   // Generate reviews on component mount
   useEffect(() => {
-    setReviews(generateRandomReviews(8))
-  }, [])
+    if (food_list && food_list.length > 0) {
+      setReviews(generateRandomReviews(8))
+      setLoading(false)
+    }
+  }, [food_list])
+
+  // Function to get food size from food_list
+  const getFoodSize = (foodName) => {
+    if (!food_list || food_list.length === 0) return '';
+    const foodItem = food_list.find(food => food.name === foodName);
+    return foodItem?.size ? ` (${foodItem.size})` : '';
+  }
 
   const [scrollPosition, setScrollPosition] = useState(0)
 
@@ -134,6 +145,48 @@ const RecentReviews = () => {
         behavior: 'smooth'
       })
     }
+  }
+
+  if (loading) {
+    return (
+      <div className='recent-reviews-section' id='recent-reviews'>
+        <div className='reviews-header'>
+          <h2>⭐ Recent Customer Reviews</h2>
+          <p className='reviews-subtitle'>See what our customers love about us</p>
+        </div>
+        <div className='reviews-container'>
+          <button className='scroll-btn left' onClick={() => scroll('left')} disabled>❮</button>
+          <div className='reviews-scroll-container'>
+            <div className='review-card'>
+              <div className='review-header'>
+                <div className='reviewer-info'>
+                  <span className='avatar'>L</span>
+                  <div className='reviewer-details'>
+                    <h4 className='reviewer-name'>Loading...</h4>
+                    <span className='review-time'>Just now</span>
+                  </div>
+                </div>
+                <div className='star-rating'>
+                  <span className='star filled'>★</span>
+                  <span className='star filled'>★</span>
+                  <span className='star filled'>★</span>
+                  <span className='star filled'>★</span>
+                  <span className='star filled'>★</span>
+                  <span className='rating-text'>(5.0)</span>
+                </div>
+              </div>
+              <p className='review-text'>"Loading reviews..."</p>
+              <div className='review-food'>
+                <span className='food-tag'>Loading...</span>
+              </div>
+              <button className='helpful-btn' disabled>👍 Helpful</button>
+            </div>
+          </div>
+          <button className='scroll-btn right' onClick={() => scroll('right')} disabled>❯</button>
+        </div>
+        <button className='view-all-reviews' disabled>View All Reviews →</button>
+      </div>
+    )
   }
 
   return (
@@ -163,7 +216,10 @@ const RecentReviews = () => {
               <p className='review-text'>"{review.text}"</p>
 
               <div className='review-food'>
-                <span className='food-tag'>{review.food}</span>
+                <span className='food-tag'>
+                  {review.food}
+                  {getFoodSize(review.food)}
+                </span>
               </div>
 
               <button className='helpful-btn'>👍 Helpful</button>
