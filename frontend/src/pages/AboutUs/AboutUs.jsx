@@ -33,7 +33,7 @@ const AboutUs = () => {
                         <br />
 
                     <h2>Address</h2>
-                        <p>Our restaurant is located at 123 East Quirino Hill, Baguio City, 2600 Philippines. We are open from 10:00 AM to 10:00 PM daily, while delivery is available within our service area until 6:00 PM.</p>
+                        <p>Our restaurant is located at East Quirino Hill, Baguio City, 2600 Philippines. We are open from 10:00 AM to 10:00 PM daily, while delivery is available within our service area until 6:00 PM.</p>
 
                 </div>
 

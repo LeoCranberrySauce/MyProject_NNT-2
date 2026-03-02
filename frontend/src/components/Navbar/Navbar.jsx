@@ -1,18 +1,19 @@
 import React, { useContext, useState, useEffect } from 'react'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 
 const Navbar = ({ setShowLogin }) => {
 
-  const [menu, setMenu] = useState("menu");
+  const [menu, setMenu] = useState(window.location.pathname === '/' ? "home" : "menu");
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { getTotalCartAmount, token, setToken, cartItems } = useContext(StoreContext);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +26,21 @@ const Navbar = ({ setShowLogin }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
+
+  useEffect(() => {
+    // Update menu state based on current route
+    if (location.pathname === '/') {
+      setMenu("home");
+    } else if (location.pathname === '/about-us') {
+      setMenu("about-us");
+    } else if (location.pathname === '/map') {
+      setMenu("map");
+    } else if (location.pathname === '/cart') {
+      setMenu("cart");
+    } else {
+      setMenu("menu");
+    }
+  }, [location.pathname]);
 
   const logout = () => {
     setToken("");
@@ -115,12 +131,15 @@ const Navbar = ({ setShowLogin }) => {
       {/* Overlay for mobile menu */}
       <div className={`mobile-menu-overlay${isMenuOpen ? ' active' : ''}`} onClick={() => setIsMenuOpen(false)}></div>
       <ul className={`navbar-menu${isMenuOpen ? ' active' : ''}`} onClick={() => setIsMenuOpen(false)}>
-        <a href='/' onClick={handleHomeClick} className={menu === "home" ? "active" : ""}>Home</a>
+        <a href='/' onClick={handleHomeClick} className={menu === "home" ? "active" : ""}>🏠 Home</a>
+        <Link to='/about-us' onClick={() => setMenu("about-us")} className={menu === "about-us" ? "active" : ""}>📌 About Us</Link>
+        <Link to='/map' onClick={() => setMenu("map")} className={menu === "map" ? "active" : ""}>📍 Map</Link>
+        {/*
         <a href='#explore-menu' onClick={() => setMenu("menu")} className={menu === "menu" ? "active" : ""}>Menu</a>
         <a href='#recent-reviews' onClick={() => setMenu("recent-reviews")} className={menu === "recent-reviews" ? "active" : ""}>Reviews</a>
         <a href='#qr-code' onClick={() => setMenu("qr-code")} className={menu === "qr-code" ? "active" : ""}>Scan QR Code</a>
         <a href='#footer' onClick={() => setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>Contact Us</a>
-        <Link to='/map' onClick={() => setMenu("map")} className={menu === "map" ? "active" : ""}>📍 Map</Link>
+        */}
       </ul>
       <div className="navbar-right">
         <div className="navbar-search-icon">
