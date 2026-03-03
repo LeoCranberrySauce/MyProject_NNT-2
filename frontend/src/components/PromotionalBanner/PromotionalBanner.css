@@ -1,14 +1,13 @@
 .promotional-banner-wrapper {
     width: 100%;
-    padding: 0 20px;
-    margin: 25px 0;
+    margin: 30px 0;
     /* Ensure anchor targets land beneath the fixed navbar */
     scroll-margin-top: 140px;
 }
 
 .promotional-banner {
     border-radius: 12px;
-    padding: 25px;
+    padding: 30px 20px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
@@ -121,6 +120,29 @@
     align-items: center;
 }
 
+.banner-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #667eea;
+    width: 24px;
+    border-radius: 4px;
+}
+
 .banner-arrow {
     background: white;
     border: 1px solid #e0e0e0;
@@ -138,27 +160,6 @@
 .banner-arrow:hover {
     background: #f5f5f5;
     border-color: #667eea;
-}
-
-.banner-dots {
-    display: flex;
-    gap: 8px;
-}
-
-.dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #e0e0e0;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.dot.active {
-    background: #667eea;
-    width: 24px;
-    border-radius: 4px;
 }
 
 @media (max-width: 768px) {

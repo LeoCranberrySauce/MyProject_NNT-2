@@ -55,6 +55,51 @@
     filter: brightness(1.2);
 }
 
+.navbar-search-icon {
+    display: flex;
+    list-style: none;
+    color: #2e2e2e;
+    font-size: 18px;
+    position: relative;
+}
+
+.navbar-search-icon li {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.navbar-search-icon li::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #a921df, #6100a1);
+    transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.navbar-search-icon li:hover::after {
+    width: 100%;
+}
+
+.navbar-search-icon:hover {
+    color: #8b2fbf;
+    transform: translateY(-2px);
+}
+
+.navbar-search-icon .active {
+    background: linear-gradient(135deg, rgba(97, 0, 161, 0.85), rgba(169, 33, 223, 0.75));
+    color: #f6e6ff;
+    padding: 12px 24px;
+    border-radius: 25px;
+    margin-top: -10px;
+    box-shadow: 0 4px 12px rgba(97, 0, 161, 0.3);
+    animation: activeMenuPulse 0.6s ease-out;
+}
+
 .navbar-menu {
     display: flex;
     list-style: none;
@@ -101,27 +146,6 @@
     margin-top: -10px;
     box-shadow: 0 4px 12px rgba(97, 0, 161, 0.3);
     animation: activeMenuPulse 0.6s ease-out;
-}
-
-.navbar-search-icon {
-    position: relative;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.navbar-search-icon:hover {
-    transform: scale(1.15);
-}
-
-.navbar-search-icon .dot {
-    position: absolute;
-    min-width: 10px;
-    min-height: 10px;
-    border-radius: 5px;
-    top: -8px;
-    right: -8px;
-    background-color: #ff4757;
-    animation: dotPulse 1.5s ease-in-out infinite;
-    box-shadow: 0 0 8px rgba(255, 71, 87, 0.6);
 }
 
 .navbar button {
@@ -372,11 +396,15 @@
     .navbar-right {
         gap: 30px;
     }
+    .navbar-search-icon {
+        font-size: 16px;
+    }
     .navbar-right img {
         width: 22px;
     }
     .navbar-right button {
         padding: 8px 25px;
+        font-size: 16px;
     }
 }
 
@@ -391,18 +419,25 @@
     .navbar-right {
         gap: 20px;
     }
+    .navbar-search-icon {
+        font-size: 14px;
+    }
     .navbar-right img {
         width: 20px;
     }
     .navbar-right button {
-        padding: 7px 20px;
-        font-size: 15px;
+        padding: 8px 25px;
+        font-size: 12px;
     }
 }
 
 @media (max-width: 600px) {
     .navbar-menu {
         display: none;
+        font-size: 12px;
+    }
+    .navbar-search-icon {
+        font-size: 12px;
     }
     .navbar .logo {
         width: 80px;
@@ -446,7 +481,7 @@
         box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
         padding-top: 100px;
         gap: 30px;
-        font-size: 20px;
+        font-size: 30px;
         margin: 0;
         transition: right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         z-index: 1102;
