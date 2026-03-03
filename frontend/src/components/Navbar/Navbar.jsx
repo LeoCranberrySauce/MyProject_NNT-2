@@ -75,7 +75,7 @@ const Navbar = ({ setShowLogin }) => {
   const handleCartClick = (e) => {
     setMenu("cart");
     const totalAmount = getTotalCartAmount();
-    
+
     // If cart is empty, just navigate to cart page
     if (totalAmount === 0) {
       return;
@@ -143,7 +143,7 @@ const Navbar = ({ setShowLogin }) => {
       </ul>
       <div className="navbar-right">
         <div className="navbar-search-icon">
-          <Link to='/cart' onClick={handleCartClick} className={menu === "cart" ? "active" : ""}> <img src={assets.cart_icon} alt="" /> </Link>
+          <Link to='/cart' onClick={handleCartClick} className={menu === "cart" ? "active" : ""}> <img src={menu === "cart" ? assets.basket_icon_active : assets.basket_icon} alt="Cart" /> </Link>
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
         {!token ? <button onClick={() => setShowLogin(true)}>Sign In</button> :

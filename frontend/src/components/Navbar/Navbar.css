@@ -111,6 +111,62 @@
     animation: menuSlideIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
 }
 
+.navbar-menu-item {
+    position: relative;
+    display: inline-block;
+}
+
+.home-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: linear-gradient(135deg, #f6e6ff, #f0d9ff);
+    border: 2px solid #d1b0df;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1001;
+    margin-top: 5px;
+    padding: 10px 0;
+}
+
+.home-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    animation: dropdownSlideDown 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.home-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.home-dropdown li {
+    margin: 0;
+    padding: 0;
+}
+
+.home-dropdown a {
+    display: block;
+    padding: 12px 24px;
+    color: #6100a1;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 8px;
+}
+
+.home-dropdown a:hover {
+    background: linear-gradient(135deg, #e6c6ff, #d9b3ff);
+    color: #5800a1;
+    transform: translateX(4px);
+}
+
 .navbar-menu li {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -501,6 +557,57 @@
     .navbar-menu.active li:nth-child(2) { animation-delay: 0.2s; }
     .navbar-menu.active li:nth-child(3) { animation-delay: 0.3s; }
     .navbar-menu.active li:nth-child(4) { animation-delay: 0.4s; }
+    
+    .navbar-menu-item {
+        position: relative;
+        width: 100%;
+    }
+    
+    .home-dropdown {
+        position: static;
+        top: auto;
+        left: auto;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        margin-top: 0;
+        padding: 0;
+        width: 100%;
+    }
+    
+    .home-dropdown.active {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+    
+    .home-dropdown ul {
+        display: block;
+        background: linear-gradient(135deg, #f6e6ff, #f0d9ff);
+        border-radius: 12px;
+        padding: 15px;
+        margin: 10px 0;
+    }
+    
+    .home-dropdown li {
+        margin: 5px 0;
+    }
+    
+    .home-dropdown a {
+        padding: 10px 20px;
+        background: transparent;
+        color: #6100a1;
+        border-radius: 8px;
+    }
+    
+    .home-dropdown a:hover {
+        background: linear-gradient(135deg, #e6c6ff, #d9b3ff);
+        color: #5800a1;
+        transform: none;
+    }
     
     .mobile-menu-overlay.active {
         display: block;
