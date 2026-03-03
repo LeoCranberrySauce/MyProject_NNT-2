@@ -113,13 +113,13 @@ const Navbar = ({ setShowLogin }) => {
       <button className="menu-icon" aria-label="Toggle menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
         {isMenuOpen ? (
           // Close (X) SVG
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         ) : (
           // Hamburger SVG
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="3" y1="12" x2="21" y2="12" />
             <line x1="3" y1="6" x2="21" y2="6" />
             <line x1="3" y1="18" x2="21" y2="18" />
@@ -143,7 +143,7 @@ const Navbar = ({ setShowLogin }) => {
       </ul>
       <div className="navbar-right">
         <div className="navbar-search-icon">
-          <Link to='/cart' onClick={handleCartClick} className={menu === "cart" ? "active" : ""}> <img src={assets.basket_icon} alt="" /> </Link>
+          <Link to='/cart' onClick={handleCartClick} className={menu === "cart" ? "active" : ""}> <img src={assets.cart_icon} alt="" /> </Link>
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
         {!token ? <button onClick={() => setShowLogin(true)}>Sign In</button> :
