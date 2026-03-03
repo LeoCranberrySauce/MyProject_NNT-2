@@ -28,9 +28,6 @@ const Footer = () => {
                         <li>
                             <Link to="/cart">Cart</Link>
                         </li>
-                        <li>
-                            <Link to="/order">Place Order</Link>
-                        </li>
                     </ul>
                 </div>
                 <div className="footer-content-center">

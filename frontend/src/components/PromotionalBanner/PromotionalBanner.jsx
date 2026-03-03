@@ -86,8 +86,6 @@ const PromotionalBanner = () => {
           </div>
         </div>
 
-        <div className='banner-nav'>
-          <button className='banner-arrow' onClick={prevBanner}>❮</button>
           <div className='banner-dots'>
             {banners.map((_, index) => (
               <button
@@ -97,8 +95,7 @@ const PromotionalBanner = () => {
               />
             ))}
           </div>
-          <button className='banner-arrow' onClick={nextBanner}>❯</button>
-        </div>
+        
       </div>
     </div>
   )
