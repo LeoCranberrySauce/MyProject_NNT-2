@@ -10,10 +10,16 @@ const Footer = () => {
                 <div className="footer-content-left">
                     <img src={assets.logo} alt="" className="footer-logo" />
                     <p>Delicious food delivered to your doorstep. NNT Purple Food House offers a wide variety of cuisines to satisfy your cravings.</p>
-                    <div className="footer-social-icons">
-                        <img src={assets.facebook_icon} alt="" />
-                        <img src={assets.twitter_icon} alt="" />
-                        <img src={assets.linkedin_icon} alt="" />
+                    <div className="footer-app-downloads">
+                        <h2>You can download these on your mobile phones!</h2>
+                        <div className="footer-store-links">
+                            <a href="#">
+                                <img src={assets.app_store} alt="App Store" />
+                            </a>
+                            <a href="#">
+                                <img src={assets.play_store} alt="Play Store" />
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div className="footer-content-links">
@@ -49,16 +55,11 @@ const Footer = () => {
                         <li><i className="fas fa-phone"></i> 09123456789</li>
                         <li><i className="fas fa-envelope"></i> contact@nnt.com</li>
                     </ul>
-                    <div className="footer-app-downloads">
-                        <h2>You can download these on your mobile phones!</h2>
-                        <div className="footer-store-links">
-                            <a href="#">
-                                <img src={assets.app_store} alt="App Store" />
-                            </a>
-                            <a href="#">
-                                <img src={assets.play_store} alt="Play Store" />
-                            </a>
-                        </div>
+                    <h2>SOCIAL MEDIA ACCOUNTS</h2>
+                    <div className="footer-social-icons">
+                        <img src={assets.facebook_icon} alt="" />
+                        <img src={assets.twitter_icon} alt="" />
+                        <img src={assets.linkedin_icon} alt="" />
                     </div>
                 </div>
             </div>
