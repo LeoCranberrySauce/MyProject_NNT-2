@@ -1,6 +1,7 @@
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import Stripe from "stripe"
+import { incrementPromoUsage } from "./promoCodeController.js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -14,10 +15,15 @@ const placeOrder = async (req,res) => {
             userId:req.userId,
             items:req.body.items,
             amount:req.body.amount,
-            address:req.body.address
+            address:req.body.address,
+            promoCode:req.body.promoCode
         })
         await newOrder.save();
         await userModel.findByIdAndUpdate(req.userId,{cartData:{}});
+
+        if (req.body.promoCode && req.body.promoCode.code) {
+            await incrementPromoUsage(req.body.promoCode.code);
+        }
 
         const line_items = req.body.items.map((item)=>({
             price_data:{
@@ -40,6 +46,22 @@ const placeOrder = async (req,res) => {
             },
             quantity:1
         })
+
+        if (req.body.promoCode && req.body.promoCode.discount > 0) {
+            const discountLabel = req.body.promoCode.discountType === 'percentage' 
+                ? `Discount (${req.body.promoCode.discountValue}%)`
+                : 'Discount';
+            line_items.push({
+                price_data:{
+                    currency:"php",
+                    product_data:{
+                        name:discountLabel,
+                    },
+                    unit_amount: -req.body.promoCode.discount * 100
+                },
+                quantity:1
+            })
+        }
 
         const session = await stripe.checkout.sessions.create({
             line_items:line_items,

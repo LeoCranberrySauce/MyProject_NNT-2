@@ -6,10 +6,10 @@ const orderSchema = new mongoose.Schema({
     amount:{type:Number,required:true},
     address:{type:Object,required:true},
     status:{type:String,default:"Food Processing"},
-    // Optional field to store current order/delivery location for tracking
     currentLocation:{type:Object,default:null},
     createdAt:{type:Date,default:Date.now()},
-    payment:{type:Boolean,default:false}
+    payment:{type:Boolean,default:false},
+    promoCode:{type:Object,default:null}
 })
 
 const orderModel = mongoose.model.order || mongoose.model("order",orderSchema);
