@@ -131,21 +131,48 @@ const Navbar = ({ setShowLogin }) => {
       {/* Overlay for mobile menu */}
       <div className={`mobile-menu-overlay${isMenuOpen ? ' active' : ''}`} onClick={() => setIsMenuOpen(false)}></div>
       <ul className={`navbar-menu${isMenuOpen ? ' active' : ''}`} onClick={() => setIsMenuOpen(false)}>
-        <Link to='/' onClick={handleHomeClick} className={menu === "home" ? "active" : ""}>🏠 Home</Link>
-        <Link to='/about-us' onClick={() => setMenu("about-us")} className={menu === "about-us" ? "active" : ""}>📌 About Us</Link>
-        <Link to='/map' onClick={() => setMenu("map")} className={menu === "map" ? "active" : ""}>📍 Map</Link>
+
+        <Link to='/' onClick={() => { 
+          setMenu("home"); 
+          window.scrollTo({ top: 0, behavior: 'instant' }); }} 
+          className={menu === "home" ? "active" : ""}> 
+          🏠 Home
+        </Link>
+
+        <Link to='/about-us' onClick={() => { 
+          setMenu("about-us"); 
+          window.scrollTo({ top: 0, behavior: 'instant' }); }} 
+          className={menu === "about-us" ? "active" : ""}> 
+          📌 About Us
+        </Link>
+
+        <Link to='/map' onClick={() => { 
+          setMenu("map"); 
+          window.scrollTo({ top: 0, behavior: 'instant' }); }} 
+          className={menu === "map" ? "active" : ""}> 
+          📍 Map
+        </Link>
+
         {/*
         <Link to='/menu' onClick={() => setMenu("menu")} className={menu === "menu" ? "active" : ""}>Menu</Link>
         <Link to='/recent-reviews' onClick={() => setMenu("recent-reviews")} className={menu === "recent-reviews" ? "active" : ""}>Reviews</Link>
         <Link to='/qr-code' onClick={() => setMenu("qr-code")} className={menu === "qr-code" ? "active" : ""}>Scan QR Code</Link>
         <Link to='/contact-us' onClick={() => setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>Contact Us</Link>
         */}
+
       </ul>
       <div className="navbar-right">
         <div className="navbar-search-icon">
-          <Link to='/cart' onClick={handleCartClick} className={menu === "cart" ? "active" : ""}> <img src={menu === "cart" ? assets.basket_icon_active : assets.basket_icon} alt="Cart" /> </Link>
+
+          <Link to='/cart' onClick={() => { 
+            setMenu("cart"); 
+            window.scrollTo({ top: 0, behavior: 'instant' }); }} className={menu === "cart" ? "active" : ""}> 
+            <img src={menu === "cart" ? assets.basket_icon_active : assets.basket_icon} alt="Cart" />
+          </Link>
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
+
         </div>
+
         {!token ? <button onClick={() => setShowLogin(true)}>Sign In</button> :
           <div className="navbar-profile">
             <img src={assets.profile_icon} alt="" />

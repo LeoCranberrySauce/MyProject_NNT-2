@@ -91,7 +91,7 @@
 }
 
 .header-contents h1 {
-    text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);
+    text-shadow: 7px 7px 9px rgba(0, 0, 0, 0.4);
     color: #a921df;
     font-size: 75px !important;
     font-family: DynaPuff;
@@ -131,7 +131,7 @@
 .header-buttons button {
     width: 150px;
     height: 100%;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
     color: rgb(70, 45, 128);
     background-color: #f7e3ff;
@@ -261,13 +261,17 @@
     }
 
     .header-contents h1 {
-        font-size: 60px !important;
+        font-size: 54px !important;
+    }
+
+    .header-contents p {
+        font-size: 30px !important;
     }
 }
 
 /* Make a website responsive to view it on your phone. */
 
-@media (max-width:960px) {
+@media (max-width:1080px) {
     .header-buttons button {
         width: 150px;
         height: 100%;
@@ -278,17 +282,6 @@
     .header-contents {
         max-width: 50%;
     }
-
-    .header-contents h1 {
-        font-size: 54px !important;
-    }
-
-    .header-contents p {
-        font-size: 30px !important;
-    }
-}
-
-@media (max-width:900px) {
 
     .header-contents h1 {
         font-size: 45px !important;
@@ -313,9 +306,13 @@
 }
 
 @media (max-width: 800px) {
+    .header-contents {
+        max-width: 65%;
+    }
 
     .header-contents h1 {
         font-size: 30px !important;
+        text-shadow: 2px 2px 3px #000;
     }
 
     .header-contents p {
@@ -324,7 +321,9 @@
 
     .header-buttons button {
         padding: 1vw 2vw;
-        font-size: 10px;
+        font-size: 9px;
+        width: 75px;
+        height: 100%;
     }
 }
 
@@ -334,22 +333,7 @@
     }
 
     .header-contents h1 {
-        font-size: 24px !important;
-    }
-
-    .header-buttons button {
-        padding: 1vw 2vw;
-        font-size: 10px;
-    }
-}
-
-@media (max-width:400px) {
-    .header-contents {
-        max-width: 65%;
-    }
-
-    .header-contents h1 {
-        font-size: 20px !important;
+        font-size: 18px !important;
         text-shadow: 2px 2px 3px #000;
     }
 
@@ -359,26 +343,30 @@
 
     .header-buttons button {
         padding: 1vw 2vw;
-        font-size: 10px;
+        font-size: 5px;
+        width: 50px;
+        height: 100%;
     }
 }
 
-@media (max-width:300px) {
+@media (max-width:600px) {
     .header-contents {
-        max-width: 65%;
+        max-width: 60%;
     }
 
     .header-contents h1 {
-        font-size: 12px !important;
-        text-shadow: 1px 1px 1.5px #000;
+        font-size: 15px !important;
+        text-shadow: 2px 2px 3px #000;
     }
 
     .header-contents p {
-        font-size: 5px !important;
+        font-size: 7.5px !important;
     }
 
     .header-buttons button {
         padding: 1vw 2vw;
         font-size: 5px;
+        width: 45px;
+        height: 100%;
     }
 }
