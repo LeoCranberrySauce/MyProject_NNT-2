@@ -27,6 +27,7 @@
 
 @media (max-width: 1600px) {
     .header {
+        background: url('/header_img.jpg') transparent;
         /* Fit image within container */
         background-size: contain;
         background-repeat: no-repeat;
@@ -51,6 +52,7 @@
 
 @media (max-width: 800px) {
     .header {
+        background: url('/header_img.jpg') transparent;
         /* Fit image within container */
         background-size: contain;
         background-repeat: no-repeat;
@@ -63,6 +65,7 @@
 
 @media (max-width: 480px) {
     .header {
+        background: url('/header_img.jpg') transparent;
         background-size: contain;
         background-repeat: no-repeat;
         /* Center the image */
