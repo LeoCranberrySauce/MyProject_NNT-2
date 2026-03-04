@@ -4,6 +4,8 @@
     background: linear-gradient(135deg, #fff5e6 0%, #ffe6f0 100%);
     border-radius: 10px;
     margin: 24px 0;
+    /* Ensure anchor targets land beneath the fixed navbar */
+    scroll-margin-top: 140px;
 }
 
 .recommendations-header {
@@ -12,16 +14,17 @@
 }
 
 .recommendations-header h2 {
-    font-size: 28px;
+    font-size: 30px;
     margin: 0 0 10px 0;
     color: #333;
     font-weight: 700;
 }
 
 .recommendations-subtitle {
-    font-size: 14px;
+    font-size: 18px;
     color: #999;
     margin: 0;
+    max-width: 100%;
 }
 
 .recommendations-grid {
@@ -40,13 +43,13 @@
     display: flex;
     flex-direction: column;
     /* make card more compact (slightly taller than wide) */
-    aspect-ratio: 3.5 / 5;
-    max-width: 300px;
+    aspect-ratio: 2 / 5;
+    max-width: 250px;
     height: auto;
 }
 
 .recommendation-card:hover {
-    transform: translateY(-6px);    
+    transform: translateY(-6px);
     box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
     border-color: #667eea;
 }
@@ -79,7 +82,7 @@
     color: white;
     padding: 6px 12px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 600;
 }
 
@@ -93,14 +96,14 @@
 }
 
 .rec-name {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 700;
     margin: 0 0 8px 0;
     color: #333;
 }
 
 .rec-description {
-    font-size: 12px;
+    font-size: 15px;
     color: #999;
     margin: 0 0 10px 0;
     line-height: 1.4;
@@ -120,14 +123,14 @@
     color: #667eea;
     padding: 4px 10px;
     border-radius: 4px;
-    font-size: 11px;
+    font-size: 15px;
     font-weight: 600;
     text-transform: uppercase;
 }
 
 .rec-stock {
     display: inline-block;
-    font-size: 11px;
+    font-size: 15px;
     color: #999;
     font-weight: 600;
 }
@@ -142,7 +145,7 @@
 }
 
 .rec-price {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
     color: #667eea;
 }
@@ -153,7 +156,7 @@
     color: white;
     border: none;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -165,19 +168,52 @@
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
-@media (max-width: 768px) {
+@media (max-width:1600px) {
+
+    .recommendations-header h2 {
+        font-size: 25px;
+    }
+
+    .recommendations-subtitle {
+        font-size: 15px;
+    }
+
+}
+
+@media (max-width:1200px) {
+
+    .recommendations-header h2 {
+        font-size: 25px;
+    }
+
+    .recommendations-subtitle {
+        font-size: 15px;
+    }
+
+}
+
+@media (max-width: 800px) {
     .personalized-recommendations {
-        padding: 20px 12px;
-        margin: 20px 0;
+        padding: 40px 15px;
+        margin: 40px 0;
     }
 
     .recommendations-header h2 {
         font-size: 20px;
     }
 
+    .recommendations-subtitle {
+        font-size: 12.5px;
+    }
+
     .recommendations-grid {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         gap: 12px;
+    }
+
+    .recommendation-card {
+        max-width: 300px;
+        height: auto;
     }
 
     .rec-image-wrapper {
@@ -186,6 +222,14 @@
 
     .rec-name {
         font-size: 13px;
+    }
+
+    .rec-category {
+        font-size: 12.5px;
+    }
+
+    .rec-stock {
+        font-size: 12.5px;
     }
 }
 

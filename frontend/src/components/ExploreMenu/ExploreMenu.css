@@ -78,23 +78,42 @@
 
 /* Make a website responsive to view it on your phone. */
 
-@media (max-width:1050px) {
+@media (max-width:1200px) {
+    .explore-menu-header h2 {
+        font-size: 25px;
+    }
+
     .explore-menu-text {
         max-width: 100%;
         font-size: 14px;
+    }
+
+    .explore-menu-list-item p {
+        margin-top: 14px;
+    }
+
+    .explore-menu-list-item img {
+        width: 10vw;
+        height: 100%;
+        min-width: 80px;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: 0.2s;
     }
 }
 
-@media (max-width:750px) {
-    .explore-menu-text {
-        max-width: 100%;
-        font-size: 14px;
+@media (max-width:800px) {
+    .explore-menu-header h2 {
+        font-size: 20px;
     }
 
-    .explore-menu h1 {
-        color: rgb(122, 0, 138);
-        font-weight: 500;
-        font-size: 24px;
+    .explore-menu-text {
+        max-width: 100%;
+        font-size: 12.5px;
+    }
+
+    .explore-menu-list-item p {
+        margin-top: 12px;
     }
 
     .explore-menu-list-item img {
@@ -108,17 +127,6 @@
 }
 
 @media (max-width:400px) {
-    .explore-menu-text {
-        max-width: 100%;
-        font-size: 10px;
-    }
-
-    .explore-menu h1 {
-        color: rgb(122, 0, 138);
-        font-weight: 500;
-        font-size: 20px;
-    }
-
     .explore-menu-list {
         display: flex;
         align-items: center;
@@ -127,7 +135,6 @@
         margin: 20px 0px;
         overflow-x: scroll;
     }
-
     .explore-menu-list-item img {
         width: 7.5vw;
         height: 100%;

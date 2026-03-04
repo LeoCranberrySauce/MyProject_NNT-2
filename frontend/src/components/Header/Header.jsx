@@ -11,6 +11,7 @@ const Header = () => {
           <a href='#promotional-banner'><button>🚀 <br /> Promos and Trends</button></a>
           <a href='#explore-menu'><button>🥡 <br /> View Menu</button></a>
           <a href='#recent-reviews'><button>⭐ <br /> Reviews</button></a>
+          <a href='#recommended'><button>✨ <br /> Recommended</button></a>
           <a href='#qr-code'><button>𖣯 <br /> QR Code</button></a>
           <a href='#footer'><button>📩 <br /> Contact Us</button></a>
         </div>

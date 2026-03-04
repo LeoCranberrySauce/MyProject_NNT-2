@@ -131,14 +131,14 @@ const Navbar = ({ setShowLogin }) => {
       {/* Overlay for mobile menu */}
       <div className={`mobile-menu-overlay${isMenuOpen ? ' active' : ''}`} onClick={() => setIsMenuOpen(false)}></div>
       <ul className={`navbar-menu${isMenuOpen ? ' active' : ''}`} onClick={() => setIsMenuOpen(false)}>
-        <a href='/' onClick={handleHomeClick} className={menu === "home" ? "active" : ""}>🏠 Home</a>
+        <Link to='/' onClick={handleHomeClick} className={menu === "home" ? "active" : ""}>🏠 Home</Link>
         <Link to='/about-us' onClick={() => setMenu("about-us")} className={menu === "about-us" ? "active" : ""}>📌 About Us</Link>
         <Link to='/map' onClick={() => setMenu("map")} className={menu === "map" ? "active" : ""}>📍 Map</Link>
         {/*
-        <a href='#explore-menu' onClick={() => setMenu("menu")} className={menu === "menu" ? "active" : ""}>Menu</a>
-        <a href='#recent-reviews' onClick={() => setMenu("recent-reviews")} className={menu === "recent-reviews" ? "active" : ""}>Reviews</a>
-        <a href='#qr-code' onClick={() => setMenu("qr-code")} className={menu === "qr-code" ? "active" : ""}>Scan QR Code</a>
-        <a href='#footer' onClick={() => setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>Contact Us</a>
+        <Link to='/menu' onClick={() => setMenu("menu")} className={menu === "menu" ? "active" : ""}>Menu</Link>
+        <Link to='/recent-reviews' onClick={() => setMenu("recent-reviews")} className={menu === "recent-reviews" ? "active" : ""}>Reviews</Link>
+        <Link to='/qr-code' onClick={() => setMenu("qr-code")} className={menu === "qr-code" ? "active" : ""}>Scan QR Code</Link>
+        <Link to='/contact-us' onClick={() => setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>Contact Us</Link>
         */}
       </ul>
       <div className="navbar-right">

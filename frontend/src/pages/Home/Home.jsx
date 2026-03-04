@@ -36,7 +36,7 @@ const Home = () => {
   }, [category]);
 
   return (
-    <div className='home-container'>
+    <div className='home-container' id="home">
       <Header />
       
       {/* Advanced Search Section
