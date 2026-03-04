@@ -19,17 +19,17 @@
   margin-bottom: 30px;
 }
 
-.qr-code-subtitle {
-    font-size: 18px;
-    color: #858585;
-    margin: 0;
-}
-
 .qr-code-header h2 {
   font-size: 30px;
   margin: 0 0 10px 0;
   color: #333;
   font-weight: 700;
+}
+
+.qr-code-subtitle {
+    font-size: 18px;
+    color: #858585;
+    margin: 0;
 }
 
 .qr-code-container {
@@ -40,15 +40,12 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* 
+@media (max-width:1200px) {
+    .qr-code-header h2 {
+        font-size: 25px;
+    }
 
-.qr-code h1 {
-  margin-top: 8rem;
-  color:rgb(122, 0, 138);
-  font-weight: 500;
-  font-family: DynaPuff;
-  text-shadow: 0px 0px 3px #000;
-  text-align: center;
+    .qr-code-subtitle {
+        font-size: 15px;
+    }
 }
-
-*/

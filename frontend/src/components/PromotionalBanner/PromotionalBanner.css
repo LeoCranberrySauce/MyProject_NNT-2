@@ -31,7 +31,7 @@
 }
 
 .banner-title {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 700;
     margin: 0;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -41,7 +41,7 @@
 }
 
 .banner-subtitle {
-    font-size: 14px;
+    font-size: 15px;
     color: #666;
     margin: 8px 0 0 0;
     font-weight: 500;
@@ -162,7 +162,17 @@
     border-color: #667eea;
 }
 
-@media (max-width: 768px) {
+@media (max-width:1200px) {
+    .banner-title {
+        font-size: 25px;
+    }
+
+    .banner-subtitle {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 800px) {
     .promotional-banner-wrapper {
         padding: 0 15px;
         margin: 20px 0;
@@ -180,7 +190,11 @@
     }
 
     .banner-title {
-        font-size: 24px;
+        font-size: 20px;
+    }
+
+    .banner-subtitle {
+        font-size: 12.5px;
     }
 
     .banner-actions {

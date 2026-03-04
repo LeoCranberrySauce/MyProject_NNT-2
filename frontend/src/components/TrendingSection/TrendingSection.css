@@ -18,7 +18,7 @@
 }
 
 .trending-header h2 {
-    font-size: 24px;
+    font-size: 30px;
     margin: 0;
     font-weight: 700;
 }
@@ -201,7 +201,19 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
-@media (max-width: 768px) {
+@media (max-width:1200px) {
+
+    .trending-header h2 {
+        font-size: 25px;
+    }
+
+    .trending-content h3 {
+        font-size: 20px;
+    }
+
+}
+
+@media (max-width: 800px) {
     .trending-section {
         padding: 20px;
         margin: 20px 0;
@@ -231,7 +243,7 @@
     }
 
     .trending-carousel {
-        height: 320px;
+        height: 400px;
     }
 }
 
@@ -263,7 +275,7 @@
     }
 
     .trending-carousel {
-        height: 300px;
+        height: 335px;
     }
 
     .close-trending {

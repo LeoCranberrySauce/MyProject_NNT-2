@@ -11,7 +11,7 @@ const PersonalizedRecommendations = () => {
 
     if (carted.length === 0) {
       // Show random items if cart is empty
-      return food_list.slice(0, 4)
+      return food_list.slice(0, 6)
     }
 
     // Get categories from carted items
@@ -34,7 +34,7 @@ const PersonalizedRecommendations = () => {
   if (recommendations.length === 0) return null
 
   return (
-    <div className='personalized-recommendations'>
+    <div className='personalized-recommendations' id="recommended">
       <div className='recommendations-header'>
         <h2>💡 Recommended For You</h2>
         <p className='recommendations-subtitle'>Based on your preferences</p>
