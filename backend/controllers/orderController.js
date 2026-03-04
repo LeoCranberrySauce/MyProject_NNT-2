@@ -21,31 +21,20 @@ const placeOrder = async (req,res) => {
         await newOrder.save();
         await userModel.findByIdAndUpdate(req.userId,{cartData:{}});
 
-        if (req.body.promoCode && req.body.promoCode.code) {
-            await incrementPromoUsage(req.body.promoCode.code);
-        }
-
-        const line_items = req.body.items.map((item)=>({
+        // Use the discounted amount sent from frontend instead of recalculating
+        const discountedAmount = req.body.amount;
+        
+        // Create a single line item with the discounted total
+        const line_items = [{
             price_data:{
                 currency:"php",
                 product_data:{
-                    name:item.name  
+                    name:"Order Total (with discounts)"  
                 },
-                unit_amount:item.price*100*1
-            },
-            quantity:item.quantity
-        }))
-
-        line_items.push({
-            price_data:{
-                currency:"php",
-                product_data:{
-                    name:"Delivery Fee",
-                },
-                unit_amount:2*100*1
+                unit_amount: Math.round(discountedAmount * 100)
             },
             quantity:1
-        })
+        }]
 
         if (req.body.promoCode && req.body.promoCode.discount > 0) {
             const discountLabel = req.body.promoCode.discountType === 'percentage' 

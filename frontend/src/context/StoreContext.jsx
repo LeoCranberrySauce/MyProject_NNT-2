@@ -19,6 +19,12 @@ const StoreContextProvider = (props) => {
     const [deliveryAddress, setDeliveryAddress] = useState(null);
     const [orderDeliveryLocation, setOrderDeliveryLocation] = useState(null);
     const [locationPermission, setLocationPermission] = useState(false);
+    
+    // Promo code states
+    const [promoCode, setPromoCode] = useState("");
+    const [promoDiscount, setPromoDiscount] = useState(0);
+    const [promoError, setPromoError] = useState("");
+    const [promoApplied, setPromoApplied] = useState(false);
 
     // Promo code state
     const [promoCode, setPromoCode] = useState(null);
@@ -263,6 +269,57 @@ const StoreContextProvider = (props) => {
         }
     };
 
+    // Promo code functions
+    const applyPromoCode = (code) => {
+        const validPromos = {
+            'FOOD50': { discount: 0.5, description: '50% OFF on all orders' },
+            'FREEDLV': { discount: 1, description: 'Free Delivery' },
+            'B1G1': { discount: 0.3, description: '30% OFF on selected items' }
+        };
+
+        const upperCode = code.toUpperCase().trim();
+        
+        if (!upperCode) {
+            setPromoError("Please enter a promo code");
+            return false;
+        }
+
+        if (validPromos[upperCode]) {
+            const promo = validPromos[upperCode];
+            setPromoCode(upperCode);
+            setPromoDiscount(promo.discount);
+            setPromoError("");
+            setPromoApplied(true);
+            return true;
+        } else {
+            setPromoError("Invalid promo code");
+            setPromoCode("");
+            setPromoDiscount(0);
+            setPromoApplied(false);
+            return false;
+        }
+    };
+
+    const removePromoCode = () => {
+        setPromoCode("");
+        setPromoDiscount(0);
+        setPromoError("");
+        setPromoApplied(false);
+    };
+
+    const getDiscountedTotal = () => {
+        const subtotal = getTotalCartAmount();
+        if (promoDiscount === 1) {
+            // Free delivery promo - only discount delivery fee
+            return subtotal + (subtotal === 0 ? 0 : 0); // Free delivery
+        } else if (promoDiscount > 0) {
+            // Percentage discount on subtotal
+            const discountedSubtotal = subtotal * (1 - promoDiscount);
+            return discountedSubtotal + (discountedSubtotal === 0 ? 0 : 2); // Regular delivery fee
+        }
+        return subtotal + (subtotal === 0 ? 0 : 2); // Regular total
+    };
+
     useEffect(() => {
         async function loadData(){
             await fetchFoodList();
@@ -316,6 +373,18 @@ const StoreContextProvider = (props) => {
         saveDeliveryAddress,
         getDeliveryLocation,
         updateDeliveryLocation,
+        // Promo code states and functions
+        promoCode,
+        setPromoCode,
+        promoDiscount,
+        setPromoDiscount,
+        promoError,
+        setPromoError,
+        promoApplied,
+        setPromoApplied,
+        applyPromoCode,
+        removePromoCode,
+        getDiscountedTotal,
     }
 
 
