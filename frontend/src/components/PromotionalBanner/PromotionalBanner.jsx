@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import './PromotionalBanner.css'
+import { StoreContext } from '../../context/StoreContext'
 
 const PromotionalBanner = () => {
+  const { applyPromoCode, promoApplied, promoCode } = useContext(StoreContext);
+  
   const [banners, setBanners] = useState([
     {
       id: 1,
@@ -31,6 +34,7 @@ const PromotionalBanner = () => {
 
   const [currentBanner, setCurrentBanner] = useState(0)
   const [copied, setCopied] = useState(false)
+  const [claimMessage, setClaimMessage] = useState('')
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -55,11 +59,25 @@ const PromotionalBanner = () => {
 
   const banner = banners[currentBanner]
 
+  const handleClaim = () => {
+    if (applyPromoCode(banner.code)) {
+      setClaimMessage(`✓ ${banner.code} applied successfully!`)
+      setTimeout(() => setClaimMessage(''), 3000)
+    } else {
+      setClaimMessage('Failed to apply promo code')
+      setTimeout(() => setClaimMessage(''), 3000)
+    }
+  }
+
   return (
     <div className='promotional-banner-wrapper' id="promotional-banner">
       <div
         className='promotional-banner'
-        style={{ background: `linear-gradient(135deg, ${banner.color}20 0%, ${banner.color}10 100%)`, borderLeft: `4px solid ${banner.color}` }}
+        style={{ 
+          background: `linear-gradient(135deg, ${banner.color}20 0%, ${banner.color}10 100%)`, 
+          borderLeft: `4px solid ${banner.color}`,
+          opacity: promoApplied && promoCode === banner.code ? 0.8 : 1
+        }}
       >
         <div className='banner-content'>
           <div className='banner-text'>
@@ -80,21 +98,42 @@ const PromotionalBanner = () => {
               </button>
             </div>
 
-            <button className='claim-btn' style={{ backgroundColor: banner.color }}>
-              Claim Now →
+            <button 
+              className='claim-btn' 
+              style={{ 
+                backgroundColor: banner.color,
+                opacity: promoApplied && promoCode === banner.code ? 0.6 : 1,
+                cursor: promoApplied && promoCode === banner.code ? 'not-allowed' : 'pointer'
+              }}
+              onClick={handleClaim}
+              disabled={promoApplied && promoCode === banner.code}
+            >
+              {promoApplied && promoCode === banner.code ? 'Already Applied' : 'Claim Now →'}
             </button>
           </div>
         </div>
 
-          <div className='banner-dots'>
-            {banners.map((_, index) => (
-              <button
-                key={index}
-                className={`dot ${index === currentBanner ? 'active' : ''}`}
-                onClick={() => setCurrentBanner(index)}
-              />
-            ))}
+        {claimMessage && (
+          <div className="claim-message" style={{ 
+            textAlign: 'center', 
+            marginTop: '10px', 
+            color: claimMessage.includes('successfully') ? '#28a745' : '#dc3545',
+            fontSize: '14px',
+            fontWeight: '600'
+          }}>
+            {claimMessage}
           </div>
+        )}
+
+        <div className='banner-dots'>
+          {banners.map((_, index) => (
+            <button
+              key={index}
+              className={`dot ${index === currentBanner ? 'active' : ''}`}
+              onClick={() => setCurrentBanner(index)}
+            />
+          ))}
+        </div>
         
       </div>
     </div>

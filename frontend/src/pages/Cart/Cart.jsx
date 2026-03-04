@@ -1,12 +1,28 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './Cart.css'
 import { StoreContext } from '../../context/StoreContext'
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
 
-  const { cartItems, food_list, removeFromCart, getTotalCartAmount, url, token } = useContext(StoreContext);
+  const { 
+    cartItems, 
+    food_list, 
+    removeFromCart, 
+    getTotalCartAmount, 
+    url, 
+    token,
+    promoCode,
+    setPromoCode,
+    promoDiscount,
+    promoError,
+    promoApplied,
+    applyPromoCode,
+    removePromoCode,
+    getDiscountedTotal
+  } = useContext(StoreContext);
   const navigate = useNavigate();
+  const [promoInput, setPromoInput] = useState("");
 
   const handleCheckout = () => {
     if (!token) {
@@ -16,6 +32,17 @@ const Cart = () => {
     } else {
       navigate('/order');
     }
+  };
+
+  const handlePromoSubmit = (e) => {
+    e.preventDefault();
+    if (applyPromoCode(promoInput)) {
+      setPromoInput("");
+    }
+  };
+
+  const handlePromoRemove = () => {
+    removePromoCode();
   };
 
   const formatCurrency3 = (value) => {
@@ -62,15 +89,21 @@ const Cart = () => {
               <p>Subtotal</p>
               <p>{formatCurrency3(getTotalCartAmount())}</p>
             </div>
+            {promoApplied && promoDiscount > 0 && (
+              <div className="cart-total-details">
+                <p>Promo Discount ({Math.round(promoDiscount * 100)}%)</p>
+                <p>- {formatCurrency3(getTotalCartAmount() * promoDiscount)}</p>
+              </div>
+            )}
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>{formatCurrency3(getTotalCartAmount()===0?0:2)}</p>
+              <p>{formatCurrency3(getTotalCartAmount()===0?0:(promoDiscount === 1 ? 0 : 2))}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>{formatCurrency3(getTotalCartAmount()===0?0:getTotalCartAmount() + 2)}</b>
+              <b>{formatCurrency3(getDiscountedTotal())}</b>
             </div>
           </div>
           <button onClick={handleCheckout}>PROCEED TO CHECKOUT</button>
@@ -79,9 +112,21 @@ const Cart = () => {
           <div>
             <p>If you have a promo code, enter it here to get discounts and perks!</p>
             <div className="cart-promocode-input">
-              <input type="text" placeholder='Enter the promo code' />
-              <button>Submit</button>
+              <input 
+                type="text" 
+                placeholder='Enter the promo code' 
+                value={promoInput}
+                onChange={(e) => setPromoInput(e.target.value)}
+              />
+              <button onClick={handlePromoSubmit}>Submit</button>
             </div>
+            {promoError && <p className="promo-error">{promoError}</p>}
+            {promoApplied && (
+              <div className="promo-applied">
+                <p className="promo-success">✓ Promo code applied: {promoCode}</p>
+                <button onClick={handlePromoRemove} className="remove-promo">Remove</button>
+              </div>
+            )}
           </div>
         </div>
       </div>
