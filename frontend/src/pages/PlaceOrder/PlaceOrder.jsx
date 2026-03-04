@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 const PlaceOrder = () => {
 
-  const {getTotalCartAmount,token,food_list,cartItems,url} = useContext(StoreContext)
+  const {getTotalCartAmount,token,food_list,cartItems,url, promoCode, promoDiscount, getFinalAmount} = useContext(StoreContext)
 
   const [data,setData] = useState({
     firstName:"",
@@ -43,7 +43,13 @@ const PlaceOrder = () => {
     let orderData = {
       address:data,
       items:orderItems,
-      amount:getTotalCartAmount() + 2,
+      amount:getFinalAmount(),
+      promoCode: promoCode ? {
+        code: promoCode.code,
+        discount: promoDiscount,
+        discountType: promoCode.discountType,
+        discountValue: promoCode.discountValue
+      } : null
     }
     let response = await axios.post(url+"/api/order/place",orderData,{headers:{token}});
     if (response.data.success) {
@@ -94,17 +100,26 @@ const PlaceOrder = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>{formatCurrency1(getTotalCartAmount(0))}</p>
+              <p>{formatCurrency1(getTotalCartAmount() + promoDiscount)}</p>
             </div>
+            {promoDiscount > 0 && (
+              <>
+                <hr />
+                <div className="cart-total-details">
+                  <p style={{color: 'green'}}>Discount</p>
+                  <p style={{color: 'green'}}>-{formatCurrency1(promoDiscount)}</p>
+                </div>
+              </>
+            )}
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>{formatCurrency1(getTotalCartAmount()===0?0:2)}</p>
+              <p>{formatCurrency1(getTotalCartAmount() + promoDiscount === 0 ? 0 : 2)}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>{formatCurrency1(getTotalCartAmount()===0?0:getTotalCartAmount() + 2)}</b>
+              <b>{formatCurrency1(getFinalAmount())}</b>
             </div>
           </div>
           <button type='submit'>PROCEED TO PAYMENT</button>

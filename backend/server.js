@@ -10,6 +10,7 @@ import dashboardRouter from "./routes/dashboardRoute.js"
 import categoryRouter from "./routes/categoryRoute.js"
 import adminUserRouter from "./routes/adminUserRoute.js"
 import locationRouter from "./routes/locationRoute.js"
+import promoCodeRouter from "./routes/promoCodeRoute.js"
 
 
 // app config
@@ -42,6 +43,7 @@ app.use("/api/admin", dashboardRouter)
 app.use("/api/category", categoryRouter)
 app.use("/api/admin-user", adminUserRouter)
 app.use("/api/location", locationRouter)
+app.use("/api/promo", promoCodeRouter)
 // api routes
 app.get("/", (req, res) => {
      res.send("API working")

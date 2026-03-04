@@ -106,6 +106,39 @@
     padding-left: 10px;
 }
 
+.promo-message {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.promo-message.success {
+    color: green;
+}
+
+.promo-message.error {
+    color: red;
+}
+
+.promo-applied {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e8f5e9;
+    border-radius: 4px;
+}
+
+.remove-promo-btn {
+    padding: 5px 10px;
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
 /* Make a website responsive to fit on your phone. */
 
 @media (max-width:750px) {
