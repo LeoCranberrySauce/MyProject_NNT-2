@@ -21,6 +21,7 @@ const Cart = () => {
     removePromoCode,
     getDiscountedTotal
   } = useContext(StoreContext);
+
   const navigate = useNavigate();
   const [promoInput, setPromoInput] = useState("");
 

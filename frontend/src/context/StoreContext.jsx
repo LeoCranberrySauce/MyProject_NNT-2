@@ -339,8 +339,7 @@ const StoreContextProvider = (props) => {
         applyPromoCode,
         removePromoCode,
         getDiscountedTotal,
-    }
-
+    };
 
     return (
         <StoreContext.Provider value={ContextValue}>
