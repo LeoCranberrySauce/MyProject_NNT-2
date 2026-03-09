@@ -26,10 +26,6 @@ const StoreContextProvider = (props) => {
     const [promoError, setPromoError] = useState("");
     const [promoApplied, setPromoApplied] = useState(false);
 
-    // Promo code state
-    const [promoCode, setPromoCode] = useState(null);
-    const [promoDiscount, setPromoDiscount] = useState(0);
-
     const addToCart = async (itemId, quantityToAdd = 1) => {
         const item = food_list.find((product) => product._id === itemId);
         if (!item) return;
@@ -69,41 +65,6 @@ const StoreContextProvider = (props) => {
             }
         }
         return totalAmount - promoDiscount;
-    }
-
-    const applyPromoCode = async (code) => {
-        try {
-            const orderAmount = getTotalCartAmount() + promoDiscount;
-            const response = await axios.post(url + "/api/promo/validate", 
-                { code, orderAmount },
-                { headers: { token } }
-            );
-            if (response.data.success) {
-                setPromoCode(response.data.promoCode);
-                setPromoDiscount(response.data.promoCode.discount);
-                return { success: true, message: response.data.message };
-            } else {
-                return { success: false, message: response.data.message };
-            }
-        } catch (error) {
-            return { success: false, message: error.response?.data?.message || "Error applying promo code" };
-        }
-    }
-
-    const removePromoCode = () => {
-        setPromoCode(null);
-        setPromoDiscount(0);
-    }
-
-    const clearPromoAfterOrder = () => {
-        setPromoCode(null);
-        setPromoDiscount(0);
-    }
-
-    const getFinalAmount = () => {
-        const subtotal = getTotalCartAmount() + promoDiscount;
-        const deliveryFee = subtotal === 0 ? 0 : 2;
-        return subtotal + deliveryFee;
     }
 
     const fetchFoodList = async () => {
@@ -348,13 +309,6 @@ const StoreContextProvider = (props) => {
         url,
         token,
         setToken,
-        // Promo code
-        promoCode,
-        promoDiscount,
-        applyPromoCode,
-        removePromoCode,
-        clearPromoAfterOrder,
-        getFinalAmount,
         // Location/GPS methods and states
         userLocation,
         setUserLocation,

@@ -96,15 +96,6 @@ const PlaceOrder = () => {
               <p>Subtotal</p>
               <p>{formatCurrency1(getTotalCartAmount())}</p>
             </div>
-            {promoDiscount > 0 && (
-              <>
-                <hr />
-                <div className="cart-total-details">
-                  <p style={{color: 'green'}}>Discount</p>
-                  <p style={{color: 'green'}}>-{formatCurrency1(promoDiscount)}</p>
-                </div>
-              </>
-            )}
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
