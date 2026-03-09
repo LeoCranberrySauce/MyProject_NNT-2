@@ -94,17 +94,17 @@ const PlaceOrder = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>{formatCurrency1(getTotalCartAmount())}</p>
+              <p>{formatCurrency1(getTotalCartAmount(0))}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>{formatCurrency1(getTotalCartAmount()===0?0:(getDiscountedTotal() - getTotalCartAmount()))}</p>
+              <p>{formatCurrency1(getTotalCartAmount()===0?0:2)}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>{formatCurrency1(getDiscountedTotal())}</b>
+              <b>{formatCurrency1(getTotalCartAmount()===0?0:getTotalCartAmount() + 2)}</b>
             </div>
           </div>
           <button type='submit'>PROCEED TO PAYMENT</button>
