@@ -21,6 +21,7 @@ const Cart = () => {
     removePromoCode,
     getDiscountedTotal
   } = useContext(StoreContext);
+
   const navigate = useNavigate();
   const [promoInput, setPromoInput] = useState("");
 
@@ -87,7 +88,7 @@ const Cart = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>{formatCurrency3(getTotalCartAmount() + promoDiscount)}</p>
+              <p>{formatCurrency3(getTotalCartAmount())}</p>
             </div>
             {promoApplied && promoDiscount > 0 && (
               <div className="cart-total-details">
