@@ -6,18 +6,18 @@ import { useNavigate } from 'react-router-dom'
 
 const PlaceOrder = () => {
 
-  const {getTotalCartAmount,token,food_list,cartItems,url,getDiscountedTotal} = useContext(StoreContext)
+  const { getTotalCartAmount, token, food_list, cartItems, url, promoCode, promoDiscount, getFinalAmount } = useContext(StoreContext)
 
-  const [data,setData] = useState({
-    firstName:"",
-    lastName:"",
-    email:"",
-    street:"",
-    city:"",
-    province:"",
-    zipCode:"",
-    country:"",
-    phone:""
+  const [data, setData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    street: "",
+    city: "",
+    province: "",
+    zipCode: "",
+    country: "",
+    phone: ""
   })
 
   const formatCurrency1 = (value) => {
@@ -27,13 +27,13 @@ const PlaceOrder = () => {
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setData(data=>({...data,[name]:value}))
+    setData(data => ({ ...data, [name]: value }))
   }
 
   const placeOrder = async (event) => {
     event.preventDefault();
     let orderItems = [];
-    food_list.map((item)=>{
+    food_list.map((item) => {
       if (cartItems[item._id] > 0) {
         let itemInfo = item;
         itemInfo["quantity"] = cartItems[item._id];
@@ -41,20 +41,26 @@ const PlaceOrder = () => {
       }
     })
     let orderData = {
-      address:data,
-      items:orderItems,
-      amount:getDiscountedTotal(),
+      address: data,
+      items: orderItems,
+      amount: getFinalAmount(),
+      promoCode: promoCode ? {
+        code: promoCode.code,
+        discount: promoDiscount,
+        discountType: promoCode.discountType,
+        discountValue: promoCode.discountValue
+      } : null
     }
-    let response = await axios.post(url+"/api/order/place",orderData,{headers:{token}});
+    let response = await axios.post(url + "/api/order/place", orderData, { headers: { token } });
     if (response.data.success) {
-      const {url: sessionUrl} = response.data;
+      const { url: sessionUrl } = response.data;
       window.location.replace(sessionUrl);
     }
     else {
       alert("Something went wrong");
     }
   }
-  
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -65,7 +71,7 @@ const PlaceOrder = () => {
       navigate("/cart");
     }
   }, [token]);
-  
+
   return (
     <form onSubmit={placeOrder} className='place-order'>
 
@@ -94,17 +100,26 @@ const PlaceOrder = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>{formatCurrency1(getTotalCartAmount())}</p>
+              <p>{formatCurrency1(getTotalCartAmount() + promoDiscount)}</p>
             </div>
+            {promoDiscount > 0 && (
+              <>
+                <hr />
+                <div className="cart-total-details">
+                  <p style={{color: 'green'}}>Discount</p>
+                  <p style={{color: 'green'}}>-{formatCurrency1(promoDiscount)}</p>
+                </div>
+              </>
+            )}
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>{formatCurrency1(getTotalCartAmount()===0?0:(getDiscountedTotal() - getTotalCartAmount()))}</p>
+              <p>{formatCurrency1(getTotalCartAmount() + promoDiscount === 0 ? 0 : 2)}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>{formatCurrency1(getDiscountedTotal())}</b>
+              <b>{formatCurrency1(getFinalAmount())}</b>
             </div>
           </div>
           <button type='submit'>PROCEED TO PAYMENT</button>

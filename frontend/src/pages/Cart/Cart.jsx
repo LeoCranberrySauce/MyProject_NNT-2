@@ -5,25 +5,37 @@ import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
 
-  const { 
-    cartItems, 
-    food_list, 
-    removeFromCart, 
-    getTotalCartAmount, 
-    url, 
-    token,
-    promoCode,
-    setPromoCode,
-    promoDiscount,
-    promoError,
-    promoApplied,
-    applyPromoCode,
-    removePromoCode,
-    getDiscountedTotal
-  } = useContext(StoreContext);
-
+  const { cartItems, food_list, removeFromCart, getTotalCartAmount, url, token, promoCode, applyPromoCode, removePromoCode, promoDiscount, getFinalAmount } = useContext(StoreContext);
   const navigate = useNavigate();
   const [promoInput, setPromoInput] = useState("");
+  const [promoMessage, setPromoMessage] = useState({ type: '', text: '' });
+  const [isApplying, setIsApplying] = useState(false);
+
+  const handleApplyPromo = async () => {
+    if (!promoInput.trim()) return;
+    if (!token) {
+      setPromoMessage({ type: 'error', text: 'Please login to apply promo codes' });
+      return;
+    }
+    
+    setIsApplying(true);
+    setPromoMessage({ type: '', text: '' });
+    
+    const result = await applyPromoCode(promoInput);
+    
+    if (result.success) {
+      setPromoMessage({ type: 'success', text: result.message });
+    } else {
+      setPromoMessage({ type: 'error', text: result.message });
+    }
+    setIsApplying(false);
+  };
+
+  const handleRemovePromo = () => {
+    removePromoCode();
+    setPromoInput('');
+    setPromoMessage({ type: '', text: '' });
+  };
 
   const handleCheckout = () => {
     if (!token) {
@@ -33,17 +45,6 @@ const Cart = () => {
     } else {
       navigate('/order');
     }
-  };
-
-  const handlePromoSubmit = (e) => {
-    e.preventDefault();
-    if (applyPromoCode(promoInput)) {
-      setPromoInput("");
-    }
-  };
-
-  const handlePromoRemove = () => {
-    removePromoCode();
   };
 
   const formatCurrency3 = (value) => {
@@ -88,13 +89,16 @@ const Cart = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>{formatCurrency3(getTotalCartAmount())}</p>
+              <p>{formatCurrency3(getTotalCartAmount() + promoDiscount)}</p>
             </div>
-            {promoApplied && promoDiscount > 0 && (
-              <div className="cart-total-details">
-                <p>Promo Discount ({Math.round(promoDiscount * 100)}%)</p>
-                <p>- {formatCurrency3(getTotalCartAmount() * promoDiscount)}</p>
-              </div>
+            {promoDiscount > 0 && (
+              <>
+                <hr />
+                <div className="cart-total-details">
+                  <p style={{color: 'green'}}>Discount</p>
+                  <p style={{color: 'green'}}>-{formatCurrency3(promoDiscount)}</p>
+                </div>
+              </>
             )}
             <hr />
             <div className="cart-total-details">
@@ -104,7 +108,7 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>{formatCurrency3(getDiscountedTotal())}</b>
+              <b>{formatCurrency3(getFinalAmount())}</b>
             </div>
           </div>
           <button onClick={handleCheckout}>PROCEED TO CHECKOUT</button>
@@ -112,21 +116,28 @@ const Cart = () => {
         <div className="cart-promocode">
           <div>
             <p>If you have a promo code, enter it here to get discounts and perks!</p>
-            <div className="cart-promocode-input">
-              <input 
-                type="text" 
-                placeholder='Enter the promo code' 
-                value={promoInput}
-                onChange={(e) => setPromoInput(e.target.value)}
-              />
-              <button onClick={handlePromoSubmit}>Submit</button>
-            </div>
-            {promoError && <p className="promo-error">{promoError}</p>}
-            {promoApplied && (
+            {promoCode ? (
               <div className="promo-applied">
-                <p className="promo-success">✓ Promo code applied: {promoCode}</p>
-                <button onClick={handlePromoRemove} className="remove-promo">Remove</button>
+                <span style={{color: 'green', fontWeight: 'bold'}}>{promoCode.code} applied!</span>
+                <button onClick={handleRemovePromo} className="remove-promo-btn">Remove</button>
               </div>
+            ) : (
+              <div className="cart-promocode-input">
+                <input 
+                  type="text" 
+                  placeholder='Enter the promo code' 
+                  value={promoInput}
+                  onChange={(e) => setPromoInput(e.target.value)}
+                />
+                <button onClick={handleApplyPromo} disabled={isApplying}>
+                  {isApplying ? 'Applying...' : 'Submit'}
+                </button>
+              </div>
+            )}
+            {promoMessage.text && (
+              <p className={`promo-message ${promoMessage.type}`}>
+                {promoMessage.text}
+              </p>
             )}
           </div>
         </div>
