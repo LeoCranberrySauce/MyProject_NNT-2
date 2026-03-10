@@ -1,6 +1,7 @@
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import Stripe from "stripe"
+import { incrementPromoUsage } from "./promoCodeController.js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -20,10 +21,10 @@ const placeOrder = async (req,res) => {
         await newOrder.save();
         await userModel.findByIdAndUpdate(req.userId,{cartData:{}});
 
-        // Use the discounted amount sent from frontend instead of recalculating
-        const discountedAmount = req.body.amount;
-        
-        // Create a single line item with the discounted total
+        if (req.body.promoCode && req.body.promoCode.code) {
+            await incrementPromoUsage(req.body.promoCode.code);
+        }
+
         const line_items = [{
             price_data:{
                 currency:"php",
@@ -34,6 +35,17 @@ const placeOrder = async (req,res) => {
             },
             quantity:1
         }]
+
+        line_items.push({
+            price_data:{
+                currency:"php",
+                product_data:{
+                    name:"Delivery Fee",
+                },
+                unit_amount:2*100*1
+            },
+            quantity:1
+        })
 
         if (req.body.promoCode && req.body.promoCode.discount > 0) {
             const discountLabel = req.body.promoCode.discountType === 'percentage' 
@@ -59,7 +71,7 @@ const placeOrder = async (req,res) => {
         })
 
         res.json({success:true,url:session.url});
-        
+
     } catch (error) {
         console.log(error);
         res.json({success:false,message:"Internal server error"});

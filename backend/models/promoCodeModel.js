@@ -13,6 +13,6 @@ const promoCodeSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now }
 })
 
-const promoCodeModel = mongoose.model.promoCode || mongoose.model("promoCode", promoCodeSchema);
+const promoCodeModel = mongoose.models.promoCode || mongoose.model("promoCode", promoCodeSchema);
 
 export default promoCodeModel;

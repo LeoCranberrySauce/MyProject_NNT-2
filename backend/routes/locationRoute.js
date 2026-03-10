@@ -6,7 +6,7 @@ import {
   getDeliveryLocation,
   updateDeliveryLocation,
 } from "../controllers/locationController.js";
-import authMiddleware from "../middleware/auth.js";
+import { authMiddleware } from "../middleware/auth.js";
 
 const locationRouter = express.Router();
 
