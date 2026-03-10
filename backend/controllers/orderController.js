@@ -1,5 +1,6 @@
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
+import foodModel from "../models/foodModel.js";
 import Stripe from "stripe"
 import { incrementPromoUsage } from "./promoCodeController.js";
 
@@ -18,6 +19,16 @@ const placeOrder = async (req,res) => {
             address:req.body.address,
             promoCode:req.body.promoCode
         })
+        
+        // Deduct stock quantities for each item in the order
+        for (const item of req.body.items) {
+            if (item._id && item.quantity) {
+                await foodModel.findByIdAndUpdate(item._id, { 
+                    $inc: { stock: -item.quantity } 
+                });
+            }
+        }
+        
         await newOrder.save();
         await userModel.findByIdAndUpdate(req.userId,{cartData:{}});
 
@@ -31,7 +42,7 @@ const placeOrder = async (req,res) => {
                 product_data:{
                     name:"Order Total (with discounts)"  
                 },
-                unit_amount: Math.round(discountedAmount * 100)
+                unit_amount: Math.round(req.body.amount * 100)
             },
             quantity:1
         }]
