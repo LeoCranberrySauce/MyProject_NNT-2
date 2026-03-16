@@ -54,6 +54,15 @@ const StoreContextProvider = (props) => {
         }
     }
 
+    const updateCartQuantity = async (itemId, newQuantity) => {
+        if (newQuantity < 0) return;
+        
+        setCartItems((prev) => ({ ...prev, [itemId]: newQuantity }))
+        if (token) {
+            await axios.post(url+"/api/cart/update",{itemId, quantity: newQuantity},{headers:{token}})
+        }
+    }
+
     const getTotalCartAmount = () => {
         let totalAmount = 0;
         for (const item in cartItems) {
@@ -68,7 +77,7 @@ const StoreContextProvider = (props) => {
     const applyPromoCode = async (code) => {
         try {
             const orderAmount = getTotalCartAmount() + promoDiscount;
-            const response = await axios.post(url + "/api/promo/validate", 
+            const response = await axios.post(url + "/api/promo-code/validate", 
                 { code, orderAmount },
                 { headers: { token } }
             );
@@ -94,6 +103,17 @@ const StoreContextProvider = (props) => {
         setPromoDiscount(0);
     }
 
+    const incrementPromoUsage = async (code) => {
+        try {
+            await axios.post(url + "/api/promo-code/increment-usage", 
+                { code },
+                { headers: { token } }
+            );
+        } catch (error) {
+            console.log("Error incrementing promo usage:", error);
+        }
+    }
+
     const getFinalAmount = () => {
         const subtotal = getTotalCartAmount() + promoDiscount;
         const deliveryFee = subtotal === 0 ? 0 : 2;
@@ -108,6 +128,17 @@ const StoreContextProvider = (props) => {
     const fetchCategoryList = async () => {
         const response = await axios.get(url + "/api/category/cat-list");
         setCategoryList(response.data.data);
+    }
+
+    const fetchPromoCodes = async () => {
+        try {
+            const response = await axios.get(url + "/api/promo-code/public-list");
+            if (response.data.success) {
+                return response.data.data;
+            }
+        } catch (error) {
+            console.log("Error fetching promo codes:", error);
+        }
     }
 
     const loadCartData = async (token) => {
@@ -287,6 +318,7 @@ const StoreContextProvider = (props) => {
         setCartItems,
         addToCart,
         removeFromCart,
+        updateCartQuantity,
         getTotalCartAmount,
         url,
         token,
@@ -297,7 +329,9 @@ const StoreContextProvider = (props) => {
         applyPromoCode,
         removePromoCode,
         clearPromoAfterOrder,
+        incrementPromoUsage,
         getFinalAmount,
+        fetchPromoCodes,
         // Location/GPS methods and states
         userLocation,
         setUserLocation,

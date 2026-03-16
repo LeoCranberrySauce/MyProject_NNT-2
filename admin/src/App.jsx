@@ -11,6 +11,8 @@ import UsersList from './pages/UsersList/UsersList'
 import EditCategory from './pages/EditCategory/EditCategory'
 import EditFoodList from './pages/EditFoodList/EditFoodList'
 import AdminUserList from './pages/AdminUserList/AdminUserList'
+import PromoCodes from './pages/PromoCodes/PromoCodes'
+import EditPromoCode from './pages/EditPromoCode/EditPromoCode'
 import AdminLogin from './components/AdminLogin/AdminLogin'
 import ProtectedRoute from './components/ProtectedRoute'
 import { AuthProvider } from './context/AuthContext'
@@ -23,6 +25,8 @@ const App = () => {
   const [categoryToEdit, setCategoryToEdit] = useState(null)
   const [editFoodList, setEditFoodList] = useState(false)
   const [foodsToEdit, setFoodsToEdit] = useState(null)
+  const [editPromoCode, setEditPromoCode] = useState(false)
+  const [promoCodeToEdit, setPromoCodeToEdit] = useState(null)
   const [showAdminLogin, setShowAdminLogin] = useState(false)
 
   useEffect(() => {
@@ -101,6 +105,24 @@ const App = () => {
             <Route path='/admin-users' element={
               <ProtectedRoute>
                 <AdminUserList url={url} />
+              </ProtectedRoute>
+            } />
+            <Route path='/promo-codes' element={
+              <ProtectedRoute>
+                <>
+                  <PromoCodes
+                    url={url}
+                    setEditPromoCode={setEditPromoCode}
+                    setPromoCodeToEdit={setPromoCodeToEdit}
+                  />
+                  {editPromoCode && (
+                    <EditPromoCode
+                      setEditPromoCode={setEditPromoCode}
+                      promoCodeToEdit={promoCodeToEdit}
+                      url={url}
+                    />
+                  )}
+                </>
               </ProtectedRoute>
             } />
           </Routes>

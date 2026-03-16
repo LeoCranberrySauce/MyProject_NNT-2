@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 const PlaceOrder = () => {
 
-  const { getTotalCartAmount, token, food_list, cartItems, url, promoCode, promoDiscount, getFinalAmount } = useContext(StoreContext)
+  const { getTotalCartAmount, token, food_list, cartItems, url, promoCode, promoDiscount, getFinalAmount, incrementPromoUsage } = useContext(StoreContext)
 
   const [data, setData] = useState({
     firstName: "",
@@ -53,6 +53,10 @@ const PlaceOrder = () => {
     }
     let response = await axios.post(url + "/api/order/place", orderData, { headers: { token } });
     if (response.data.success) {
+      // Increment promo code usage if a promo code was used
+      if (promoCode) {
+        await incrementPromoUsage(promoCode.code);
+      }
       const { url: sessionUrl } = response.data;
       window.location.replace(sessionUrl);
     }
