@@ -57,7 +57,7 @@ const validatePromoCode = async (req, res) => {
 
 const createPromoCode = async (req, res) => {
     try {
-        const { code, discountType, discountValue, minOrderAmount, maxDiscount, expiresAt, usageLimit } = req.body;
+        const { name, description, code, discountType, discountValue, minOrderAmount, maxDiscount, expiresAt, usageLimit } = req.body;
 
         const existingCode = await promoCodeModel.findOne({ code: code.toUpperCase() });
         if (existingCode) {
@@ -65,6 +65,8 @@ const createPromoCode = async (req, res) => {
         }
 
         const newPromo = new promoCodeModel({
+            name: name,
+            description: description,
             code: code.toUpperCase(),
             discountType,
             discountValue,

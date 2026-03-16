@@ -43,7 +43,7 @@ app.use("/api/admin", dashboardRouter)
 app.use("/api/category", categoryRouter)
 app.use("/api/admin-user", adminUserRouter)
 app.use("/api/location", locationRouter)
-app.use("/api/promo", promoCodeRouter)
+app.use("/api/promo-code", promoCodeRouter)
 
 // api routes
 app.get("/", (req, res) => {

@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
 const promoCodeSchema = new mongoose.Schema({
+    name: {type: String, required: true},
+    description: {type: String, required: true},
     code: { type: String, required: true, unique: true },
     discountType: { type: String, enum: ['percentage', 'fixed'], required: true },
     discountValue: { type: Number, required: true },
@@ -13,6 +15,6 @@ const promoCodeSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now }
 })
 
-const promoCodeModel = mongoose.models.promoCode || mongoose.model("promoCode", promoCodeSchema);
+const promoCodeModel = mongoose.models.promoCodes || mongoose.model("promoCodes", promoCodeSchema);
 
 export default promoCodeModel;

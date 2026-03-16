@@ -89,7 +89,7 @@ const Cart = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>{formatCurrency3(getTotalCartAmount() + promoDiscount)}</p>
+              <p>{formatCurrency3(getTotalCartAmount() - promoDiscount)}</p>
             </div>
             {promoDiscount > 0 && (
               <>
@@ -103,7 +103,7 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>{formatCurrency3(getTotalCartAmount()===0?0:(promoDiscount === 1 ? 0 : 2))}</p>
+              <p>{formatCurrency3(getTotalCartAmount()===0?0:2)}</p>
             </div>
             <hr />
             <div className="cart-total-details">

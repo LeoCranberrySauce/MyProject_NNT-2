@@ -7,6 +7,8 @@ const seedPromoCodes = async () => {
     
     const promoCodes = [
         {
+            name: "Welcome Offer",
+            description: "Get 10% off your first order!",
             code: "WELCOME10",
             discountType: "percentage",
             discountValue: 10,
@@ -17,6 +19,8 @@ const seedPromoCodes = async () => {
             usageLimit: null
         },
         {
+            name: "Save 20% on Holidays",
+            description: "Enjoy 20% off on all orders above PHP 100 during the holiday season and get free perks in any stores!",
             code: "SAVE20",
             discountType: "percentage",
             discountValue: 20,
@@ -27,6 +31,8 @@ const seedPromoCodes = async () => {
             usageLimit: 100
         },
         {
+            name: "Flat PHP 50 Off",
+            description: "Get PHP 50 off on orders above PHP 200!",
             code: "FLAT50",
             discountType: "fixed",
             discountValue: 50,
@@ -37,6 +43,8 @@ const seedPromoCodes = async () => {
             usageLimit: 50
         },
         {
+            name: "Free Shipping",
+            description: "Get free shipping on orders above PHP 100!",
             code: "FREESHIP",
             discountType: "fixed",
             discountValue: 2,

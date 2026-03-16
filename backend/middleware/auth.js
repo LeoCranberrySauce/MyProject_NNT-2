@@ -29,7 +29,7 @@ const verifyAdmin = async (req,res,next) => {
             return res.json({success:false, message:"Admin user not found"});
         }
         
-        if (adminUser.role !== 'admin') {
+        if (adminUser.role !== 'admin' && adminUser.role !== 'Admin') {
             return res.json({success:false, message:"Access denied. Admin privileges required"});
         }
         
