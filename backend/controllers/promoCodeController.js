@@ -85,6 +85,37 @@ const createPromoCode = async (req, res) => {
     }
 };
 
+const updatePromoCode = async (req, res) => {
+    try {
+        const { name, description, code, discountType, discountValue, minOrderAmount, maxDiscount, expiresAt, usageLimit } = req.body;
+
+        const existingCode = await promoCodeModel.findOne({ code: code.toUpperCase() });
+        if (!existingCode) {
+            return res.json({ success: false, message: "Promo code not found" });
+        }
+
+        await promoCodeModel.findOneAndUpdate(
+            { code: code.toUpperCase() },
+            {
+                name: name,
+                description: description,
+                discountType,
+                discountValue,
+                minOrderAmount: minOrderAmount || 0,
+                maxDiscount,
+                expiresAt,
+                usageLimit
+            }
+        );
+
+        res.json({ success: true, message: "Promo code updated successfully" });
+
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error updating promo code" });
+    }
+};
+
 const incrementPromoUsage = async (code) => {
     try {
         await promoCodeModel.findOneAndUpdate(
@@ -131,4 +162,4 @@ const deletePromoCode = async (req, res) => {
     }
 };
 
-export { validatePromoCode, createPromoCode, incrementPromoUsage, listPromoCodes, togglePromoCode, deletePromoCode };
+export { validatePromoCode, createPromoCode, updatePromoCode, incrementPromoUsage, listPromoCodes, togglePromoCode, deletePromoCode };

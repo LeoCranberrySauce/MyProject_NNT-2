@@ -71,7 +71,11 @@ const StoreContextProvider = (props) => {
                 totalAmount += itemInfo.price * cartItems[item];
             }
         }
-        return totalAmount - promoDiscount;
+        return totalAmount;
+    }
+
+    const getSubtotalWithDiscount = () => {
+        return getTotalCartAmount() - promoDiscount;
     }
 
     const applyPromoCode = async (code) => {
@@ -115,9 +119,9 @@ const StoreContextProvider = (props) => {
     }
 
     const getFinalAmount = () => {
-        const subtotal = getTotalCartAmount() + promoDiscount;
-        const deliveryFee = subtotal === 0 ? 0 : 2;
-        return subtotal + deliveryFee;
+        const subtotal = getTotalCartAmount();
+        const deliveryFee = subtotal === 0 ? 0 : 5;
+        return subtotal - promoDiscount + deliveryFee;
     }
 
     const fetchFoodList = async () => {
@@ -320,6 +324,7 @@ const StoreContextProvider = (props) => {
         removeFromCart,
         updateCartQuantity,
         getTotalCartAmount,
+        getSubtotalWithDiscount,
         url,
         token,
         setToken,

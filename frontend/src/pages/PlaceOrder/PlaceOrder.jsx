@@ -104,7 +104,7 @@ const PlaceOrder = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>{formatCurrency1(getTotalCartAmount() + promoDiscount)}</p>
+              <p>{formatCurrency1(getTotalCartAmount())}</p>
             </div>
             {promoDiscount > 0 && (
               <>
@@ -118,7 +118,7 @@ const PlaceOrder = () => {
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>{formatCurrency1(getTotalCartAmount() + promoDiscount === 0 ? 0 : 2)}</p>
+              <p>{formatCurrency1(getTotalCartAmount() === 0 ? 0 : 5)}</p>
             </div>
             <hr />
             <div className="cart-total-details">

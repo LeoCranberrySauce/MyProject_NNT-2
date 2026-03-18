@@ -36,39 +36,33 @@ const placeOrder = async (req,res) => {
             await incrementPromoUsage(req.body.promoCode.code);
         }
 
+        // Calculate the actual order amount without delivery fee
+        // The frontend logic: deliveryFee = subtotal === 0 ? 0 : 2
+        // So: req.body.amount = subtotal + deliveryFee
+        // If subtotal > 0, then deliveryFee = 2, so subtotal = req.body.amount - 2
+        // If subtotal = 0, then deliveryFee = 0, so subtotal = req.body.amount
+        const orderAmount = req.body.amount === 0 ? 0 : req.body.amount - 5;
+        const deliveryFee = req.body.amount === 0 ? 0 : 5;
+
         const line_items = [{
             price_data:{
                 currency:"php",
                 product_data:{
                     name:"Order Total (with discounts)"  
                 },
-                unit_amount: Math.round(req.body.amount * 100)
+                unit_amount: Math.round(orderAmount * 100)
             },
             quantity:1
         }]
 
-        line_items.push({
-            price_data:{
-                currency:"php",
-                product_data:{
-                    name:"Delivery Fee",
-                },
-                unit_amount:2*100*1
-            },
-            quantity:1
-        })
-
-        if (req.body.promoCode && req.body.promoCode.discount > 0) {
-            const discountLabel = req.body.promoCode.discountType === 'percentage' 
-                ? `Discount (${req.body.promoCode.discountValue}%)`
-                : 'Discount';
+        if (deliveryFee > 0) {
             line_items.push({
                 price_data:{
                     currency:"php",
                     product_data:{
-                        name:discountLabel,
+                        name:"Delivery Fee",
                     },
-                    unit_amount: -req.body.promoCode.discount * 100
+                    unit_amount: Math.round(deliveryFee * 100)
                 },
                 quantity:1
             })

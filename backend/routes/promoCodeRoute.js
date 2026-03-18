@@ -1,5 +1,5 @@
 import express from 'express';
-import { validatePromoCode, createPromoCode, listPromoCodes, togglePromoCode, deletePromoCode } from '../controllers/promoCodeController.js';
+import { validatePromoCode, createPromoCode, updatePromoCode, listPromoCodes, togglePromoCode, deletePromoCode } from '../controllers/promoCodeController.js';
 import { verifyAdmin, authMiddleware } from '../middleware/auth.js';
 import promoCodeModel from '../models/promoCodeModel.js';
 
@@ -7,6 +7,7 @@ const promoCodeRouter = express.Router();
 
 promoCodeRouter.post('/validate', authMiddleware, validatePromoCode);
 promoCodeRouter.post('/create', verifyAdmin, createPromoCode);
+promoCodeRouter.post('/update', verifyAdmin, updatePromoCode);
 promoCodeRouter.get('/list', verifyAdmin, listPromoCodes);
 promoCodeRouter.get('/public-list', listPromoCodes); // Public endpoint for promotional banner
 promoCodeRouter.post('/toggle', verifyAdmin, togglePromoCode);
