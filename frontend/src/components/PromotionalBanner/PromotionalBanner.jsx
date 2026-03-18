@@ -37,8 +37,8 @@ const PromotionalBanner = () => {
               subtitle = `${promo.description}`
               color = '#667eea'
             } else if (promo.discountType === 'fixed') {
-              title = `₱${promo.discountValue} OFF`
-              subtitle = `On all orders above ₱${promo.minOrderAmount}`
+              title = `${promo.name}`
+              subtitle = `${promo.description}`
               color = '#f093fb'
             } else {
               title = 'Special Offer'

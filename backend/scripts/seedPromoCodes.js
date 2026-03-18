@@ -20,7 +20,7 @@ const seedPromoCodes = async () => {
         },
         {
             name: "Save 20% on Holidays",
-            description: "Enjoy 20% off on all orders above PHP 100 during the holiday season and get free perks in any stores!",
+            description: "Enjoy 20% off on all orders above PHP 100 for the first 100 orders uring the holiday season and get free perks in any stores!",
             code: "SAVE20",
             discountType: "percentage",
             discountValue: 20,
@@ -44,7 +44,7 @@ const seedPromoCodes = async () => {
         },
         {
             name: "Free Shipping",
-            description: "Get free shipping on orders above PHP 100!",
+            description: "Get free shipping on orders anywhere in the vicinity of your location!",
             code: "FREESHIP",
             discountType: "fixed",
             discountValue: 2,

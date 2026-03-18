@@ -3,6 +3,7 @@ import { assets } from '../../assets/assets'
 import './EditPromoCode.css'
 import axios from "axios"
 import { toast } from 'react-toastify'
+import { useAuth } from '../../context/AuthContext'
 
 const EditPromoCode = ({ setEditPromoCode, promoCodeToEdit, url }) => {
   const [loading, setLoading] = useState(false)
@@ -58,6 +59,12 @@ const EditPromoCode = ({ setEditPromoCode, promoCodeToEdit, url }) => {
     }
   }
 
+  // Helper function to get auth headers (same as PromoCodes component)
+  const getAuthHeaders = () => {
+    const token = localStorage.getItem('adminToken');
+    return token ? { token: token } : {};
+  };
+
   const onSubmitHandler = async (event) => {
     event.preventDefault()
 
@@ -96,13 +103,15 @@ const EditPromoCode = ({ setEditPromoCode, promoCodeToEdit, url }) => {
 
     try {
       setLoading(true)
-      const response = await axios.post(`${baseURL}/api/promo-code/create`, {
+      const response = await axios.post(`${baseURL}/api/promo-code/update`, {
         ...data,
         discountValue: Number(data.discountValue),
         minOrderAmount: Number(data.minOrderAmount),
         maxDiscount: data.maxDiscount ? Number(data.maxDiscount) : null,
         usageLimit: data.usageLimit ? Number(data.usageLimit) : null,
         expiresAt: expiresAt
+      }, {
+        headers: getAuthHeaders()
       })
 
       if (response.data.success) {
@@ -138,15 +147,15 @@ const EditPromoCode = ({ setEditPromoCode, promoCodeToEdit, url }) => {
 
         <div className="current-promo-info">
           <h3>Current Promo Code Details</h3>
+          <div className="info-grid-name">
+            <span className="label">Name:</span>
+            <span className="value">{promoCodeToEdit.name}</span>
+          </div>
+          <div className="info-grid-description">
+            <span className="label">Description:</span>
+            <span className="value">{promoCodeToEdit.description}</span>
+          </div>
           <div className="info-grid">
-            <div className="info-item">
-              <span className="label">Name:</span>
-              <span className="value">{promoCodeToEdit.name}</span>
-            </div>
-            <div className="info-item">
-              <span className="label">Description:</span>
-              <span className="value">{promoCodeToEdit.description}</span>
-            </div>
             <div className="info-item">
               <span className="label">Code:</span>
               <span className="value code-value">{promoCodeToEdit.code}</span>
@@ -186,50 +195,72 @@ const EditPromoCode = ({ setEditPromoCode, promoCodeToEdit, url }) => {
 
         <form className="edit-form" onSubmit={onSubmitHandler}>
           <h3>Update Promo Code</h3>
-          
+
+          <div className='promo-code-name'>
+              <p>Name</p>
+              <input
+                onChange={onChangeHandler}
+                value={data.name}
+                type='text'
+                name='name'
+                placeholder='Enter promo code name'
+              />
+          </div>
+
+          <div className='promo-code-description'>
+              <p>Description</p>
+              <textarea
+                onChange={onChangeHandler}
+                value={data.description}
+                name='description'
+                placeholder='Enter promo code description'
+                rows='4'
+              />
+          </div>
+
           <div className='discount-type-value'>
-            <div className="discount-type flex-col">
+            <div className="discount-type">
               <p>Discount Type</p>
               <select onChange={onChangeHandler} name='discountType' value={data.discountType}>
                 <option value="percentage">Percentage (%)</option>
                 <option value="fixed">Fixed Amount (PHP)</option>
               </select>
             </div>
-            <div className="discount-value flex-col">
+            <div className="discount-value">  
               <p>Discount Value</p>
-              <input 
-                onChange={onChangeHandler} 
-                value={data.discountValue} 
-                type='number' 
-                name='discountValue' 
+              <input
+                onChange={onChangeHandler}
+                value={data.discountValue}
+                type='number'
+                name='discountValue'
                 placeholder={data.discountType === 'percentage' ? 'Enter percentage (e.g., 10)' : 'Enter amount (e.g., 50)'}
                 min="0"
                 step="0.01"
-                required 
+                required
               />
             </div>
           </div>
 
           <div className='promo-code-details'>
-            <div className="min-order flex-col">
+            <div className="min-order">
               <p>Minimum Order Amount (PHP)</p>
-              <input 
-                onChange={onChangeHandler} 
-                value={data.minOrderAmount} 
-                type='number' 
-                name='minOrderAmount' 
+              <input
+                onChange={onChangeHandler}
+                value={data.minOrderAmount}
+                type='number'
+                name='minOrderAmount'
                 placeholder='0'
                 min="0"
                 step="0.01"
               />
             </div>
-            <div className="max-discount flex-col">
+            <div className="max-discount">
               <p>Maximum Discount (PHP) <span className="optional">(Optional)</span></p>
-              <input 
-                onChange={onChangeHandler} 
-                value={data.maxDiscount} 
-                type='number' 
-                name='maxDiscount' 
+              <input
+                onChange={onChangeHandler}
+                value={data.maxDiscount}
+                type='number'
+                name='maxDiscount'
                 placeholder='No limit'
                 min="0"
                 step="0.01"
@@ -239,26 +270,26 @@ const EditPromoCode = ({ setEditPromoCode, promoCodeToEdit, url }) => {
           </div>
 
           <div className='usage-expiry'>
-            <div className="usage-limit flex-col">
+            <div className="usage-limit">
               <p>Usage Limit <span className="optional">(Optional)</span></p>
-              <input 
-                onChange={onChangeHandler} 
-                value={data.usageLimit} 
-                type='number' 
-                name='usageLimit' 
+              <input
+                onChange={onChangeHandler}
+                value={data.usageLimit}
+                type='number'
+                name='usageLimit'
                 placeholder='Unlimited'
                 min="1"
               />
               <small className="helper-text">Maximum number of times this code can be used</small>
             </div>
-            <div className="expiry-date flex-col">
+            <div className="expiry-date">
               <p>Expiration Date</p>
-              <input 
-                onChange={onChangeHandler} 
-                value={data.expiresAt} 
-                type='datetime-local' 
-                name='expiresAt' 
-                required 
+              <input
+                onChange={onChangeHandler}
+                value={data.expiresAt}
+                type='datetime-local'
+                name='expiresAt'
+                required
               />
             </div>
           </div>

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
 
-  const { cartItems, food_list, removeFromCart, getTotalCartAmount, url, token, promoCode, applyPromoCode, removePromoCode, promoDiscount, getFinalAmount } = useContext(StoreContext);
+  const { cartItems, food_list, removeFromCart, getTotalCartAmount, getSubtotalWithDiscount, url, token, promoCode, applyPromoCode, removePromoCode, promoDiscount, getFinalAmount } = useContext(StoreContext);
   const navigate = useNavigate();
   const [promoInput, setPromoInput] = useState("");
   const [promoMessage, setPromoMessage] = useState({ type: '', text: '' });
@@ -89,7 +89,7 @@ const Cart = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>{formatCurrency3(getTotalCartAmount() - promoDiscount)}</p>
+              <p>{formatCurrency3(getTotalCartAmount())}</p>
             </div>
             {promoDiscount > 0 && (
               <>
@@ -103,7 +103,7 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>{formatCurrency3(getTotalCartAmount()===0?0:2)}</p>
+              <p>{formatCurrency3(getTotalCartAmount() === 0 ? 0 : 5)}</p>
             </div>
             <hr />
             <div className="cart-total-details">
