@@ -143,6 +143,7 @@
   color: #007bff;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .status.active {
