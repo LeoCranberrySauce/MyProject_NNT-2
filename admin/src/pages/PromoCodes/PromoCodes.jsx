@@ -260,7 +260,7 @@ const PromoCodes = ({ url, setEditPromoCode, setPromoCodeToEdit }) => {
             <div className="add-promo-codes">
               <h2>Add Promo Code</h2>
 
-              <div className='promo-code-generation flex-col'>
+              <div className='promo-code-generation'>
                 <p>Promo Name</p>
                 <small className="helper-text">Name of the promo code for reference</small>
                 <div className="text-input-container">
@@ -276,23 +276,24 @@ const PromoCodes = ({ url, setEditPromoCode, setPromoCodeToEdit }) => {
                 </div>
               </div>
 
-              <div className='promo-code-generation flex-col'>
+              <div className='promo-code-generation'>
                 <p>Promo Description</p>
                 <small className="helper-text">Put a brief description of the promo code that requires attention</small>
                 <div className="description-input-container">
-                  <input
+                  <textarea
                     onChange={onChangeHandler}
                     value={data.description}
                     type='text'
                     name='description'
                     placeholder='Enter promo description'
                     style={{ flex: 1 }}
+                    rows='4'
                     required
                   />
                 </div>
               </div>
 
-              <div className='promo-code-generation flex-col'>
+              <div className='promo-code-generation'>
                 <p>Promo Code</p>
                 <small className="helper-text">Auto-generate a unique 8-character promo code or enter your own</small>
                 <div className="code-input-container">
@@ -317,14 +318,14 @@ const PromoCodes = ({ url, setEditPromoCode, setPromoCodeToEdit }) => {
               </div>
 
               <div className='discount-type-value'>
-                <div className="discount-type flex-col">
+                <div className="discount-type">
                   <p>Discount Type</p>
                   <select onChange={onChangeHandler} name='discountType' value={data.discountType}>
                     <option value="percentage">Percentage (%)</option>
                     <option value="fixed">Fixed Amount (PHP)</option>
                   </select>
                 </div>
-                <div className="discount-value flex-col">
+                <div className="discount-value">
                   <p>Discount Value</p>
                   <input
                     onChange={onChangeHandler}
@@ -340,7 +341,7 @@ const PromoCodes = ({ url, setEditPromoCode, setPromoCodeToEdit }) => {
               </div>
 
               <div className='promo-code-details'>
-                <div className="min-order flex-col">
+                <div className="min-order">
                   <p>Minimum Order Amount (PHP)</p>
                   <input
                     onChange={onChangeHandler}
@@ -352,7 +353,7 @@ const PromoCodes = ({ url, setEditPromoCode, setPromoCodeToEdit }) => {
                     step="0.01"
                   />
                 </div>
-                <div className="max-discount flex-col">
+                <div className="max-discount">
                   <p>Maximum Discount (PHP) <span className="optional">(Optional)</span></p>
                   <input
                     onChange={onChangeHandler}
@@ -368,7 +369,7 @@ const PromoCodes = ({ url, setEditPromoCode, setPromoCodeToEdit }) => {
               </div>
 
               <div className='usage-expiry'>
-                <div className="usage-limit flex-col">
+                <div className="usage-limit">
                   <p>Usage Limit <span className="optional">(Optional)</span></p>
                   <input
                     onChange={onChangeHandler}
@@ -380,7 +381,7 @@ const PromoCodes = ({ url, setEditPromoCode, setPromoCodeToEdit }) => {
                   />
                   <small className="helper-text">Maximum number of times this code can be used</small>
                 </div>
-                <div className="expiry-date flex-col">
+                <div className="expiry-date">
                   <p>Expiration Date</p>
                   <input
                     onChange={onChangeHandler}
