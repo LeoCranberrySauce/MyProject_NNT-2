@@ -250,10 +250,11 @@ const PromoCodes = ({ url, setEditPromoCode, setPromoCodeToEdit }) => {
   }
 
   return (
-    <div className='promo-codes add flex-col'>
+    <div className='promo-codes add'>
       <h1>Promo Code Management</h1>
 
       <div className='promo-codes-container'>
+
         {/* ADD PROMO CODE - LEFT SIDE */}
         <div className='promo-codes-left'>
           <form className='flex-col' onSubmit={onSubmitHandler}>
