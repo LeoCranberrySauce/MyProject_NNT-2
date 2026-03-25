@@ -13,6 +13,14 @@
     gap: 20px;
 }
 
+.sidebar-option p {
+    font-size: 18px;
+}
+
+.sidebar-option h2 {
+    font-size: 24px;
+}
+
 .sidebar-option {
     display: flex;
     gap: 12px;
@@ -33,12 +41,18 @@
     /*color: rgb(236, 233, 236);*/
 }
 
+@media (max-width: 1024px) {
+    .sidebar-option p {
+        font-size: 15px;
+    }
+
+    .sidebar-option h2 {
+        font-size: 24px;
+    }
+}
+
 @media (max-width: 800px) {
     .sidebar-option p {
         display: none;
     }
 }
-
-
-
-

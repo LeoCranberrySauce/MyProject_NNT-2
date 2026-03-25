@@ -28,11 +28,15 @@
 }
 
 .add-promo-codes h2 {
-  color: #495057;
-  margin-bottom: 25px;
-  font-size: 20px;
-  border-bottom: 2px solid #007bff;
-  padding-bottom: 10px;
+    color: #495057;
+    align-items: flex-start;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-size: 20px;
+    font-weight: 700;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
 }
 
 .promo-code-generation {
@@ -146,19 +150,22 @@
   margin-bottom: 20px;
 }
 
-.discount-type, .discount-value {
+.discount-type,
+.discount-value {
   margin-bottom: 0;
   display: flex;
   flex-direction: column;
 }
 
-.discount-type p, .discount-value p {
+.discount-type p,
+.discount-value p {
   margin-bottom: 8px;
   font-weight: 600;
   color: #495057;
 }
 
-.discount-type select, .discount-value input {
+.discount-type select,
+.discount-value input {
   width: 100%;
   padding: 12px 16px;
   border: 2px solid #e9ecef;
@@ -168,7 +175,8 @@
   outline: none;
 }
 
-.discount-type select:focus, .discount-value input:focus {
+.discount-type select:focus,
+.discount-value input:focus {
   border-color: #007bff;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
@@ -180,19 +188,22 @@
   margin-bottom: 20px;
 }
 
-.min-order, .max-discount {
+.min-order,
+.max-discount {
   margin-bottom: 0;
   display: flex;
   flex-direction: column;
 }
 
-.min-order p, .max-discount p {
+.min-order p,
+.max-discount p {
   margin-bottom: 8px;
   font-weight: 600;
   color: #495057;
 }
 
-.min-order input, .max-discount input {
+.min-order input,
+.max-discount input {
   width: 100%;
   padding: 12px 16px;
   border: 2px solid #e9ecef;
@@ -202,7 +213,8 @@
   outline: none;
 }
 
-.min-order input:focus, .max-discount input:focus {
+.min-order input:focus,
+.max-discount input:focus {
   border-color: #007bff;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
@@ -220,19 +232,22 @@
   margin-bottom: 25px;
 }
 
-.usage-limit, .expiry-date {
+.usage-limit,
+.expiry-date {
   margin-bottom: 0;
   display: flex;
   flex-direction: column;
 }
 
-.usage-limit p, .expiry-date p {
+.usage-limit p,
+.expiry-date p {
   margin-bottom: 8px;
   font-weight: 600;
   color: #495057;
 }
 
-.usage-limit input, .expiry-date input {
+.usage-limit input,
+.expiry-date input {
   width: 100%;
   padding: 12px 16px;
   border: 2px solid #e9ecef;
@@ -242,7 +257,8 @@
   outline: none;
 }
 
-.usage-limit input:focus, .expiry-date input:focus {
+.usage-limit input:focus,
+.expiry-date input:focus {
   border-color: #007bff;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
@@ -287,11 +303,15 @@
 }
 
 .promo-codes-table h2 {
-  color: #495057;
-  margin-bottom: 20px;
-  font-size: 20px;
-  border-bottom: 2px solid #007bff;
-  padding-bottom: 10px;
+    color: #495057;
+    align-items: flex-start;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-size: 20px;
+    font-weight: 700;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
 }
 
 .promo-codes-table-format {
@@ -451,7 +471,9 @@
   flex-wrap: wrap;
 }
 
-.promo-codes-table-button, .promo-codes-table-toggle, .promo-codes-table-del {
+.promo-codes-table-button,
+.promo-codes-table-toggle,
+.promo-codes-table-del {
   padding: 8px 16px;
   border: none;
   border-radius: 6px;
@@ -533,21 +555,25 @@
   .promo-codes-container {
     flex-direction: column;
   }
-  
-  .promo-codes-left, .promo-codes-right {
+
+  .promo-codes-left,
+  .promo-codes-right {
     width: 100%;
   }
-  
-  .discount-type-value, .promo-code-details, .usage-expiry {
+
+  .discount-type-value,
+  .promo-code-details,
+  .usage-expiry {
     grid-template-columns: 1fr;
   }
-  
+
   .promo-codes-table-format {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr 1.5fr 0.8fr 1.5fr;
     gap: 10px;
     text-align: center;
+    grid-auto-flow: column;
   }
-  
+
   .promo-codes-table-action {
     justify-content: center;
   }
@@ -557,24 +583,25 @@
   .promo-codes {
     padding: 15px;
   }
-  
+
   .promo-codes-container {
     gap: 20px;
   }
-  
-  .promo-codes-left, .promo-codes-right {
+
+  .promo-codes-left,
+  .promo-codes-right {
     padding: 20px;
   }
-  
+
   .promo-codes-table-format {
     padding: 10px;
   }
-  
+
   .code-input-container {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .generate-btn {
     width: 100%;
   }
@@ -584,19 +611,20 @@
   .promo-codes h1 {
     font-size: 24px;
   }
-  
-  .add-promo-codes h2, .promo-codes-table h2 {
+
+  .add-promo-codes h2,
+  .promo-codes-table h2 {
     font-size: 18px;
   }
-  
+
   .promo-codes-table-format {
     font-size: 14px;
   }
-  
+
   .code-value {
     font-size: 14px;
   }
-  
+
   .discount-value {
     font-size: 14px;
   }

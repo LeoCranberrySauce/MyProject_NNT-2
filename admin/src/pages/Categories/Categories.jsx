@@ -4,7 +4,7 @@ import "./Categories.css"
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-const Categories = ({url, setEditCategory, setCategoryToEdit}) => {
+const Categories = ({ url, setEditCategory, setCategoryToEdit }) => {
   const [image, setImage] = useState(false);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -147,28 +147,39 @@ const Categories = ({url, setEditCategory, setCategoryToEdit}) => {
   }
 
   return (
-    <div className='categories add flex-col'>
+    <div className='categories add'>
+
       <h1>Manage Categories</h1>
 
       <div className='categories-container'>
+
         {/* ADD CATEGORY - LEFT SIDE */}
         <div className='categories-left'>
-          <form onSubmit={onSubmitHandler} className='new-categories'>
+
+          <form className='flex-col' onSubmit={onSubmitHandler}>
+
             <div className='categories-add'>
+
               <h2>Add Category</h2>
-              <div className='add-img-upload flex-col'>
+
+              <div className='add-img-upload'>
                 <p>Upload Image</p>
                 <label htmlFor='image'>
                   <img src={image ? URL.createObjectURL(image) : assets.upload_area} alt='' />
                 </label>
                 <input onChange={(e) => setImage(e.target.files[0])} type='file' id='image' hidden required />
               </div>
+
               <div className="categories-add-type">
-                <div className='categories-add-name flex-col'>
+
+                <div className='categories-add-name'>
                   <p>Category Name</p>
-                  <input onChange={onChangeHandler} value={data.name} type='text' name='name' placeholder='Add Category' required />
+                  <div className='categories-add-name-container'>
+                    <input onChange={onChangeHandler} value={data.name} type='text' name='name' placeholder='Add Category' required />
+                  </div>
                 </div>
-                <div className="categories-select-type flex-col">
+
+                <div className="categories-select-type">
                   <p>Category Type</p>
                   <select onChange={onChangeHandler} name='type' value={data.type}>
                     {categoryTypes.map((type) => (
@@ -176,10 +187,15 @@ const Categories = ({url, setEditCategory, setCategoryToEdit}) => {
                     ))}
                   </select>
                 </div>
-                <button type='submit' className='add-cat-btn'>Add Category</button>
+
+                <button type='submit' className='add-btn'>Add Category</button>
+
               </div>
+
             </div>
+
           </form>
+
         </div>
 
         {/* CATEGORY LIST - RIGHT SIDE */}
@@ -211,7 +227,9 @@ const Categories = ({url, setEditCategory, setCategoryToEdit}) => {
             )}
           </div>
         </div>
+
       </div>
+
     </div>
   )
 }

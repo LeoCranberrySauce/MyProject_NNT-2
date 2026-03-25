@@ -17,11 +17,11 @@ const Sidebar = () => {
           <p>Dashboard</p>
         </NavLink>
         <NavLink to='/list' className='sidebar-option'>
-          <img src={assets.order_icon} alt="" />
+          <img src={assets.food_icon} alt="" />
           <p>Food List</p>
         </NavLink>
         <NavLink to='/category' className='sidebar-option'>
-          <img src={assets.order_icon} alt="" />
+          <img src={assets.category_icon} alt="" />
           <p>Category</p>
         </NavLink>
         <NavLink to='/orders' className='sidebar-option'>
@@ -29,18 +29,18 @@ const Sidebar = () => {
           <p>Orders</p>
         </NavLink>
         <NavLink to='/users' className='sidebar-option'>
-          <img src={assets.order_icon} alt="" />
+          <img src={assets.customer_icon} alt="" />
           <p>Customers</p>
         </NavLink>
         {userRole && userRole.toLowerCase() === 'admin' && (
           <NavLink to='/admin-users' className='sidebar-option'>
-            <img src={assets.order_icon} alt="" />
+            <img src={assets.admin_icon} alt="" />
             <p>Managers</p>
           </NavLink>
         )}
         {userRole && userRole.toLowerCase() === 'admin' && (
           <NavLink to='/promo-codes' className='sidebar-option'>
-            <img src={assets.order_icon} alt="" />
+            <img src={assets.promo_icon} alt="" />
             <p>Promo Codes</p>
           </NavLink>
         )}
