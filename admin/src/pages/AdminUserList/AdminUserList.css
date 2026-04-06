@@ -1,3 +1,14 @@
+.admin-user-list {
+    min-height: 100vh;
+}
+
+.admin-user-list h1 {
+    color: #40004d;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
 .admin-user-list-table { 
     margin-top: 30px;
     margin-bottom: 100px;

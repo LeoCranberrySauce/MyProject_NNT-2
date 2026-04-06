@@ -9,7 +9,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: Fredoka, sans-serif;
-  font-weight: 550;
+  scroll-behavior: smooth;
 }
 
 body {

@@ -1,11 +1,9 @@
 .promo-codes {
-  padding: 20px;
-  background-color: #f8f9fa;
   min-height: 100vh;
 }
 
 .promo-codes h1 {
-  color: #333;
+  color: #40004d;
   margin-bottom: 30px;
   font-size: 28px;
   font-weight: 600;
@@ -15,28 +13,39 @@
   display: flex;
   gap: 30px;
   margin-top: 20px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 /* LEFT SIDE - ADD PROMO CODE FORM */
 .promo-codes-left {
-  flex: 1;
+  order: 1;
+  flex-grow: 0.75;
+  flex-shrink: 1;
+  flex-basis: auto;
+  width: 100%;
+  box-sizing: border-box;
   background: white;
   border-radius: 12px;
   padding: 25px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border: 1px solid #e9ecef;
+  min-width: 200px;
+  max-width: 450px;
 }
 
 .add-promo-codes h2 {
-    color: #495057;
-    align-items: flex-start;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 25px;
-    font-size: 20px;
-    font-weight: 700;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 10px;
+  color: #495057;
+  align-items: flex-start;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  font-size: 20px;
+  font-weight: 700;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
 }
 
 .promo-code-generation {
@@ -294,7 +303,12 @@
 
 /* RIGHT SIDE - PROMO CODES LIST */
 .promo-codes-right {
-  flex: 2;
+  order: 2;
+  flex-grow: 0.25;
+  flex-shrink: 1;
+  flex-basis: auto;
+  width: 100%;
+  box-sizing: border-box;
   background: white;
   border-radius: 12px;
   padding: 25px;
@@ -303,15 +317,15 @@
 }
 
 .promo-codes-table h2 {
-    color: #495057;
-    align-items: flex-start;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 25px;
-    font-size: 20px;
-    font-weight: 700;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 10px;
+  color: #495057;
+  align-items: flex-start;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  font-size: 20px;
+  font-weight: 700;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
 }
 
 .promo-codes-table-format {
@@ -552,8 +566,21 @@
 
 /* Responsive Design */
 @media (max-width: 1200px) {
+
+  .promo-codes h1 {
+    font-size: 24px;
+  }
+
+
+  .add-promo-codes h2,
+  .promo-codes-table h2 {
+    font-size: 16px;
+  }
+
   .promo-codes-container {
+    align-items: center;
     flex-direction: column;
+    gap: 20px;
   }
 
   .promo-codes-left,
@@ -579,7 +606,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .promo-codes {
     padding: 15px;
   }

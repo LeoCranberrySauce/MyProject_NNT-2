@@ -24,7 +24,7 @@ const UsersList = ({ url }) => {
     }, [])
 
     return (
-        <div className='user-list add flex-col'>
+        <div className='user-list add'>
 
             {/*LIST OF FOODS*/}
             <h1>Customers</h1>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
 import { useAuth } from '../../context/AuthContext'
@@ -6,7 +6,22 @@ import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
   const { isAuthenticated, logout } = useAuth();
+  const [scrolled, setScrolled] = useState(false);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 50;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [scrolled]);
+
 
   const handleLogout = () => {
     logout();
@@ -18,7 +33,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className='navbar'>
+    <div className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <img className='logo' src={assets.logo} alt="" />
       <h1>  Admin Panel  </h1>
       {!isAuthenticated ? (
