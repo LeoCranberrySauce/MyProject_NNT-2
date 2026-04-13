@@ -113,4 +113,4 @@ const verifyToken = async (req, res) => {
     }
 };
 
-export {adminLoginUser, adminRegisterUser, adminUsersList, verifyToken}
+export {adminLoginUser, adminRegisterUser, adminUsersList, createToken, verifyToken}
