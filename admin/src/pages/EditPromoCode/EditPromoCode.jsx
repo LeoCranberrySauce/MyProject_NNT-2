@@ -218,15 +218,15 @@ const EditPromoCode = ({ setEditPromoCode, promoCodeToEdit, url }) => {
               />
           </div>
 
-          <div className='discount-type-value'>
-            <div className="discount-type">
+          <div className='edit-discount-type-value'>
+            <div className="edit-discount-type">
               <p>Discount Type</p>
               <select onChange={onChangeHandler} name='discountType' value={data.discountType}>
                 <option value="percentage">Percentage (%)</option>
                 <option value="fixed">Fixed Amount (PHP)</option>
               </select>
             </div>
-            <div className="discount-value">  
+            <div className="edit-discount-value">  
               <p>Discount Value</p>
               <input
                 onChange={onChangeHandler}
@@ -241,8 +241,8 @@ const EditPromoCode = ({ setEditPromoCode, promoCodeToEdit, url }) => {
             </div>
           </div>
 
-          <div className='promo-code-details'>
-            <div className="min-order">
+          <div className='edit-promo-code-details'>
+            <div className="edit-min-order">
               <p>Minimum Order Amount (PHP)</p>
               <input
                 onChange={onChangeHandler}
@@ -254,8 +254,8 @@ const EditPromoCode = ({ setEditPromoCode, promoCodeToEdit, url }) => {
                 step="0.01"
               />
             </div>
-            <div className="max-discount">
-              <p>Maximum Discount (PHP) <span className="optional">(Optional)</span></p>
+            <div className="edit-max-discount">
+              <p>Maximum Discount (PHP) <span className="edit-optional">(Optional)</span></p>
               <input
                 onChange={onChangeHandler}
                 value={data.maxDiscount}
@@ -269,9 +269,9 @@ const EditPromoCode = ({ setEditPromoCode, promoCodeToEdit, url }) => {
             </div>
           </div>
 
-          <div className='usage-expiry'>
-            <div className="usage-limit">
-              <p>Usage Limit <span className="optional">(Optional)</span></p>
+          <div className='edit-usage-expiry'>
+            <div className="edit-usage-limit">
+              <p>Usage Limit <span className="edit-optional">(Optional)</span></p>
               <input
                 onChange={onChangeHandler}
                 value={data.usageLimit}
@@ -282,7 +282,7 @@ const EditPromoCode = ({ setEditPromoCode, promoCodeToEdit, url }) => {
               />
               <small className="helper-text">Maximum number of times this code can be used</small>
             </div>
-            <div className="expiry-date">
+            <div className="edit-expiry-date">
               <p>Expiration Date</p>
               <input
                 onChange={onChangeHandler}

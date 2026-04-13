@@ -234,6 +234,37 @@
         width: 100%;
     }
 
+    .add {
+        width: 77%;
+        margin-left: 2.5%;
+    }
+
+    .categories-add-name {
+        width: 100%;
+    }
+
+    .categories-add-type {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .categories-add-name-container input {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: auto;
+    }
+
+    .categories-add-description-container textarea {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: auto;
+    }
+
+    .categories-add-type select,
+    .categories-add-type input {
+        width: 100%;
+    }
+
 }
 
 @media (max-width: 800px) {
@@ -250,13 +281,130 @@
         padding: 20px;
     }
 
+    /* Mobile layout: Stack content vertically with proper spacing */
     .categories-table-format {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 15px;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        background-color: #fff;
+    }
+
+    .categories-table-format.title {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        background-color: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+        font-weight: 700;
+        color: #495057;
+    }
+
+    /* Hide individual column headers on mobile, show as labels */
+    .categories-table-format.title > * {
+        display: none;
+    }
+    
+    .categories-table-format.title::before {
+        content: "Category Information";
+        display: block;
+        text-align: center;
         padding: 10px;
+        font-size: 16px;
+        border-bottom: 1px solid #dee2e6;
+        margin-bottom: 10px;
+    }
+
+    /* Style individual data items on mobile with labels */
+    .categories-table-format:not(.title) {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 12px;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        background-color: #fff;
+    }
+    
+    .categories-table-format:not(.title) > * {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .categories-table-format:not(.title) > *:last-child {
+        border-bottom: none;
+    }
+
+    /* Add labels for mobile view */
+    .categories-table-format:not(.title) img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 10px;
+    }
+    
+    /* Label for image */
+    .categories-table-format:not(.title) img::before {
+        content: "Image:";
+        font-weight: bold;
+        color: #495057;
+        margin-right: 8px;
+    }
+    
+    /* Label for name */
+    .categories-table-format:not(.title) p:nth-child(2)::before {
+        content: "Name:";
+        font-weight: bold;
+        color: #495057;
+        margin-right: 8px;
+    }
+    
+    /* Label for type */
+    .categories-table-format:not(.title) p:nth-child(3)::before {
+        content: "Category:";
+        font-weight: bold;
+        color: #495057;
+        margin-right: 8px;
+    }
+
+    /* Action buttons on mobile */
+    .categories-table-format:not(.title) .categories-table-action {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 10px;
+        border: none;
+    }
+    
+    .categories-table-format:not(.title) .categories-table-action button {
+        flex: 1;
+        min-width: 80px;
+        padding: 8px 12px;
+        font-size: 12px;
     }
 }
 
-@media (max-width: 480px) {
-    .categories h1 {
-        font-size: 24px;
+@media (max-width: 600px) {
+    .categories-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .categories-left {
+        order: 1;
+        width: 100%;
+        min-width: auto;
+        max-width: none;
+    }
+
+    .categories-right {
+        order: 2;
+        width: 100%;
     }
 }

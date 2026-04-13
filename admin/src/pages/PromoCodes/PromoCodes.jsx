@@ -421,21 +421,21 @@ const PromoCodes = ({ url, setEditPromoCode, setPromoCodeToEdit }) => {
               promoCodes.map((promoCode, index) => (
                 <div className="promo-codes-table-format" key={index}>
                   <div className="code-column">
-                    <span className="code-value">{promoCode.code}</span>
+                    <p><span className="code-value">{promoCode.code}</span></p>
                     <span className="code-type">{promoCode.discountType === 'percentage' ? 'Percentage' : 'Fixed'}</span>
                   </div>
                   <div className="discount-column">
-                    <span className="discount-value">{formatDiscount(promoCode.discountType, promoCode.discountValue)}</span>
+                    <p><span className="discount-value">{formatDiscount(promoCode.discountType, promoCode.discountValue)}</span></p>
                     {promoCode.maxDiscount && (
                       <span className="max-discount">Max: {formatCurrency(promoCode.maxDiscount)}</span>
                     )}
                   </div>
                   <div className="min-order-column">
-                    <span>{formatCurrency(promoCode.minOrderAmount)}</span>
+                    <p><span>{formatCurrency(promoCode.minOrderAmount)}</span></p>
                   </div>
                   <div className="usage-column">
                     <div className="usage-info">
-                      <span className="usage-count">{promoCode.usedCount}{promoCode.usageLimit ? ` / ${promoCode.usageLimit}` : ''}</span>
+                      <p><span className="usage-count">{promoCode.usedCount}{promoCode.usageLimit ? ` / ${promoCode.usageLimit}` : ''}</span></p>
                       {promoCode.usageLimit && (
                         <div className="usage-bar">
                           <div
@@ -447,7 +447,7 @@ const PromoCodes = ({ url, setEditPromoCode, setPromoCodeToEdit }) => {
                     </div>
                   </div>
                   <div className="expiry-column">
-                    <span>{new Date(promoCode.expiresAt).toLocaleString()}</span>
+                    <p><span>{new Date(promoCode.expiresAt).toLocaleString()}</span></p>
                     {new Date(promoCode.expiresAt) < new Date() && (
                       <span className="expired-label">Expired</span>
                     )}
