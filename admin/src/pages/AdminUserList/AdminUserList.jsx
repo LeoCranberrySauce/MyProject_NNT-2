@@ -169,15 +169,31 @@ const AdminUserList = ({ url }) => {
 
                             <div className='add-admin-name'>
                                 <p>Password</p>
-                                <div className="add-admin-name-input-container">
+                                <div className="add-admin-name-input-container" style={{position: 'relative'}}>
                                     <input
                                         onChange={onChangeHandler}
                                         value={data.password}
-                                        type='password'
+                                        type={showPassword ? 'text' : 'password'}
                                         name='password'
                                         placeholder='Enter your password'
                                         required
                                     />
+                                    <button
+                                        type='button'
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        style={{
+                                            position: 'absolute',
+                                            right: '10px',
+                                            top: '50%',
+                                            transform: 'translateY(-50%)',
+                                            background: 'none',
+                                            border: 'none',
+                                            cursor: 'pointer',
+                                            fontSize: '15px'
+                                        }}
+                                    >
+                                        {showPassword ? '🙈' : '👁️'}
+                                    </button>
                                 </div>
                             </div>
 
