@@ -173,7 +173,7 @@ const AdminUserList = ({ url }) => {
                                     <input
                                         onChange={onChangeHandler}
                                         value={data.password}
-                                        type='text'
+                                        type='password'
                                         name='password'
                                         placeholder='Enter your password'
                                         required
