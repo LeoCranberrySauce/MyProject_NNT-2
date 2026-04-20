@@ -239,6 +239,8 @@
 
     .add {
         font-size: 15px;
+        width: 77%;
+        margin-left: 2.5%;
     }
 
     .list h1 {
@@ -269,11 +271,6 @@
     .list-right {
         order: 2;
         width: 100%;
-    }
-
-    .add {
-        width: 77%;
-        margin-left: 2.5%;
     }
 
     .add-product-name,

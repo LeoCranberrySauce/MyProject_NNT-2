@@ -92,7 +92,7 @@ const AdminUserList = ({ url }) => {
 
                     <form className='flex-col' onSubmit={onSubmitHandler}>
 
-                        <div className="add-list">
+                        <div className="add-admin-user-list">
 
                             <h2>Recruit and join us</h2>
 

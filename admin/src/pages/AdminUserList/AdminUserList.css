@@ -183,3 +183,251 @@
     width: 100%;
     box-sizing: border-box;
 }
+
+@media (max-width: 1200px) {
+
+    .add {
+        font-size: 15px;
+    }
+
+    .admin-user-list h1 {
+        font-size: 24px;
+    }
+
+    .add-admin-user-list h2,
+    .admin-user-list-table h2 {
+        font-size: 16px;
+    }
+
+    .admin-user-list-table-format img {
+        width: 25px;
+    }
+
+    .admin-user-list-container {
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .admin-user-list-left {
+        order: 1;
+        width: 100%;
+        min-width: auto;
+    }
+
+    .admin-user-list-right {
+        order: 2;
+        width: 100%;
+    }
+
+    .add-admin-user-list {
+        width: 77%;
+        margin-left: 2.5%;
+    }
+
+    .add-admin-name,
+    .add-admin-roles-select-type,
+    .add-admin-address,
+    .add-admin-phone {
+        width: 100%;
+    }
+
+    .add-admin-name-input-container input {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: auto;
+    }
+
+    .add-admin-address-container textarea {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: auto;
+    }
+
+    .add-admin-roles-select-type select {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .admin-user-list {
+        padding: 15px;
+    }
+
+    .admin-user-list-container {
+        gap: 20px;
+    }
+
+    .admin-user-list-left,
+    .admin-user-list-right {
+        padding: 20px;
+    }
+
+    /* Mobile layout: Stack content vertically with proper spacing */
+    .admin-user-list-table-format {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 15px;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        background-color: #fff;
+    }
+
+    .admin-user-list-table-format.title {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        background-color: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+        font-weight: 700;
+        color: #495057;
+    }
+
+    /* Hide individual column headers on mobile, show as labels */
+    .admin-user-list-table-format.title > * {
+        display: none;
+    }
+    
+    .admin-user-list-table-format.title::before {
+        content: "Manager Information";
+        display: block;
+        text-align: center;
+        padding: 10px;
+        font-size: 16px;
+        border-bottom: 1px solid #dee2e6;
+        margin-bottom: 10px;
+    }
+
+    /* Style individual data items on mobile */
+    .admin-user-list-table-format:not(.title) > * {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .admin-user-list-table-format:not(.title) > *:last-child {
+        border-bottom: none;
+    }
+
+    /* Special styling for image on mobile */
+    .admin-user-list-table-format:not(.title) img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 10px;
+    }
+    
+    /* Label for name */
+    .admin-user-list-table-format:not(.title) p:nth-child(1)::before {
+        content: "Name:";
+        font-weight: bold;
+        color: #495057;
+        margin-right: 8px;
+    }
+    
+    /* Label for username */
+    .admin-user-list-table-format:not(.title) p:nth-child(2)::before {
+        content: "Username:";
+        font-weight: bold;
+        color: #495057;
+        margin-right: 8px;
+    }
+    
+    /* Label for role */
+    .admin-user-list-table-format:not(.title) p:nth-child(3)::before {
+        content: "Role:";
+        font-weight: bold;
+        color: #495057;
+        margin-right: 8px;
+    }
+    
+    /* Label for address */
+    .admin-user-list-table-format:not(.title) p:nth-child(4)::before {
+        content: "Address:";
+        font-weight: bold;
+        color: #495057;
+        margin-right: 8px;
+    }
+    
+    /* Label for contact number */
+    .admin-user-list-table-format:not(.title) p:nth-child(5)::before {
+        content: "Contact number:";
+        font-weight: bold;
+        color: #495057;
+        margin-right: 8px;
+    }
+
+    /* Label for email */
+    .admin-user-list-table-format:not(.title) p:nth-child(6)::before {
+        content: "Email:";
+        font-weight: bold;
+        color: #495057;
+        margin-right: 8px;
+    }
+
+    /* Action buttons on mobile */
+    .admin-user-list-table-format:not(.title) .categories-table-action {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    .admin-user-list-table-format:not(.title) .categories-table-action button {
+        flex: 1;
+        min-width: 80px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-user-list-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .admin-user-list-left {
+        order: 1;
+        width: 100%;
+        min-width: auto;
+        max-width: none;
+    }
+
+    .admin-user-list-right {
+        order: 2;
+        width: 100%;
+    }
+
+    .add {
+        width: 95%;
+        margin-left: 2.5%;
+    }
+
+    .add-admin-name,
+    .add-admin-roles-select-type,
+    .add-admin-address {
+        width: 100%;
+    }
+
+    .add-admin-name-input-container input {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: auto;
+    }
+
+    .add-admin-address-container textarea {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: auto;
+    }
+
+    .add-category-price select,
+    .add-category-price input {
+        width: 100%;
+    }
+}
