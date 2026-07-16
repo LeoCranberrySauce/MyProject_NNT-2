@@ -9,6 +9,7 @@ const AdminUserList = ({ url }) => {
     // LIST OF USERS
     const [adminUserList, setAdminUserList] = useState([]);
     const baseURL = url;
+    const [showPassword, setShowPassword] = useState(false);
 
     const [data, setData] = useState({
         name: "",
