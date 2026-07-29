@@ -21,7 +21,7 @@ const AdminUserList = ({ url }) => {
         password: ""
     });
 
-    const adminUserRoles = ["Admin", "Staff"];
+    const adminUserRoles = ["Admin", "Staff", "Cashier"];
 
     const onChangeHandler = (event) => {
         const name = event.target.name;
@@ -59,11 +59,12 @@ const AdminUserList = ({ url }) => {
                     password: ""
                 });
                 toast.success("A manager has successfully recruited");
+                fetchAdminUserList();
             } else {
-                toast.error("Failed to recruit a manager");
+                toast.error(response.data.message || "Failed to recruit a manager");
             }
         } catch (error) {
-            toast.error("Error recruiting a manager");
+            toast.error(error.response?.data?.message || "Error recruiting a manager");
             console.error(error);
         }
     }

@@ -1,0 +1,231 @@
+.reports-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.reports-header h1 {
+  font-size: 24px;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.reports-btn-export {
+  padding: 10px 24px;
+  border: 2px solid #1a1a2e;
+  background: white;
+  color: #1a1a2e;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.reports-btn-export:hover {
+  background: #1a1a2e;
+  color: white;
+}
+
+/* Controls */
+.reports-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.reports-type-select {
+  display: flex;
+  gap: 6px;
+}
+
+.reports-type-btn {
+  padding: 8px 16px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.reports-type-btn.active {
+  background: #1a1a2e;
+  color: white;
+  border-color: #1a1a2e;
+}
+
+.reports-type-btn:hover:not(.active) {
+  border-color: #1a1a2e;
+}
+
+.reports-date-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reports-date-inputs input[type="date"] {
+  padding: 8px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+}
+
+.reports-date-inputs input[type="date"]:focus {
+  border-color: #1a1a2e;
+}
+
+.reports-btn-refresh {
+  padding: 8px 16px;
+  border: none;
+  background: #e94560;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.reports-loading {
+  text-align: center;
+  padding: 60px;
+  color: #666;
+}
+
+/* KPI Grid */
+.reports-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.reports-kpi-card {
+  background: white;
+  border: 2px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.reports-kpi-card h3 {
+  font-size: 13px;
+  color: #666;
+  margin: 0 0 8px;
+}
+
+.kpi-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+/* Sections */
+.reports-section {
+  background: white;
+  border: 2px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.reports-section h2 {
+  font-size: 18px;
+  color: #1a1a2e;
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.reports-no-data {
+  text-align: center;
+  color: #999;
+  padding: 20px;
+}
+
+/* Breakdown */
+.reports-breakdown {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.reports-breakdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.breakdown-value {
+  font-weight: 700;
+  color: #e94560;
+  font-size: 18px;
+}
+
+/* Table */
+.reports-orders-table-wrapper {
+  overflow-x: auto;
+}
+
+.reports-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.reports-table th {
+  background: #f8f9fa;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.reports-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+}
+
+.reports-table tr:hover td {
+  background: #f8f9fa;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-food-processing { background: #fff3e0; color: #e65100; }
+.status-prepared { background: #e8f5e9; color: #2e7d32; }
+.status-out-for-delivery { background: #e3f2fd; color: #1565c0; }
+.status-delivered { background: #e8f5e9; color: #2e7d32; }
+.status-completed { background: #e8f5e9; color: #2e7d32; }
+.status-cancelled { background: #ffebee; color: #c62828; }
+.status-pending { background: #f3e5f5; color: #6a1b9a; }
