@@ -11,6 +11,7 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState(null);
+  const [userName, setUserName] = useState(null);
   const url = "http://localhost:4000";
 
   useEffect(() => {
@@ -36,6 +37,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(true);
         // Use the role directly from the response
         setUserRole(response.data.role || response.data.user?.role);
+        setUserName(response.data.user?.name || null);
       } else {
         localStorage.removeItem('adminToken');
         setIsAuthenticated(false);
@@ -66,13 +68,18 @@ export const AuthProvider = ({ children }) => {
     return userRole;
   };
 
+  const getUserName = () => {
+    return userName;
+  };
+
   const value = {
     isAuthenticated,
     loading,
     login,
     logout,
     checkAuthStatus,
-    getUserRole
+    getUserRole,
+    getUserName
   };
 
   return (

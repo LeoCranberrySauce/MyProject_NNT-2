@@ -11,6 +11,8 @@ import categoryRouter from "./routes/categoryRoute.js"
 import adminUserRouter from "./routes/adminUserRoute.js"
 import locationRouter from "./routes/locationRoute.js"
 import promoCodeRouter from "./routes/promoCodeRoute.js"
+import tableRouter from "./routes/tableRoute.js"
+import posRouter from "./routes/posRoute.js"
 
 
 // app config
@@ -44,6 +46,8 @@ app.use("/api/category", categoryRouter)
 app.use("/api/admin-user", adminUserRouter)
 app.use("/api/location", locationRouter)
 app.use("/api/promo-code", promoCodeRouter)
+app.use("/api/tables", tableRouter)
+app.use("/api/pos", posRouter)
 
 // api routes
 app.get("/", (req, res) => {

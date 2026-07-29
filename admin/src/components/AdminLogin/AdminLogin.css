@@ -82,9 +82,51 @@
   font-size: 1rem;
 }
 
-.admin-login-popup-inputs input:focus {
+.admin-login-popup-inputs input:focus,
+.admin-login-popup-inputs select:focus {
   outline: none;
   border-color: #007bff;
+}
+
+.admin-login-popup-inputs select {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+}
+
+.admin-login-popup-inputs select:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.multi-fields {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.multi-fields input {
+  flex: 1;
+}
+
+.admin-login-toggle-text {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.admin-login-toggle-text span {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.admin-login-toggle-text span:hover {
+  text-decoration: underline;
 }
 
 .admin-login-popup-container button[type="submit"] {

@@ -16,6 +16,10 @@ const Sidebar = () => {
           <img src={assets.dashboard_icon} alt="" />
           <p>Dashboard</p>
         </NavLink>
+        <NavLink to='/pos' className='sidebar-option'>
+          <img src={assets.order_icon} alt="" />
+          <p>POS</p>
+        </NavLink>
         <NavLink to='/list' className='sidebar-option'>
           <img src={assets.food_icon} alt="" />
           <p>Food List</p>
@@ -23,6 +27,22 @@ const Sidebar = () => {
         <NavLink to='/category' className='sidebar-option'>
           <img src={assets.category_icon} alt="" />
           <p>Category</p>
+        </NavLink>
+        <NavLink to='/tables' className='sidebar-option'>
+          <img src={assets.dashboard_icon} alt="" />
+          <p>Tables</p>
+        </NavLink>
+        <NavLink to='/reports' className='sidebar-option'>
+          <img src={assets.dashboard_icon} alt="" />
+          <p>Reports</p>
+        </NavLink>
+        <NavLink to='/inventory' className='sidebar-option'>
+          <img src={assets.food_icon} alt="" />
+          <p>Inventory</p>
+        </NavLink>
+        <NavLink to='/receipts' className='sidebar-option'>
+          <img src={assets.parcel_icon} alt="" />
+          <p>Receipts</p>
         </NavLink>
         <NavLink to='/orders' className='sidebar-option'>
           <img src={assets.order_icon} alt="" />

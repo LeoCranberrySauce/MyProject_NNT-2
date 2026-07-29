@@ -13,6 +13,11 @@ import EditFoodList from './pages/EditFoodList/EditFoodList'
 import AdminUserList from './pages/AdminUserList/AdminUserList'
 import PromoCodes from './pages/PromoCodes/PromoCodes'
 import EditPromoCode from './pages/EditPromoCode/EditPromoCode'
+import POS from './pages/POS/POS'
+import Tables from './pages/Tables/Tables'
+import Reports from './pages/Reports/Reports'
+import Inventory from './pages/Inventory/Inventory'
+import Receipt from './pages/Receipt/Receipt'
 import AdminLogin from './components/AdminLogin/AdminLogin'
 import ProtectedRoute from './components/ProtectedRoute'
 import { AuthProvider } from './context/AuthContext'
@@ -105,6 +110,31 @@ const App = () => {
             <Route path='/admin-users' element={
               <ProtectedRoute>
                 <AdminUserList url={url} />
+              </ProtectedRoute>
+            } />
+            <Route path='/pos' element={
+              <ProtectedRoute allowedRoles={["Staff", "Cashier"]}>
+                <POS url={url} />
+              </ProtectedRoute>
+            } />
+            <Route path='/tables' element={
+              <ProtectedRoute>
+                <Tables url={url} />
+              </ProtectedRoute>
+            } />
+            <Route path='/reports' element={
+              <ProtectedRoute>
+                <Reports url={url} />
+              </ProtectedRoute>
+            } />
+            <Route path='/inventory' element={
+              <ProtectedRoute>
+                <Inventory url={url} />
+              </ProtectedRoute>
+            } />
+            <Route path='/receipts' element={
+              <ProtectedRoute>
+                <Receipt url={url} />
               </ProtectedRoute>
             } />
             <Route path='/promo-codes' element={

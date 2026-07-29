@@ -125,4 +125,24 @@ const listFood = async (req,res) => {
     }
 }
 
-export { addFood,removeFood,listFood,updatingFood }
+// Update stock only
+const updateStock = async (req,res) => {
+    try {
+        const { foodId, stock } = req.body;
+        if (!foodId || stock === undefined) {
+            return res.json({success:false,message:"foodId and stock are required"});
+        }
+        const food = await foodModel.findByIdAndUpdate(
+            foodId,
+            { stock: stock },
+            { new: true }
+        );
+        if (!food) return res.json({success:false,message:"Food not found"});
+        res.json({success:true,message:"Stock updated", data: food});
+    } catch (error) {
+        console.log(error);
+        res.json({success:false,message:"Error updating stock"});
+    }
+};
+
+export { addFood,removeFood,listFood,updatingFood,updateStock }
