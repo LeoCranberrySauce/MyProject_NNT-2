@@ -470,6 +470,95 @@
   background: #fafafa;
 }
 
+.pos-promo-section {
+  padding: 8px 12px;
+  border-top: 1px solid #eee;
+}
+
+.pos-promo-input-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.pos-promo-input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 12px;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.pos-promo-input:focus {
+  border-color: #1a1a2e;
+}
+
+.pos-promo-input:disabled {
+  background: #f0f0f0;
+  color: #28a745;
+  font-weight: 600;
+}
+
+.pos-promo-apply-btn {
+  padding: 6px 14px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pos-promo-apply-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.pos-promo-remove-btn {
+  padding: 6px 14px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pos-promo-message {
+  margin: 4px 0 0;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.pos-promo-message.success {
+  color: #28a745;
+}
+
+.pos-promo-message.error {
+  color: #dc3545;
+}
+
+.pos-discount-row {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.pos-payment-discount {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 13px;
+  color: #28a745;
+  font-weight: 600;
+  border-top: 1px solid #eee;
+}
+
 .pos-total-row {
   display: flex;
   justify-content: space-between;
