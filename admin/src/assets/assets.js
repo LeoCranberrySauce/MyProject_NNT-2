@@ -12,6 +12,11 @@ import food_icon from './food_icon.png'
 import customer_icon from './customer_icon.png'
 import admin_icon from './admin_icon.png'
 import promo_icon from './promo_icon.png'
+import table_icon from './table_icon.png'
+import receipt_icon from './receipt_icon.png'
+import inventory_icon from './inventory_icon.png'
+import pos_icon from './pos_icon.png'
+
 
 export const assets ={
     logo,
@@ -27,7 +32,11 @@ export const assets ={
     food_icon,
     customer_icon,
     admin_icon,
-    promo_icon
+    promo_icon,
+    table_icon,
+    receipt_icon,
+    inventory_icon,
+    pos_icon
 }
 
 export const url = 'http://localhost:4000'

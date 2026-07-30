@@ -105,9 +105,11 @@ const Tables = ({ url }) => {
   };
 
   return (
-    <div className="tables-container add flex-col">
+    <div className="tables add flex-col">
+
       <div className="tables-header">
-        <h1>🪑 Table Management</h1>
+        <h1>Table Management</h1>
+
         <div className="tables-actions">
           <button className="tables-btn tables-btn-primary" onClick={() => setShowAddModal(true)}>
             + Add Table
@@ -116,6 +118,7 @@ const Tables = ({ url }) => {
             Bulk Create
           </button>
         </div>
+
       </div>
 
       {/* Legend */}

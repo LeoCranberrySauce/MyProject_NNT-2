@@ -1,7 +1,15 @@
+.reports {
+  min-height: 100vh;
+}
+
 .reports-container {
-  padding: 20px;
-  max-width: 1400px;
-  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .reports-header {
@@ -12,9 +20,10 @@
 }
 
 .reports-header h1 {
-  font-size: 24px;
-  color: #1a1a2e;
-  margin: 0;
+  color: #40004d;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 600;
 }
 
 .reports-btn-export {
@@ -229,3 +238,43 @@
 .status-completed { background: #e8f5e9; color: #2e7d32; }
 .status-cancelled { background: #ffebee; color: #c62828; }
 .status-pending { background: #f3e5f5; color: #6a1b9a; }
+
+
+
+
+
+@media (max-width: 1200px) {
+
+  .add {
+    font-size: 15px;
+    width: 77%;
+    margin-left: 2.5%;
+  }
+
+  .reports-header h1 {
+    font-size: 24px;
+  }
+}
+
+
+@media (max-width: 800px) {
+  .reports {
+    padding: 15px;
+  }
+
+  .reports-container {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .reports-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .add {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+}

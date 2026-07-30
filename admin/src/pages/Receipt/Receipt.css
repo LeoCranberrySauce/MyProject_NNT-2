@@ -1,22 +1,31 @@
+.receipt {
+  min-height: 100vh;
+}
+
 .receipt-container {
-  padding: 20px;
-  max-width: 1400px;
-  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .receipt-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   flex-wrap: wrap;
   gap: 12px;
 }
 
 .receipt-header h1 {
-  font-size: 24px;
-  color: #1a1a2e;
-  margin: 0;
+  color: #40004d;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 600;
 }
 
 .receipt-search input {
@@ -47,13 +56,19 @@
 }
 
 .receipt-order-list {
-  width: 350px;
-  min-width: 350px;
-  overflow-y: auto;
+  order: 1;
+  flex-grow: 0.75;
+  flex-shrink: 1;
+  flex-basis: auto;
+  width: 100%;
+  box-sizing: border-box;
   background: white;
-  border: 2px solid #e8e8e8;
   border-radius: 12px;
-  padding: 16px;
+  padding: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  min-width: 200px;
+  max-width: 450px;
 }
 
 .receipt-order-list h2 {
@@ -118,11 +133,14 @@
 
 /* Preview */
 .receipt-preview {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: auto;
+  order: 2;
+  flex-grow: 0.25;
+  flex-shrink: 1;
+  flex-basis: auto;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 12px;
+  padding: 25px;
 }
 
 .receipt-select-prompt {
@@ -275,5 +293,72 @@
     border: none;
     box-shadow: none;
     width: 80mm;
+  }
+}
+
+
+@media (max-width: 1200px) {
+
+  .add {
+    font-size: 15px;
+    width: 77%;
+    margin-left: 2.5%;
+  }
+
+  .receipt-header h1 {
+    font-size: 24px;
+  }
+
+  .receipt-order-list {
+    order: 1;
+    width: 100%;
+    min-width: auto;
+  }
+
+  .receipt-preview {
+    order: 2;
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 800px) {
+
+  .receipt {
+    padding: 15px;
+  }
+
+  .receipt-container {
+    gap: 20px;
+  }
+
+  .receipt-order-list,
+  .receipt-preview {
+    padding: 15px;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .receipt-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .receipt-order-list {
+    order: 1;
+    width: 100%;
+    min-width: auto;
+    max-width: none;
+  }
+
+  .receipt-preview {
+    order: 2;
+    width: 100%;
+  }
+
+  .add {
+    width: 95%;
+    margin-left: 2.5%;
   }
 }

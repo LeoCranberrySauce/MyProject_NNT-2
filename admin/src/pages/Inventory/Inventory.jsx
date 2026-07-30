@@ -70,9 +70,10 @@ const Inventory = ({ url }) => {
   const outOfStockItems = foods.filter(f => f.stock === 0);
 
   return (
-    <div className="inventory-container add flex-col">
+    <div className="inventory add flex-col">
+
       <div className="inventory-header">
-        <h1>📦 Inventory Management</h1>
+        <h1>Inventory Management</h1>
       </div>
 
       {/* Alerts */}

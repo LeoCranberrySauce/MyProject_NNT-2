@@ -36,9 +36,10 @@ const Receipt = ({ url }) => {
   const formatCurrency = (v) => `₱${parseFloat(v || 0).toFixed(2)}`;
 
   return (
-    <div className="receipt-container add flex-col">
+    <div className="receipt add flex-col">
+
       <div className="receipt-header">
-        <h1>🧾 Receipts</h1>
+        <h1>Receipts</h1>
         <div className="receipt-search">
           <input
             type="text"

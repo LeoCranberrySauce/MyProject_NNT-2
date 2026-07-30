@@ -2,6 +2,16 @@
     min-height: 100vh;
 }
 
+.user-list-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
 .user-list h1 {
     color: #40004d;
     margin-bottom: 30px;
@@ -31,6 +41,30 @@
 .user-list-table-format.title{
     background-color:#b75cc9;
     font-size: 20px;
+}
+
+@media (max-width: 1200px) {
+
+  .add {
+    font-size: 15px;
+    width: 77%;
+    margin-left: 2.5%;
+  }
+
+  .user-list h1 {
+    font-size: 24px;
+  }
+}
+
+
+@media (max-width: 800px) {
+  .user-list {
+    padding: 15px;
+  }
+
+  .user-list-container {
+    gap: 20px;
+  }
 }
 
 @media (max-width: 600px) {

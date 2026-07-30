@@ -37,8 +37,12 @@ const Orders = ({ url }) => {
 
 
   return (
-    <div className='orders add'>
-      <h1>Order Page</h1>
+    <div className='orders add flex-col'>
+      
+      <div className="orders-header">
+        <h1>Orders</h1>
+      </div>
+
       <div className='orders-list'>
         {orders.map((order, index) => (
           <div className='orders-item' key={index}>
