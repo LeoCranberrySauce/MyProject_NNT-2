@@ -29,7 +29,8 @@ const Receipt = ({ url }) => {
     return (
       (o.receiptNumber && o.receiptNumber.toLowerCase().includes(q)) ||
       (o._id && o._id.toLowerCase().includes(q)) ||
-      (o.address?.address && o.address.address.toLowerCase().includes(q))
+      (o.address?.address && o.address.address.toLowerCase().includes(q)) ||
+      (o.address?.name && o.address.name.toLowerCase().includes(q))
     );
   });
 
@@ -89,7 +90,7 @@ const Receipt = ({ url }) => {
                   <p><strong>Date:</strong> {new Date(selectedOrder.createdAt).toLocaleString()}</p>
                   <p><strong>Type:</strong> {selectedOrder.orderType || 'Delivery'}</p>
                   {selectedOrder.tableNumber && <p><strong>Table:</strong> {selectedOrder.tableNumber}</p>}
-                  <p><strong>Customer:</strong> {selectedOrder.address?.address || 'Walk-in'}</p>
+                  <p><strong>Customer:</strong> {selectedOrder.address?.name || selectedOrder.address?.address || 'Walk-in'}</p>
                   <p><strong>Staff:</strong> {selectedOrder.staffName || 'N/A'}</p>
                 </div>
                 <div className="receipt-divider">━━━━━━━━━━━━━━━━━━━━</div>
@@ -113,7 +114,7 @@ const Receipt = ({ url }) => {
                   <span className="receipt-total-amount">{formatCurrency(selectedOrder.amount)}</span>
                 </div>
                 <div className="receipt-payment-info">
-                  <p><strong>Payment:</strong> {selectedOrder.paymentMethod || (selectedOrder.payment ? 'Online' : 'Unpaid')}</p>
+                  <p><strong>Payment:</strong> {selectedOrder.paymentMethod || (selectedOrder.payment ? 'stripe' : 'unpaid')}</p>
                   <p><strong>Status:</strong> {selectedOrder.status}</p>
                 </div>
                 <div className="receipt-divider">━━━━━━━━━━━━━━━━━━━━</div>
