@@ -32,6 +32,11 @@ const POS = ({ url }) => {
   const [completedOrder, setCompletedOrder] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [promoCode, setPromoCode] = useState(null);
+  const [promoDiscount, setPromoDiscount] = useState(0);
+  const [promoInput, setPromoInput] = useState('');
+  const [promoMessage, setPromoMessage] = useState({ type: '', text: '' });
+  const [isApplyingPromo, setIsApplyingPromo] = useState(false);
 
   // Constants
   const deliveryFee = 5; // PHP
@@ -123,18 +128,56 @@ const POS = ({ url }) => {
       phone: ""
     });
     setSelectedTable(null);
+    setPromoCode(null);
+    setPromoDiscount(0);
+    setPromoInput('');
+    setPromoMessage({ type: '', text: '' });
   };
 
-  // Calculate totals
+  // Calculate base totals (before discount)
   const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const tax = subtotal * TAX_RATE;
-  const orderTotal = orderType === 'delivery' ? subtotal + deliveryFee : subtotal;
+  const amountBeforeDiscount = orderType === 'delivery' ? subtotal + deliveryFee : subtotal;
+  // Final total after promo discount
+  const orderTotal = Math.max(0, amountBeforeDiscount - promoDiscount);
 
   // Handle delivery address field changes
   const onDeliveryAddressChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setDeliveryAddress(prev => ({ ...prev, [name]: value }));
+  };
+
+  // Promo code handlers
+  const handleApplyPromo = async () => {
+    if (!promoInput.trim()) return;
+    setIsApplyingPromo(true);
+    setPromoMessage({ type: '', text: '' });
+    try {
+      const token = localStorage.getItem('adminToken');
+      const res = await axios.post(url + "/api/promo-code/validate",
+        { code: promoInput, orderAmount: amountBeforeDiscount },
+        { headers: token ? { Authorization: `Bearer ${token}` } : {} }
+      );
+      if (res.data.success) {
+        setPromoCode(res.data.promoCode);
+        setPromoDiscount(res.data.promoCode.discount);
+        setPromoMessage({ type: 'success', text: `Discount applied! -₱${res.data.promoCode.discount.toFixed(2)}` });
+      } else {
+        setPromoMessage({ type: 'error', text: res.data.message });
+      }
+    } catch (err) {
+      setPromoMessage({ type: 'error', text: 'Error applying promo code' });
+    } finally {
+      setIsApplyingPromo(false);
+    }
+  };
+
+  const handleRemovePromo = () => {
+    setPromoCode(null);
+    setPromoDiscount(0);
+    setPromoInput('');
+    setPromoMessage({ type: '', text: '' });
   };
 
   // Handle payment
@@ -155,7 +198,13 @@ const POS = ({ url }) => {
         tableNumber: selectedTable,
         staffName: staffName,
         customerName: customerName || 'Walk-in Customer',
-        address: orderType === 'delivery' ? deliveryAddress : null
+        address: orderType === 'delivery' ? deliveryAddress : null,
+        promoCode: promoCode ? {
+          code: promoCode.code,
+          discount: promoDiscount,
+          discountType: promoCode.discountType,
+          discountValue: promoCode.discountValue
+        } : null
       };
 
       const res = await axios.post(url + "/api/pos/place", orderData);
@@ -176,6 +225,7 @@ const POS = ({ url }) => {
           phone: ""
         });
         setSelectedTable(null);
+        handleRemovePromo();
       } else {
         alert("Error: " + res.data.message);
       }
@@ -441,6 +491,40 @@ const POS = ({ url }) => {
             )}
           </div>
 
+          {/* Promo Code (shown only when cart has items) */}
+          {cart.length > 0 && (
+            <div className="pos-promo-section">
+              <div className="pos-promo-input-row">
+                <input
+                  type="text"
+                  placeholder="Enter promo code"
+                  value={promoInput}
+                  onChange={(e) => setPromoInput(e.target.value)}
+                  disabled={!!promoCode}
+                  className="pos-promo-input"
+                />
+                {promoCode ? (
+                  <button className="pos-promo-remove-btn" onClick={handleRemovePromo}>
+                    ✕ Remove
+                  </button>
+                ) : (
+                  <button
+                    className="pos-promo-apply-btn"
+                    onClick={handleApplyPromo}
+                    disabled={isApplyingPromo || !promoInput.trim()}
+                  >
+                    {isApplyingPromo ? '...' : 'Apply'}
+                  </button>
+                )}
+              </div>
+              {promoMessage.text && (
+                <p className={`pos-promo-message ${promoMessage.type}`}>
+                  {promoMessage.text}
+                </p>
+              )}
+            </div>
+          )}
+
           {/* Totals */}
           {cart.length > 0 && (
             <div className="pos-totals">
@@ -458,6 +542,12 @@ const POS = ({ url }) => {
                 <div className="pos-total-row">
                   <span>Tax</span>
                   <span>₱{tax.toFixed(2)}</span>
+                </div>
+              )}
+              {promoDiscount > 0 && (
+                <div className="pos-total-row pos-discount-row">
+                  <span>Discount</span>
+                  <span>-₱{promoDiscount.toFixed(2)}</span>
                 </div>
               )}
               <div className="pos-total-row pos-grand-total">
@@ -502,6 +592,12 @@ const POS = ({ url }) => {
                     </div>
                   ))}
                 </div>
+                {promoDiscount > 0 && (
+                  <div className="pos-payment-discount">
+                    <span>Discount</span>
+                    <span>-₱{promoDiscount.toFixed(2)}</span>
+                  </div>
+                )}
                 <div className="pos-payment-total">
                   <span>Total Amount</span>
                   <span className="pos-payment-amount">₱{orderTotal.toFixed(2)}</span>

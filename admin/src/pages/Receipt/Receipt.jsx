@@ -30,11 +30,34 @@ const Receipt = ({ url }) => {
       (o.receiptNumber && o.receiptNumber.toLowerCase().includes(q)) ||
       (o._id && o._id.toLowerCase().includes(q)) ||
       (o.address?.address && o.address.address.toLowerCase().includes(q)) ||
-      (o.address?.name && o.address.name.toLowerCase().includes(q))
+      (o.address?.name && o.address.name.toLowerCase().includes(q)) ||
+      (o.address?.firstName && o.address.firstName.toLowerCase().includes(q))
     );
   });
 
   const formatCurrency = (v) => `₱${parseFloat(v || 0).toFixed(2)}`;
+
+  const getCustomerName = (addr) => {
+    if (!addr) return 'Walk-in';
+    // Check for stored name field
+    if (addr.name && addr.name !== 'undefined') return addr.name;
+    // Check for firstName + lastName (Stripe orders)
+    if (addr.firstName && addr.firstName !== 'undefined') {
+      return (addr.firstName + ' ' + (addr.lastName || '')).trim();
+    }
+    // Check for generic address field
+    if (addr.address && addr.address !== 'undefined') return addr.address;
+    return 'Walk-in';
+  };
+
+  const getFullAddress = (addr) => {
+    if (!addr || !addr.street) return null;
+    const parts = [addr.street];
+    if (addr.city) parts.push(addr.city);
+    if (addr.province) parts.push(addr.province);
+    if (addr.zipCode) parts.push(addr.zipCode);
+    return parts.join(', ');
+  };
 
   return (
     <div className="receipt add flex-col">
@@ -90,8 +113,12 @@ const Receipt = ({ url }) => {
                   <p><strong>Date:</strong> {new Date(selectedOrder.createdAt).toLocaleString()}</p>
                   <p><strong>Type:</strong> {selectedOrder.orderType || 'Delivery'}</p>
                   {selectedOrder.tableNumber && <p><strong>Table:</strong> {selectedOrder.tableNumber}</p>}
-                  <p><strong>Customer:</strong> {selectedOrder.address?.name || selectedOrder.address?.address || 'Walk-in'}</p>
+                  <p><strong>Customer:</strong> {getCustomerName(selectedOrder.address)}</p>
                   <p><strong>Staff:</strong> {selectedOrder.staffName || 'N/A'}</p>
+                  {getFullAddress(selectedOrder.address) && (
+                    <p><strong>Address:</strong> {getFullAddress(selectedOrder.address)}</p>
+                  )}
+                  {selectedOrder.address?.phone && <p><strong>Phone:</strong> {selectedOrder.address.phone}</p>}
                 </div>
                 <div className="receipt-divider">━━━━━━━━━━━━━━━━━━━━</div>
                 <div className="receipt-items">

@@ -5,7 +5,7 @@ import promoCodeModel from '../models/promoCodeModel.js';
 
 const promoCodeRouter = express.Router();
 
-promoCodeRouter.post('/validate', authMiddleware, validatePromoCode);
+promoCodeRouter.post('/validate', validatePromoCode);
 promoCodeRouter.post('/create', verifyAdmin, createPromoCode);
 promoCodeRouter.post('/update', verifyAdmin, updatePromoCode);
 promoCodeRouter.get('/list', verifyAdmin, listPromoCodes);

@@ -32,16 +32,32 @@ const placePosOrder = async (req, res) => {
 
         const receiptNumber = generateReceiptNumber();
 
-        // Build address object with customer name and delivery details
+        // Build address object matching Stripe order shape (firstName, lastName, street, etc.)
         let addressData;
         if (orderType === 'delivery' && deliveryAddress) {
             addressData = {
-                ...deliveryAddress,
+                firstName: deliveryAddress.firstName || customerName || 'Walk-in Customer',
+                lastName: deliveryAddress.lastName || '',
+                street: deliveryAddress.street || '',
+                city: deliveryAddress.city || '',
+                province: deliveryAddress.province || '',
+                zipCode: deliveryAddress.zipCode || '',
+                country: deliveryAddress.country || '',
+                phone: deliveryAddress.phone || '',
                 name: customerName || 'Walk-in Customer',
                 address: deliveryAddress.street || customerName || 'Walk-in Customer'
             };
         } else {
+            const nameParts = (customerName || 'Walk-in Customer').split(' ');
             addressData = {
+                firstName: nameParts[0] || 'Walk-in',
+                lastName: nameParts.slice(1).join(' ') || 'Customer',
+                street: '',
+                city: '',
+                province: '',
+                zipCode: '',
+                country: '',
+                phone: '',
                 name: customerName || 'Walk-in Customer',
                 address: customerName || 'Walk-in Customer'
             };

@@ -125,7 +125,15 @@ const listOrders = async (req,res) => {
 // API for updating the status of the order
 const updateOrderStatus = async (req,res) => {
     try {
-        await orderModel.findByIdAndUpdate(req.body.orderId,{status:req.body.status});
+        const updateData = { status: req.body.status };
+        // Auto-set payment based on status changes:
+        // "Delivered" marks as paid, "Cancelled" marks as unpaid
+        if (req.body.status === 'Delivered' || req.body.status === 'Completed') {
+            updateData.payment = true;
+        } else if (req.body.status === 'Cancelled') {
+            updateData.payment = false;
+        }
+        await orderModel.findByIdAndUpdate(req.body.orderId, updateData);
         res.json({success:true,message:"Order status updated successfully"});
     } catch (error) {
         console.log(error);
