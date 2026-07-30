@@ -87,7 +87,7 @@ const verifyOrder = async (req,res) => {
     const {orderId,success} = req.body;
     try {
         if (success=="true") {
-            await orderModel.findByIdAndUpdate(orderId,{payment:true});
+            await orderModel.findByIdAndUpdate(orderId,{payment:true, paymentMethod:'stripe'});
             res.json({success:true,message:"Payment successful"});
         }
         else {

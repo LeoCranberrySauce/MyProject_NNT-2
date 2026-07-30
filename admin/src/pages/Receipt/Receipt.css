@@ -279,8 +279,7 @@
   .receipt-order-list,
   .receipt-btn-print,
   .sidebar,
-  .navbar,
-  .app-content {
+  .navbar {
     display: none !important;
   }
   .receipt-preview {
@@ -288,6 +287,17 @@
     top: 0;
     left: 0;
     right: 0;
+    z-index: 9999;
+    width: auto;
+    padding: 0;
+  }
+  .receipt {
+    margin: 0;
+    padding: 0;
+  }
+  .receipt-content {
+    display: block !important;
+    height: auto !important;
   }
   .receipt-paper {
     border: none;

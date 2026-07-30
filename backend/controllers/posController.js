@@ -15,7 +15,7 @@ const generateReceiptNumber = () => {
 // Place a POS (in-store) order
 const placePosOrder = async (req, res) => {
     try {
-        const { items, amount, paymentMethod, orderType, tableNumber, staffName, promoCode, customerName } = req.body;
+        const { items, amount, paymentMethod, orderType, tableNumber, staffName, promoCode, customerName, address: deliveryAddress } = req.body;
 
         if (!items || items.length === 0) {
             return res.json({ success: false, message: "Order must have at least one item" });
@@ -32,11 +32,26 @@ const placePosOrder = async (req, res) => {
 
         const receiptNumber = generateReceiptNumber();
 
+        // Build address object with customer name and delivery details
+        let addressData;
+        if (orderType === 'delivery' && deliveryAddress) {
+            addressData = {
+                ...deliveryAddress,
+                name: customerName || 'Walk-in Customer',
+                address: deliveryAddress.street || customerName || 'Walk-in Customer'
+            };
+        } else {
+            addressData = {
+                name: customerName || 'Walk-in Customer',
+                address: customerName || 'Walk-in Customer'
+            };
+        }
+
         const newOrder = new orderModel({
             userId: req.userId || 'pos-system',
             items: items,
             amount: amount,
-            address: { address: customerName || 'Walk-in Customer' },
+            address: addressData,
             orderType: orderType || 'dine-in',
             tableNumber: tableNumber || null,
             payment: paymentMethod !== 'unpaid' ? true : false,
