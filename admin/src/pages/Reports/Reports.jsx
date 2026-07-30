@@ -99,9 +99,10 @@ const Reports = ({ url }) => {
   };
 
   return (
-    <div className="reports-container add flex-col">
+    <div className="reports add flex-col">
+      
       <div className="reports-header">
-        <h1>📊 Sales Reports</h1>
+        <h1>Sales Reports</h1>
         <button className="reports-btn-export" onClick={exportCSV}>Export CSV</button>
       </div>
 

@@ -1,7 +1,15 @@
+.inventory {
+  min-height: 100vh;
+}
+
 .inventory-container {
-  padding: 20px;
-  max-width: 1400px;
-  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .inventory-header {
@@ -9,9 +17,10 @@
 }
 
 .inventory-header h1 {
-  font-size: 24px;
-  color: #1a1a2e;
-  margin: 0;
+  color: #40004d;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 600;
 }
 
 /* Alerts */
@@ -69,8 +78,13 @@
   color: #1a1a2e;
 }
 
-.inv-kpi-value.warning { color: #ff9800; }
-.inv-kpi-value.danger { color: #e94560; }
+.inv-kpi-value.warning {
+  color: #ff9800;
+}
+
+.inv-kpi-value.danger {
+  color: #e94560;
+}
 
 /* Controls */
 .inventory-controls {
@@ -141,8 +155,13 @@
   background: #f8f9fa;
 }
 
-.row-out td { background: #fff5f5; }
-.row-low td { background: #fffbf0; }
+.row-out td {
+  background: #fff5f5;
+}
+
+.row-low td {
+  background: #fffbf0;
+}
 
 .inv-item-cell {
   display: flex;
@@ -162,8 +181,13 @@
   font-size: 16px;
 }
 
-.danger-text { color: #e94560; }
-.warning-text { color: #ff9800; }
+.danger-text {
+  color: #e94560;
+}
+
+.warning-text {
+  color: #ff9800;
+}
 
 .stock-badge {
   display: inline-block;
@@ -173,9 +197,20 @@
   font-weight: 600;
 }
 
-.badge-ok { background: #e8f5e9; color: #2e7d32; }
-.badge-low { background: #fff3e0; color: #e65100; }
-.badge-out { background: #ffebee; color: #c62828; }
+.badge-ok {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.badge-low {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.badge-out {
+  background: #ffebee;
+  color: #c62828;
+}
 
 .inv-restock-btns {
   display: flex;
@@ -221,7 +256,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -303,4 +338,51 @@
   padding: 60px;
   color: #666;
   font-size: 16px;
+}
+
+
+@media (max-width: 1200px) {
+
+  .add {
+    font-size: 15px;
+    width: 77%;
+    margin-left: 2.5%;
+  }
+
+  .inventory-header h1 {
+    font-size: 24px;
+  }
+}
+
+
+@media (max-width: 800px) {
+  .inventory {
+    padding: 15px;
+  }
+
+  .inventory-container {
+    gap: 20px;
+  }
+
+  /* Mobile layout: Stack content vertically with proper spacing */
+  .inventory-table-wrapper {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+}
+
+@media (max-width: 600px) {
+  .inventory-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .add {
+    width: 95%;
+    margin-left: 2.5%;
+  }
 }

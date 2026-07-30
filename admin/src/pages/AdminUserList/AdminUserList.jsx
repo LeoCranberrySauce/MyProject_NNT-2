@@ -43,7 +43,7 @@ const AdminUserList = ({ url }) => {
                 userName: data.userName,
                 role: data.role,
                 address: data.address,
-                phone: Number(data.phone),
+                phone: data.phone,
                 email: data.email,
                 password: data.password
             });
@@ -152,7 +152,7 @@ const AdminUserList = ({ url }) => {
 
                             <div className="add-admin-phone">
                                 <p>Phone Number</p>
-                                <input onChange={onChangeHandler} value={data.phone} type='number' name='phone' placeholder='Enter Phone Number' required />
+                                <input onChange={onChangeHandler} value={data.phone} type='text' name='phone' placeholder='Enter Phone Number' required />
                             </div>
 
                             <div className='add-admin-name'>

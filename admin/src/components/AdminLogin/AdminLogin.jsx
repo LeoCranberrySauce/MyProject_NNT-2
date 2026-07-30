@@ -69,7 +69,7 @@ const AdminLogin = () => {
           userName: data.userName,
           role: data.role,
           address: data.address,
-          phone: Number(data.phone),
+          phone: data.phone,
           email: data.email,
           password: data.password
         });
@@ -111,9 +111,9 @@ const AdminLogin = () => {
       <form onSubmit={onAdminSubmit} className="admin-login-popup-container">
         <div className="admin-login-popup-title">
           <h2>{currState === "Login" ? "ADMIN LOGIN" : "ADMIN SIGN UP"}</h2>
-          <button 
-            type="button" 
-            className="close-button" 
+          <button
+            type="button"
+            className="close-button"
             onClick={() => setShowLogin(false)}
           >
             ×
@@ -123,44 +123,42 @@ const AdminLogin = () => {
         <div className="admin-login-popup-inputs">
           {currState === "Sign Up" && (
             <>
-              <input 
-                name='name' 
-                onChange={onChangeHandler} 
-                value={data.name} 
-                type="text" 
-                placeholder='Your full name' 
-                required 
+              <input
+                name='name'
+                onChange={onChangeHandler}
+                value={data.name}
+                type="text"
+                placeholder='Your full name'
+                required
                 disabled={loading}
               />
-              <input 
-                name='address' 
-                onChange={onChangeHandler} 
-                value={data.address} 
-                type="text" 
-                placeholder='Your address' 
-                required 
+              <input
+                name='address'
+                onChange={onChangeHandler}
+                value={data.address}
+                type="text"
+                placeholder='Your address'
+                required
                 disabled={loading}
               />
-              <div className="multi-fields">
-                <input 
-                  name='phone' 
-                  onChange={onChangeHandler} 
-                  value={data.phone} 
-                  type="tel" 
-                  placeholder='Phone number' 
-                  required 
-                  disabled={loading}
-                />
-                <input 
-                  name='email' 
-                  onChange={onChangeHandler} 
-                  value={data.email} 
-                  type="email" 
-                  placeholder='Your email' 
-                  required 
-                  disabled={loading}
-                />
-              </div>
+              <input
+                name='phone'
+                onChange={onChangeHandler}
+                value={data.phone}
+                type="tel"
+                placeholder='Phone number'
+                required
+                disabled={loading}
+              />
+              <input
+                name='email'
+                onChange={onChangeHandler}
+                value={data.email}
+                type="email"
+                placeholder='Your email'
+                required
+                disabled={loading}
+              />
               <select onChange={onChangeHandler} name='role' value={data.role} disabled={loading} required>
                 <option value="">Select Role</option>
                 {adminUserRoles.map((type) => (
@@ -169,28 +167,28 @@ const AdminLogin = () => {
               </select>
             </>
           )}
-          <input 
-            name='userName' 
-            onChange={onChangeHandler} 
-            value={data.userName} 
-            type="text" 
-            placeholder='Your username' 
-            required 
+          <input
+            name='userName'
+            onChange={onChangeHandler}
+            value={data.userName}
+            type="text"
+            placeholder='Your username'
+            required
             disabled={loading}
           />
-          <input 
-            name='password' 
-            onChange={onChangeHandler} 
-            value={data.password} 
-            type="password" 
-            placeholder='Give password (min 8 characters)' 
-            required 
+          <input
+            name='password'
+            onChange={onChangeHandler}
+            value={data.password}
+            type="password"
+            placeholder='Give password (min 8 characters)'
+            required
             disabled={loading}
           />
         </div>
         <button type='submit' disabled={loading}>
-          {loading 
-            ? (currState === "Login" ? 'LOGGING IN...' : 'SIGNING UP...') 
+          {loading
+            ? (currState === "Login" ? 'LOGGING IN...' : 'SIGNING UP...')
             : (currState === "Login" ? 'LOGIN' : 'SIGN UP')
           }
         </button>

@@ -16,10 +16,12 @@ const Sidebar = () => {
           <img src={assets.dashboard_icon} alt="" />
           <p>Dashboard</p>
         </NavLink>
-        <NavLink to='/pos' className='sidebar-option'>
-          <img src={assets.order_icon} alt="" />
-          <p>POS</p>
-        </NavLink>
+        {userRole && userRole.toLowerCase() === 'staff' || userRole && userRole.toLowerCase() === 'cashier' && (
+          <NavLink to='/pos' className='sidebar-option'>
+            <img src={assets.pos_icon} alt="" />
+            <p>POS (Cashier only)</p>
+          </NavLink>
+        )}
         <NavLink to='/list' className='sidebar-option'>
           <img src={assets.food_icon} alt="" />
           <p>Food List</p>
@@ -29,7 +31,7 @@ const Sidebar = () => {
           <p>Category</p>
         </NavLink>
         <NavLink to='/tables' className='sidebar-option'>
-          <img src={assets.dashboard_icon} alt="" />
+          <img src={assets.table_icon} alt="" />
           <p>Tables</p>
         </NavLink>
         <NavLink to='/reports' className='sidebar-option'>
@@ -37,11 +39,11 @@ const Sidebar = () => {
           <p>Reports</p>
         </NavLink>
         <NavLink to='/inventory' className='sidebar-option'>
-          <img src={assets.food_icon} alt="" />
+          <img src={assets.inventory_icon} alt="" />
           <p>Inventory</p>
         </NavLink>
         <NavLink to='/receipts' className='sidebar-option'>
-          <img src={assets.parcel_icon} alt="" />
+          <img src={assets.receipt_icon} alt="" />
           <p>Receipts</p>
         </NavLink>
         <NavLink to='/orders' className='sidebar-option'>
@@ -55,13 +57,13 @@ const Sidebar = () => {
         {userRole && userRole.toLowerCase() === 'admin' && (
           <NavLink to='/admin-users' className='sidebar-option'>
             <img src={assets.admin_icon} alt="" />
-            <p>Managers</p>
+            <p>Managers (Admin only)</p>
           </NavLink>
         )}
         {userRole && userRole.toLowerCase() === 'admin' && (
           <NavLink to='/promo-codes' className='sidebar-option'>
             <img src={assets.promo_icon} alt="" />
-            <p>Promo Codes</p>
+            <p>Promo Codes (Admin only)</p>
           </NavLink>
         )}
       </div>
