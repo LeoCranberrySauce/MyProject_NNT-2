@@ -10,15 +10,15 @@ const AboutUs = () => {
 
                 <div className='about-us-text'>
 
-                    <h2>NNT Purple Food House is all about.</h2>
+                    <h2>D Mixologist is all about.</h2>
                     
                     <h3>Services</h3>
-                        <p>Delicious food delivered to your doorstep. NNT Purple Food House offers a wide variety of cuisines to satisfy your cravings. We are a family-owned restaurant that has been serving delicious and healthy food for over 2 years. The small food kiosk is located in the heart of Baguio City, making it easily accessible to our customers. We provide the variety of heart-pounding favorite snacks and drinks with Milk Tea and Takoyaki are the best-sellers in this food kiosk. Other foods like takoyaki balls, fruit tea, and shakes are also available.</p>
+                        <p>Delicious food delivered to your doorstep. D Mixologist offers a wide variety of cuisines to satisfy your cravings. We are a family-owned restaurant that has been serving delicious and healthy food for over 2 years. The small food kiosk is located in the heart of Baguio City, making it easily accessible to our customers. We provide the variety of heart-pounding favorite snacks and drinks with Milk Tea and Takoyaki are the best-sellers in this food kiosk. Other foods like takoyaki balls, fruit tea, and shakes are also available.</p>
 
                         <br />
 
                     <h3>Mission</h3>
-                        <p>Our mission is to provide the best dining experience with the freshest ingredients and exceptional service. The NNT Purple Food House is committed to bringing joy and satisfaction to every customer who walks through our doors.</p>
+                        <p>Our mission is to provide the best dining experience with the freshest ingredients and exceptional service. The D Mixologist is committed to bringing joy and satisfaction to every customer who walks through our doors.</p>
 
                         <br />
 

@@ -27,7 +27,7 @@ const Footer = () => {
             <div className="footer-content">
                 <div className="footer-content-left">
                     <img src={assets.logo} alt="" className="footer-logo" />
-                    <p>Delicious food delivered to your doorstep. NNT Purple Food House offers a wide variety of cuisines to satisfy your cravings.</p>
+                    <p>Delicious food delivered to your doorstep. D Mixologist offers a wide variety of cuisines to satisfy your cravings.</p>
                     <div className="footer-app-downloads">
                         <h2>You can download these on your mobile phones!</h2>
                         <div className="footer-store-links">
@@ -105,7 +105,7 @@ const Footer = () => {
                 </div>
             </div>
             <hr />
-            <p className="footer-copyright">&copy; {new Date().getFullYear()} NNT Purple Food House. All rights reserved. This food stall is afiliated with Purple Blend Franchise.</p>
+            <p className="footer-copyright">&copy; {new Date().getFullYear()} D Mixologist. All rights reserved. This food stall is afiliated with Purple Blend Franchise.</p>
         </div>
     )
 }

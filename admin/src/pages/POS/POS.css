@@ -4,7 +4,7 @@
 }
 
 .pos h1 {
-  color: #40004d;
+  color: #333333;
   margin-bottom: 30px;
   font-size: 28px;
   font-weight: 600;
@@ -39,7 +39,7 @@
 
 .pos-header {
   padding: 12px 16px;
-  background: #1a1a2e;
+  background: #444444;
   color: white;
   display: flex;
   align-items: center;
@@ -72,8 +72,8 @@
 }
 
 .pos-type-btn.active {
-  background: #e94560;
-  border-color: #e94560;
+  background: #666666;
+  border-color: #666666;
   color: white;
 }
 
@@ -100,7 +100,7 @@
 }
 
 .pos-search input:focus {
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 /* Categories */
@@ -127,13 +127,13 @@
 }
 
 .pos-cat-btn.active {
-  background: #1a1a2e;
+  background: #444444;
   color: white;
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 .pos-cat-btn:hover {
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 /* Food Grid */
@@ -158,7 +158,7 @@
 }
 
 .pos-error {
-  color: #e94560;
+  color: #666666;
 }
 
 .pos-food-card {
@@ -173,7 +173,7 @@
 }
 
 .pos-food-card:hover {
-  border-color: #1a1a2e;
+  border-color: #444444;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -208,7 +208,7 @@
   position: absolute;
   top: 4px;
   right: 4px;
-  background: #e94560;
+  background: #666666;
   color: white;
   padding: 2px 6px;
   border-radius: 4px;
@@ -235,7 +235,7 @@
 .pos-food-price {
   font-size: 14px;
   font-weight: 700;
-  color: #e94560;
+  color: #666666;
 }
 
 .pos-quick-qty {
@@ -257,9 +257,9 @@
 }
 
 .pos-quick-qty button:hover {
-  background: #1a1a2e;
+  background: #444444;
   color: white;
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 /* === Right Order Panel === */
@@ -279,7 +279,7 @@
 
 .pos-order-header {
   padding: 12px 16px;
-  background: #1a1a2e;
+  background: #444444;
   color: white;
   display: flex;
   align-items: center;
@@ -292,7 +292,7 @@
 }
 
 .pos-order-type-badge {
-  background: #e94560;
+  background: #666666;
   color: white;
   padding: 3px 10px;
   border-radius: 12px;
@@ -321,9 +321,9 @@
 }
 
 .pos-table-btn:hover {
-  border-color: #1a1a2e;
-  color: #1a1a2e;
-  background: #f0f0ff;
+  border-color: #444444;
+  color: #444444;
+  background: #f0f0f0;
 }
 
 /* Customer Input */
@@ -342,7 +342,7 @@
 }
 
 .pos-customer-input input:focus {
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 /* Delivery Address Fields */
@@ -425,7 +425,7 @@
 
 .pos-cart-item-price {
   font-size: 12px;
-  color: #e94560;
+  color: #666666;
   font-weight: 600;
 }
 
@@ -451,9 +451,9 @@
 }
 
 .pos-cart-item-controls button:hover {
-  background: #1a1a2e;
+  background: #444444;
   color: white;
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 .pos-cart-item-controls span {
@@ -492,7 +492,7 @@
 }
 
 .pos-promo-input:focus {
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 .pos-promo-input:disabled {
@@ -570,7 +570,7 @@
 .pos-grand-total {
   font-size: 18px;
   font-weight: 700;
-  color: #1a1a2e;
+  color: #444444;
   border-top: 2px solid #333;
   padding-top: 8px;
   margin-top: 4px;
@@ -587,9 +587,9 @@
 .pos-btn-clear {
   flex: 1;
   padding: 12px;
-  border: 2px solid #e94560;
+  border: 2px solid #666666;
   background: white;
-  color: #e94560;
+  color: #666666;
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
@@ -598,7 +598,7 @@
 }
 
 .pos-btn-clear:hover:not(:disabled) {
-  background: #e94560;
+  background: #666666;
   color: white;
 }
 
@@ -671,7 +671,7 @@
 .pos-modal h2 {
   margin: 0 0 16px;
   font-size: 22px;
-  color: #1a1a2e;
+  color: #444444;
 }
 
 /* Payment Summary */
@@ -704,7 +704,7 @@
 }
 
 .pos-payment-amount {
-  color: #e94560;
+  color: #666666;
 }
 
 /* Payment Methods */
@@ -736,13 +736,13 @@
 }
 
 .pos-pay-btn.active {
-  border-color: #1a1a2e;
-  background: #1a1a2e;
+  border-color: #444444;
+  background: #444444;
   color: white;
 }
 
 .pos-pay-btn:hover {
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 .pos-confirm-payment {
@@ -808,7 +808,7 @@
 
 .pos-table-item.occupied {
   background: #ffebee;
-  border-color: #e94560;
+  border-color: #666666;
   cursor: not-allowed;
   opacity: 0.7;
 }
@@ -832,7 +832,7 @@
 
 .pos-table-occ-label {
   font-size: 9px;
-  color: #e94560;
+  color: #666666;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -841,7 +841,7 @@
   width: 100%;
   padding: 12px;
   border: none;
-  background: #1a1a2e;
+  background: #444444;
   color: white;
   border-radius: 8px;
   cursor: pointer;
@@ -896,9 +896,9 @@
 .pos-btn-print {
   width: 100%;
   padding: 12px;
-  border: 2px solid #1a1a2e;
+  border: 2px solid #444444;
   background: white;
-  color: #1a1a2e;
+  color: #444444;
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
@@ -908,7 +908,7 @@
 }
 
 .pos-btn-print:hover {
-  background: #1a1a2e;
+  background: #444444;
   color: white;
 }
 
@@ -1044,7 +1044,7 @@
 @media (max-width: 400px) {
   .pos-header {
     padding: 10px 5px;
-    background: #1a1a2e;
+    background: #444444;
     color: white;
     display: flex;
     align-items: center;

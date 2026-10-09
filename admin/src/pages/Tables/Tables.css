@@ -22,7 +22,7 @@
 }
 
 .tables-header h1 {
-  color: #40004d;
+  color: #333333;
   margin-bottom: 30px;
   font-size: 28px;
   font-weight: 600;
@@ -44,7 +44,7 @@
 }
 
 .tables-btn-primary {
-  background: #1a1a2e;
+  background: #444444;
   color: white;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .tables-btn-secondary {
-  background: #e94560;
+  background: #666666;
   color: white;
 }
 
@@ -213,7 +213,7 @@
 .tables-modal h2 {
   margin: 0 0 20px;
   font-size: 20px;
-  color: #1a1a2e;
+  color: #444444;
 }
 
 .tables-form-group {
@@ -239,7 +239,7 @@
 }
 
 .tables-form-group input:focus {
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 .tables-modal-actions {

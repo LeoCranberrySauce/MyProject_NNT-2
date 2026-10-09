@@ -20,7 +20,7 @@
 }
 
 .reports-header h1 {
-  color: #40004d;
+  color: #333333;
   margin-bottom: 30px;
   font-size: 28px;
   font-weight: 600;
@@ -28,9 +28,9 @@
 
 .reports-btn-export {
   padding: 10px 24px;
-  border: 2px solid #1a1a2e;
+  border: 2px solid #444444;
   background: white;
-  color: #1a1a2e;
+  color: #444444;
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
@@ -39,7 +39,7 @@
 }
 
 .reports-btn-export:hover {
-  background: #1a1a2e;
+  background: #444444;
   color: white;
 }
 
@@ -73,13 +73,13 @@
 }
 
 .reports-type-btn.active {
-  background: #1a1a2e;
+  background: #444444;
   color: white;
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 .reports-type-btn:hover:not(.active) {
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 .reports-date-inputs {
@@ -97,13 +97,13 @@
 }
 
 .reports-date-inputs input[type="date"]:focus {
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 .reports-btn-refresh {
   padding: 8px 16px;
   border: none;
-  background: #e94560;
+  background: #666666;
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -142,7 +142,7 @@
 .kpi-value {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a2e;
+  color: #444444;
   margin: 0;
 }
 
@@ -157,7 +157,7 @@
 
 .reports-section h2 {
   font-size: 18px;
-  color: #1a1a2e;
+  color: #444444;
   margin: 0 0 16px;
   padding-bottom: 8px;
   border-bottom: 2px solid #f0f0f0;
@@ -188,7 +188,7 @@
 
 .breakdown-value {
   font-weight: 700;
-  color: #e94560;
+  color: #666666;
   font-size: 18px;
 }
 
