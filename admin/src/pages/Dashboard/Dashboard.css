@@ -4,14 +4,14 @@
 }
 
 .dashboard-title {
-    color:#40004d;
+    color:#333333;
     font-size: 36px;
     font-weight: 600;
     margin-bottom: 1rem;
 }
 
 .stat-card-header {
-    color:#40004d;
+    color:#333333;
     font-size: 21px;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -62,7 +62,7 @@
 }
 
 .stat-card.purple {
-    background: linear-gradient(135deg, #9f7aea 0%, #805ad5 100%);
+    background: linear-gradient(135deg, #888888 0%, #666666 100%);
 }
 
 .stat-card-content {

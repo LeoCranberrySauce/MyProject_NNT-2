@@ -17,7 +17,7 @@
 }
 
 .inventory-header h1 {
-  color: #40004d;
+  color: #333333;
   margin-bottom: 30px;
   font-size: 28px;
   font-weight: 600;
@@ -75,7 +75,7 @@
   display: block;
   font-size: 22px;
   font-weight: 700;
-  color: #1a1a2e;
+  color: #444444;
 }
 
 .inv-kpi-value.warning {
@@ -83,7 +83,7 @@
 }
 
 .inv-kpi-value.danger {
-  color: #e94560;
+  color: #666666;
 }
 
 /* Controls */
@@ -103,7 +103,7 @@
 }
 
 .inventory-controls input:focus {
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 .inventory-controls select {
@@ -117,7 +117,7 @@
 }
 
 .inventory-controls select:focus {
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 /* Table */
@@ -182,7 +182,7 @@
 }
 
 .danger-text {
-  color: #e94560;
+  color: #666666;
 }
 
 .warning-text {
@@ -229,9 +229,9 @@
 }
 
 .inv-restock-btns button:hover {
-  background: #1a1a2e;
+  background: #444444;
   color: white;
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 .inv-edit-btn {
@@ -275,7 +275,7 @@
 .inv-modal h2 {
   margin: 0 0 16px;
   font-size: 18px;
-  color: #1a1a2e;
+  color: #444444;
 }
 
 .inv-modal-form {
@@ -301,7 +301,7 @@
 }
 
 .inv-modal-form input:focus {
-  border-color: #1a1a2e;
+  border-color: #444444;
 }
 
 .inv-modal-actions {
@@ -324,7 +324,7 @@
   flex: 1;
   padding: 10px;
   border: none;
-  background: #1a1a2e;
+  background: #444444;
   color: white;
   border-radius: 8px;
   cursor: pointer;

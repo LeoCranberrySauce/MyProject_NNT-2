@@ -97,7 +97,7 @@ const Tables = ({ url }) => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'available': return '#4caf50';
-      case 'occupied': return '#e94560';
+      case 'occupied': return '#666666';
       case 'reserved': return '#ff9800';
       case 'unavailable': return '#999';
       default: return '#999';
@@ -124,7 +124,7 @@ const Tables = ({ url }) => {
       {/* Legend */}
       <div className="tables-legend">
         <span><span className="legend-dot" style={{background: '#4caf50'}}></span> Available</span>
-        <span><span className="legend-dot" style={{background: '#e94560'}}></span> Occupied</span>
+        <span><span className="legend-dot" style={{background: '#666666'}}></span> Occupied</span>
         <span><span className="legend-dot" style={{background: '#ff9800'}}></span> Reserved</span>
         <span><span className="legend-dot" style={{background: '#999'}}></span> Unavailable</span>
       </div>
