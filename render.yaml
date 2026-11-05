@@ -45,4 +45,4 @@ services:
 # 4. Optional Database (PostgreSQL)
 databases:
   - name: app-db
-    plan: flexible
+    plan: starter
