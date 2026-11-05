@@ -3,9 +3,11 @@ services:
   - type: web
     name: node-backend
     runtime: node
+    rootDir: backend
     plan: free
     buildCommand: "npm install"
-    startCommand: "node server.js" # or dist/server.js
+    startCommand: "npm run server" # or dist/server.js
+    region: singapore
     envVars:
       - key: NODE_ENV
         value: production
@@ -18,9 +20,11 @@ services:
   - type: web
     name: main-frontend
     runtime: node # Use 'static' if it is purely static HTML/JS without a custom server
+    rootDir: frontend
     plan: free
     buildCommand: "npm run build"
-    startCommand: "npm run start"
+    startCommand: "npm run dev"
+    region: singapore
     envVars:
       - key: BACKEND_URL
         fromService:
@@ -32,9 +36,11 @@ services:
   - type: web
     name: admin-panel
     runtime: node
+    rootDir: frontend
     plan: free
     buildCommand: "npm run build"
     startCommand: "npm run start"
+    region: singapore
     envVars:
       - key: BACKEND_URL
         fromService:
