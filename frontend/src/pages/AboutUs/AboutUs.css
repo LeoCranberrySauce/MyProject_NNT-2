@@ -7,30 +7,31 @@
 
 .about-us h1 {
     margin-bottom: 50px;
-    color:rgb(122, 0, 138);
-    font-weight: 500;
-    font-family: DynaPuff;
-    text-shadow: 0px 0px 3px #000;
+    color:rgb(15, 46, 0);
+    font-size: 40px;
+    font-weight: 700;
+    font-family: Josefin Sans, sans-serif;
+    text-shadow: 0px 0px 3px #2b2b2b;
     text-align: center;
 }
 
-.about-us-text p {
-    font-size: 16px;
-    color: #797979;
-    margin: 0;
-}
-
 .about-us-text h2 {
-    font-size: 28px;
+    font-size: 30px;
     margin: 0 0 10px 0;
-    color: #333333;
+    color: #323f26;
     font-weight: 700;
     margin-bottom: 25px;
+}
+
+.about-us-text p {
+    font-size: 20px;
+    color: #797979;
+    margin: 0;
 }
 
 .about-us-text h3 {
     font-size: 24px;
     margin: 0 0 10px 0;
-    color: #42006e;
+    color: #2b2b2b;
     font-weight: 700;
 }

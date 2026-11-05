@@ -10,15 +10,15 @@ const AboutUs = () => {
 
                 <div className='about-us-text'>
 
-                    <h2>D Mixologist is all about.</h2>
-                    
+                    <h2>Waynu Food Stall is all about.</h2>
+
                     <h3>Services</h3>
-                        <p>Delicious food delivered to your doorstep. D Mixologist offers a wide variety of cuisines to satisfy your cravings. We are a family-owned restaurant that has been serving delicious and healthy food for over 2 years. The small food kiosk is located in the heart of Baguio City, making it easily accessible to our customers. We provide the variety of heart-pounding favorite snacks and drinks with Milk Tea and Takoyaki are the best-sellers in this food kiosk. Other foods like takoyaki balls, fruit tea, and shakes are also available.</p>
+                        <p>Delicious food delivered to your doorstep. <i>Waynu Food Stall</i> offers a wide variety of cuisines to satisfy your cravings. We are a family-owned food stall that has been serving delicious and healthy indigenous food for over 27 years. This makes it easily accessible to our customers, local tourists and students. We provide the variety of heart-pounding Filipino and Cordilleran favorites like Bangus Sisig, Tofu Sisig, Igorot salad, special <i>Waynu</i> salad with vinaigrette, Manok skillet, and Sikwate / Tsokolate de Batirol.</p>
 
                         <br />
 
                     <h3>Mission</h3>
-                        <p>Our mission is to provide the best dining experience with the freshest ingredients and exceptional service. The D Mixologist is committed to bringing joy and satisfaction to every customer who walks through our doors.</p>
+                        <p>Our mission is to provide the best dining experience with the freshest ingredients and exceptional service. The <i>Waynu Food Stall</i> is committed to bringing joy and satisfaction to every customer who walks through our doors.</p>
 
                         <br />
 
@@ -33,7 +33,7 @@ const AboutUs = () => {
                         <br />
 
                     <h2>Address</h2>
-                        <p>Our restaurant is located at East Quirino Hill, Baguio City, 2600 Philippines. We are open from 10:00 AM to 10:00 PM daily, while delivery is available within our service area until 6:00 PM.</p>
+                        <p>Our food stall is located at 32 Ili-Likha Artist Village, Middle Earth / Lower Ground Floor, Assumption Road, Baguio City, 2600 Philippines. We are open from 10:00 AM to 7:30 PM daily, while delivery is available within our service area until 6:00 PM.</p>
 
                 </div>
 

@@ -13,7 +13,7 @@
     text-align: center;
     width: 100%;
     padding: 40px 20px;
-    background: linear-gradient(135deg, #ddd1e9 0%, #c5b4d3 100%);
+    background: linear-gradient(135deg, #aaaaaa 0%, #a08ac4 100%);
     border-radius: 12px;
     margin: 40px 0;
 }
@@ -27,8 +27,9 @@
 
 .explore-menu-text {
     font-size: 18px;
-    color: #797979;
+    color: #2c2c2c;
     margin: 0;
+    max-width: 100%;
 }
 
 .explore-menu hr {

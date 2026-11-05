@@ -5,8 +5,8 @@ const Header = () => {
   return (
     <div className='header'>
       <div className="header-contents">
-        <h1>Welcome to D Mixologist</h1>
-        <p>Your favorite meryenda in town!</p>
+        <h1>Welcome to Waynu Food Stall</h1>
+        <p>A NEW WAY OF CULINARY BLISS!</p>
         <div className="header-buttons">
           <a href='#promotional-banner'><button>🚀 <br /> Promos and Trends</button></a>
           <a href='#explore-menu'><button>🥡 <br /> View Menu</button></a>

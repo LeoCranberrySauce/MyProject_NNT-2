@@ -27,7 +27,7 @@ const Footer = () => {
             <div className="footer-content">
                 <div className="footer-content-left">
                     <img src={assets.logo} alt="" className="footer-logo" />
-                    <p>Delicious food delivered to your doorstep. D Mixologist offers a wide variety of cuisines to satisfy your cravings.</p>
+                    <p>Delicious food delivered to your doorstep. Waynu Food Stall offers a wide variety of cuisines to satisfy your cravings.</p>
                     <div className="footer-app-downloads">
                         <h2>You can download these on your mobile phones!</h2>
                         <div className="footer-store-links">
@@ -92,20 +92,22 @@ const Footer = () => {
                 <div className="footer-content-right">
                     <h2>GET IN TOUCH</h2>
                     <ul>
-                        <li><i className="fas fa-map-marker-alt"></i> East Quirino Hill, Baguio City</li>
-                        <li><i className="fas fa-phone"></i> 09123456789</li>
-                        <li><i className="fas fa-envelope"></i> contact@nnt.com</li>
+                        <li><i className="fas fa-map-marker-alt"></i> Ili-likha Artist Village, Assumption Road, Baguio City, Philippines, 2600 </li>
+                        <li><i className="fas fa-phone"></i> 0915 243 9319 </li>
+                        <li><i className="fas fa-envelope"></i> waynufood@gmail.com </li>
                     </ul>
                     <h2>SOCIAL MEDIA ACCOUNTS</h2>
                     <div className="footer-social-icons">
-                        <img src={assets.facebook_icon} alt="" />
-                        <img src={assets.twitter_icon} alt="" />
-                        <img src={assets.linkedin_icon} alt="" />
+                        <a href="https://www.facebook.com/waynuili" target="_blank" rel="noopener noreferrer">
+                            <img src={assets.facebook_icon} alt="https://www.facebook.com/waynuili" />
+                        </a>
+                        <img src={assets.twitter_icon} alt="https://twitter.com" />
+                        <img src={assets.linkedin_icon} alt="https://www.linkedin.com" />
                     </div>
                 </div>
             </div>
             <hr />
-            <p className="footer-copyright">&copy; {new Date().getFullYear()} D Mixologist. All rights reserved. This food stall is afiliated with Purple Blend Franchise.</p>
+            <p className="footer-copyright">&copy; {new Date().getFullYear()} Waynu Food Stall. All rights reserved. This food stall is afiliated with Purple Blend Franchise.</p>
         </div>
     )
 }
