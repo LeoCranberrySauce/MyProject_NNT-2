@@ -1,0 +1,48 @@
+services:
+  # 1. Node.js Backend API
+  - type: web
+    name: node-backend
+    runtime: node
+    plan: starter
+    buildCommand: "npm install"
+    startCommand: "node server.js" # or dist/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: app-db
+          property: connectionString
+
+  # 2. Frontend Application (React, Vue, Vite, etc.)
+  - type: web
+    name: main-frontend
+    runtime: node # Use 'static' if it is purely static HTML/JS without a custom server
+    plan: starter
+    buildCommand: "npm run build"
+    startCommand: "npm run start"
+    envVars:
+      - key: BACKEND_URL
+        fromService:
+          type: web
+          name: node-backend
+          property: host
+
+  # 3. Admin Panel (Separate Dashboard app)
+  - type: web
+    name: admin-panel
+    runtime: node
+    plan: starter
+    buildCommand: "npm run build"
+    startCommand: "npm run start"
+    envVars:
+      - key: BACKEND_URL
+        fromService:
+          type: web
+          name: node-backend
+          property: host
+
+# 4. Optional Database (PostgreSQL)
+databases:
+  - name: app-db
+    plan: flexible
