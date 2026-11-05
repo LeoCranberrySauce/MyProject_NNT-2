@@ -3,7 +3,7 @@ services:
   - type: web
     name: node-backend
     runtime: node
-    plan: starter
+    plan: free
     buildCommand: "npm install"
     startCommand: "node server.js" # or dist/server.js
     envVars:
@@ -18,7 +18,7 @@ services:
   - type: web
     name: main-frontend
     runtime: node # Use 'static' if it is purely static HTML/JS without a custom server
-    plan: starter
+    plan: free
     buildCommand: "npm run build"
     startCommand: "npm run start"
     envVars:
@@ -32,7 +32,7 @@ services:
   - type: web
     name: admin-panel
     runtime: node
-    plan: starter
+    plan: free
     buildCommand: "npm run build"
     startCommand: "npm run start"
     envVars:
@@ -45,4 +45,4 @@ services:
 # 4. Optional Database (PostgreSQL)
 databases:
   - name: app-db
-    plan: starter
+    plan: free
