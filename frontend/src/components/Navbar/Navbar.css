@@ -7,7 +7,7 @@
 
 .logo:hover {
     transform: scale(1.08) rotate(2deg);
-    filter: drop-shadow(0 4px 8px rgba(97, 0, 161, 0.3));
+    filter: drop-shadow(0 4px 8px rgba(143, 143, 143, 0.3));
 }
 
 .navbar {
@@ -18,7 +18,7 @@
     align-items: center;
     width: 100%;
     margin: auto;
-    background: linear-gradient(180deg, #d388ff 0%, #c570e8 100%);
+    background: linear-gradient(180deg, #bdbdbd 0%, #808080 100%);
     gap: 20px;
     position: fixed;
     top: 0;
@@ -30,7 +30,7 @@
 }
 
 .navbar.scrolled {
-    background: linear-gradient(180deg, #f6e6ff 0%, #f0d9ff 100%);
+    background: linear-gradient(180deg, #bdbdbd 0%, #808080 100%);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
     padding: 12px 10vw;
     animation: navbarSlideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
@@ -77,7 +77,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #a921df, #6100a1);
+    background: linear-gradient(90deg, #3a3a3a, #414141);
     transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -86,17 +86,17 @@
 }
 
 .navbar-search-icon:hover {
-    color: #8b2fbf;
+    color: #868686;
     transform: translateY(-2px);
 }
 
 .navbar-search-icon .active {
-    background: linear-gradient(135deg, rgba(97, 0, 161, 0.85), rgba(169, 33, 223, 0.75));
-    color: #f6e6ff;
+    background: linear-gradient(135deg, #414141, #3a3a3a);
+    color: #dfdfdf;
     padding: 12px 24px;
     border-radius: 25px;
     margin-top: -10px;
-    box-shadow: 0 4px 12px rgba(97, 0, 161, 0.3);
+    box-shadow: 0 4px 12px #414141;
     animation: activeMenuPulse 0.6s ease-out;
 }
 
@@ -104,8 +104,9 @@
     display: flex;
     list-style: none;
     gap: 20px;
-    color: #6100a1;
+    color: #1b1b1b;
     font-size: 18px;
+    font-weight: 700;
     margin-left: auto;
     margin-right: 60px;
     animation: menuSlideIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
@@ -120,8 +121,8 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background: linear-gradient(135deg, #f6e6ff, #f0d9ff);
-    border: 2px solid #d1b0df;
+    background: linear-gradient(135deg, #c0c0c0, #e0e0e0);
+    border: 2px solid #ececec;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     opacity: 0;
@@ -154,7 +155,7 @@
 .home-dropdown a {
     display: block;
     padding: 12px 24px;
-    color: #6100a1;
+    color: #3a3a3a;
     text-decoration: none;
     font-size: 16px;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -162,8 +163,8 @@
 }
 
 .home-dropdown a:hover {
-    background: linear-gradient(135deg, #e6c6ff, #d9b3ff);
-    color: #5800a1;
+    background: linear-gradient(135deg, #c0c0c0, #e0e0e0);
+    color: #3a3a3a;
     transform: translateX(4px);
 }
 
@@ -181,7 +182,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #a921df, #6100a1);
+    background: linear-gradient(90deg, #414141, #3a3a3a);
     transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -190,25 +191,25 @@
 }
 
 .navbar-menu li:hover {
-    color: #8b2fbf;
+    color: #7a7a7a;
     transform: translateY(-2px);
 }
 
-.navbar-menu .active {
-    background: linear-gradient(135deg, rgba(97, 0, 161, 0.85), rgba(169, 33, 223, 0.75));
-    color: #f6e6ff;
+.navbar-menu .active {    
+        background: linear-gradient(45deg, #627256, #ceebc2);
+    border: 1px solid #3f3f3f;
     padding: 12px 24px;
     border-radius: 25px;
     margin-top: -10px;
-    box-shadow: 0 4px 12px rgba(97, 0, 161, 0.3);
+    box-shadow: 0 4px 12px #41413d4d;
     animation: activeMenuPulse 0.6s ease-out;
 }
 
 .navbar button {
-    background: linear-gradient(135deg, #5800a1, #7c00d4);
+    background: linear-gradient(135deg, #414141, #3a3a3a);
     font-size: 18px;
     font-weight: 600;
-    color: #f6e6ff;
+    color: #f5f5f5;
     border: 2px solid transparent;
     padding: 10px 30px;
     border-radius: 45px;
@@ -236,11 +237,11 @@
 }
 
 .navbar button:hover {
-    background: linear-gradient(135deg, #f6e6ff, #e6c6ff);
-    color: #5800a1;
-    box-shadow: 0 8px 24px rgba(97, 0, 161, 0.35);
+    background: linear-gradient(135deg, #f5f5f5, #d0d0d0);
+    color: #1a1a1a;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     transform: translateY(-2px) scale(1.05);
-    border-color: #8b2fbf;
+    border-color: #414141;
 }
 
 .navbar button:active {
@@ -273,7 +274,7 @@
 }
 
 .nav-profile-dropdown li:hover {
-    color: #7c00d4;
+    color: #1a1a1a;
     transform: translateX(4px);
 }
 
@@ -290,10 +291,10 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background: linear-gradient(135deg, #f6e6ff, #f0d9ff);
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
     padding: 12px 25px;
     border-radius: 12px;
-    border: 2px solid #d1b0df;
+    border: 2px solid #bdbdbd;
     outline: 2px solid #ffffff;
     list-style: none;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
@@ -309,7 +310,7 @@
 }
 
 .menu-icon svg {
-    stroke: #f6e6ff;
+    stroke: #f5f5f5;
     transition: stroke 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.1));
 }
@@ -319,8 +320,8 @@
 }
 
 .menu-icon:hover svg {
-    stroke: #5800a1;
-    filter: drop-shadow(0 2px 4px rgba(97, 0, 161, 0.3));
+    stroke: #1a1a1a;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 /* Keyframe Animations */
@@ -384,13 +385,13 @@
 
 @keyframes activeMenuPulse {
     0% {
-        box-shadow: 0 0 0 0 rgba(169, 33, 223, 0.7);
+        box-shadow: 0 0 0 0 rgba(66, 66, 66, 0.7);
     }
     50% {
-        box-shadow: 0 0 0 8px rgba(169, 33, 223, 0);
+        box-shadow: 0 0 0 8px rgba(66, 66, 66, 0);
     }
     100% {
-        box-shadow: 0 4px 12px rgba(97, 0, 161, 0.3);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 }
 
@@ -533,7 +534,7 @@
         right: -70vw;
         width: 70vw;
         height: 100vh;
-        background: linear-gradient(180deg, #f6e6ff 0%, #f0d9ff 100%);
+        background: linear-gradient(180deg, #f5f5f5 0%, #e0e0e0 100%);
         box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
         padding-top: 100px;
         gap: 30px;
@@ -586,7 +587,7 @@
     
     .home-dropdown ul {
         display: block;
-        background: linear-gradient(135deg, #f6e6ff, #f0d9ff);
+        background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
         border-radius: 12px;
         padding: 15px;
         margin: 10px 0;
@@ -599,13 +600,13 @@
     .home-dropdown a {
         padding: 10px 20px;
         background: transparent;
-        color: #6100a1;
+        color: #1a1a1a;
         border-radius: 8px;
     }
     
     .home-dropdown a:hover {
-        background: linear-gradient(135deg, #e6c6ff, #d9b3ff);
-        color: #5800a1;
+        background: linear-gradient(135deg, #d0d0d0, #c0c0c0);
+        color: #1a1a1a;
         transform: none;
     }
     
