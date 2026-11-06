@@ -6,8 +6,8 @@ export const StoreContext = createContext(null)
 const StoreContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
-    // Dynamically set the URL based on the current host
-    const url = `http://${window.location.hostname}:4000`;
+    // API base URL - configured via Vite environment variables
+    const url = import.meta.env.VITE_API_URL || 'http://localhost:4000';
     const [token, setToken] = useState("");
     const [food_list, setFoodList] = useState([]);
     const [category_list, setCategoryList] = useState([])
