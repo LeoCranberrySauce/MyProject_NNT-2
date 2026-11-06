@@ -6,7 +6,7 @@ services:
     rootDir: backend
     plan: free
     buildCommand: "npm install"
-    startCommand: "npm run server" # or dist/server.js
+    startCommand: "npm start" # Use production start script (node server.js)
     region: singapore
     envVars:
       - key: NODE_ENV
