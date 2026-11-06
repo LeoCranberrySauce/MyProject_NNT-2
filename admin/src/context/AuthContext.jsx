@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState(null);
   const [userName, setUserName] = useState(null);
-  const url = "http://localhost:4000";
+  const url = import.meta.env.VITE_SERVER_URL || "http://localhost:4000";
 
   useEffect(() => {
     checkAuthStatus();
