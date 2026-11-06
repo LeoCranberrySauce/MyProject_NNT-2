@@ -1,7 +1,7 @@
 services:
   # 1. Frontend Application (React, Vue, Vite, etc.)
   - type: web
-    name: waynu-frontend
+    name: waynu-frontend-test
     runtime: node # Use 'static' if it is purely static HTML/JS without a custom server
     rootDir: frontend
     plan: free
@@ -17,7 +17,7 @@ services:
 
   # 2. Admin Panel (Separate Dashboard app)
   - type: web
-    name: waynu-admin
+    name: waynu-admin-test
     runtime: node
     rootDir: frontend
     plan: free
@@ -33,7 +33,7 @@ services:
 
   # 3. Node.js Backend API
   - type: web
-    name: waynu-backend
+    name: waynu-backend-test
     runtime: node
     rootDir: backend
     plan: free
@@ -52,6 +52,6 @@ services:
 
 # 4. Optional Database (PostgreSQL)
 databases:
-  - name: app-db
+  - name: app-db-test
     plan: free
     region: singapore
