@@ -214,6 +214,10 @@
   font-size: 11px;
 }
 
+.receipt-items-header span, .receipt-item-row span {
+    font-family: 'Courier New';
+}
+
 .receipt-item-name {
   flex: 1;
 }
@@ -257,6 +261,7 @@
   color: #888;
   font-size: 12px;
   margin: 4px 0 0;
+  font-family: 'Courier New';
 }
 
 .receipt-btn-print {
