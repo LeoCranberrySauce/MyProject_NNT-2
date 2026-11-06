@@ -1,7 +1,39 @@
 services:
-  # 1. Node.js Backend API
+  # 1. Frontend Application (React, Vue, Vite, etc.)
   - type: web
-    name: node-backend
+    name: waynu-frontend
+    runtime: node # Use 'static' if it is purely static HTML/JS without a custom server
+    rootDir: frontend
+    plan: free
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run dev"
+    region: singapore
+    envVars:
+      - key: BACKEND_URL
+        fromService:
+          type: web
+          name: waynu-backend
+          property: host
+
+  # 2. Admin Panel (Separate Dashboard app)
+  - type: web
+    name: waynu-admin
+    runtime: node
+    rootDir: frontend
+    plan: free
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run start"
+    region: singapore
+    envVars:
+      - key: BACKEND_URL
+        fromService:
+          type: web
+          name: waynu-backend
+          property: host
+
+  # 3. Node.js Backend API
+  - type: web
+    name: waynu-backend
     runtime: node
     rootDir: backend
     plan: free
@@ -16,39 +48,8 @@ services:
           name: app-db
           property: connectionString
 
-  # 2. Frontend Application (React, Vue, Vite, etc.)
-  - type: web
-    name: main-frontend
-    runtime: node # Use 'static' if it is purely static HTML/JS without a custom server
-    rootDir: frontend
-    plan: free
-    buildCommand: "npm run build"
-    startCommand: "npm run dev"
-    region: singapore
-    envVars:
-      - key: BACKEND_URL
-        fromService:
-          type: web
-          name: node-backend
-          property: host
-
-  # 3. Admin Panel (Separate Dashboard app)
-  - type: web
-    name: admin-panel
-    runtime: node
-    rootDir: frontend
-    plan: free
-    buildCommand: "npm run build"
-    startCommand: "npm run start"
-    region: singapore
-    envVars:
-      - key: BACKEND_URL
-        fromService:
-          type: web
-          name: node-backend
-          property: host
-
 # 4. Optional Database (PostgreSQL)
 databases:
   - name: app-db
     plan: free
+    region: singapore
