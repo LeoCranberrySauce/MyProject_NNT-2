@@ -22,7 +22,7 @@ services:
     rootDir: frontend
     plan: free
     buildCommand: "npm install && npm run build"
-    startCommand: "npm run start"
+    startCommand: "npm run dev"
     region: singapore
     envVars:
       - key: BACKEND_URL
