@@ -1,6 +1,5 @@
 .receipt {
   min-height: 100vh;
-  font-family: courier, monospace;
 }
 
 .receipt-container {
@@ -172,12 +171,14 @@
   font-size: 16px;
   margin: 0;
   color: #444444;
+  font-family: 'Courier New';
 }
 
 .receipt-subtitle {
-  font-size: 11px;
+  font-size: 10px;
   color: #888;
   margin: 2px 0 0;
+  font-family: 'Courier New';
 }
 
 .receipt-divider {
@@ -188,11 +189,12 @@
   margin: 8px 0;
 }
 
-.receipt-meta p {
+.receipt-meta p, .receipt-meta strong {
   margin: 2px 0;
-  font-size: 11px;
+  font-size: 8px;
   display: flex;
   justify-content: space-between;
+  font-family: 'Courier New';
 }
 
 .receipt-items-header {
@@ -209,7 +211,7 @@
   display: flex;
   justify-content: space-between;
   padding: 3px 0;
-  font-size: 11px;
+  font-size: 7.5px;
 }
 
 .receipt-item-name {
@@ -239,6 +241,10 @@
   color: #666666;
 }
 
+.receipt-items-header span, .receipt-item-name span, .receipt-total span, .receipt-total-amount span {
+    font-family: 'Courier New';
+}
+
 .receipt-payment-info {
   margin-top: 8px;
   font-size: 11px;
@@ -255,6 +261,7 @@
   color: #888;
   font-size: 12px;
   margin: 4px 0 0;
+  font-family: 'Courier New';
 }
 
 .receipt-btn-print {
