@@ -1,5 +1,6 @@
 .receipt {
   min-height: 100vh;
+  font-family: courier, monospace;
 }
 
 .receipt-container {
