@@ -1,6 +1,5 @@
 .receipt {
   min-height: 100vh;
-  font-family: courier, monospace;
 }
 
 .receipt-container {
@@ -161,6 +160,7 @@
   padding: 24px 20px;
   font-size: 12px;
   margin-bottom: 16px;
+  font-family: courier, monospace;
 }
 
 .receipt-header-print {
