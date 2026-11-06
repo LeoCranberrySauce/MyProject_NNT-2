@@ -160,7 +160,6 @@
   padding: 24px 20px;
   font-size: 12px;
   margin-bottom: 16px;
-  font-family: courier, monospace;
 }
 
 .receipt-header-print {
@@ -172,12 +171,14 @@
   font-size: 16px;
   margin: 0;
   color: #444444;
+  font-family: 'Courier New';
 }
 
 .receipt-subtitle {
-  font-size: 11px;
+  font-size: 10px;
   color: #888;
   margin: 2px 0 0;
+  font-family: 'Courier New';
 }
 
 .receipt-divider {
@@ -188,11 +189,12 @@
   margin: 8px 0;
 }
 
-.receipt-meta p {
+.receipt-meta p, .receipt-meta strong {
   margin: 2px 0;
-  font-size: 11px;
+  font-size: 8px;
   display: flex;
   justify-content: space-between;
+  font-family: 'Courier New';
 }
 
 .receipt-items-header {
