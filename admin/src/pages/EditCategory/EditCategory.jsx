@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './EditCategory.css'
-import { assets } from '../../assets/assets'
+import { assets, url } from '../../assets/assets'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
@@ -13,7 +13,7 @@ const EditCategory = ({ setEditCategory, categoryToEdit }) => {
   });
 
   const categoryTypes = ["Drink", "Food"];
-  const baseURL = 'http://localhost:4000';
+  const baseURL = url;
 
   useEffect(() => {
     if (categoryToEdit) {

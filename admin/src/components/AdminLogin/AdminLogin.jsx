@@ -3,11 +3,11 @@ import './AdminLogin.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import { url } from '../../assets/assets'
 
 const AdminLogin = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
-  const url = "http://localhost:4000";
   const [showLogin, setShowLogin] = useState(false);
   const [currState, setCurrState] = useState("Login");
   const [data, setData] = useState({

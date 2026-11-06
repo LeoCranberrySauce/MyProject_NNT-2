@@ -39,4 +39,5 @@ export const assets ={
     pos_icon
 }
 
-export const url = 'http://localhost:4000'
+// Global constants for API configuration
+export const url = import.meta.env.VITE_SERVER_URL || "http://localhost:4000";
