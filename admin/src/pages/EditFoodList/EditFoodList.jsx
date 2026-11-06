@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './EditFoodList.css'
-import { assets } from '../../assets/assets'
+import { assets, url } from '../../assets/assets'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
@@ -17,7 +17,7 @@ const EditFoodList = ({ setEditFoodList, foodsToEdit }) => {
   });
 
   const [categoryList, setCategoryList] = useState([]);
-  const baseURL = 'http://localhost:4000';
+  const baseURL = url;
 
   // Load categories when component mounts
   useEffect(() => {
