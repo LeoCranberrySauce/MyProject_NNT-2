@@ -104,7 +104,7 @@ const Receipt = ({ url }) => {
             {selectedOrder ? (
               <div className="receipt-paper" id="receipt-print">
                 <div className="receipt-header-print">
-                  <h2>🍽️ Restaurant Name</h2>
+                  <h2>Waynu Food Stall</h2>
                   <p className="receipt-subtitle">POS Receipt</p>
                 </div>
                 <div className="receipt-divider">━━━━━━━━━━━━━━━━━━━━</div>

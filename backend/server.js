@@ -22,8 +22,17 @@ const port = process.env.PORT || 4000
 // middlewares
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
+// Allowed CORS origins - includes frontend and admin panel
+const allowedOrigins = [
+  process.env.FRONTEND_URL || 'http://localhost:5174',
+  'https://waynu-admin.onrender.com'
+];
+// Deduplicate while preserving order
+const uniqueOrigins = [...new Set(allowedOrigins)];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:5174",
+  origin: uniqueOrigins,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
   optionsSuccessStatus: 200
