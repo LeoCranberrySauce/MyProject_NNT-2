@@ -25,7 +25,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
-  const url = "http://localhost:4000"
+  const url = import.meta.env.VITE_SERVER_URL || "http://localhost:4000"
   const [editCategory, setEditCategory] = useState(false)
   const [categoryToEdit, setCategoryToEdit] = useState(null)
   const [editFoodList, setEditFoodList] = useState(false)
