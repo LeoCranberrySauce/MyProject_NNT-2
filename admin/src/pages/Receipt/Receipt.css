@@ -211,11 +211,7 @@
   display: flex;
   justify-content: space-between;
   padding: 3px 0;
-  font-size: 11px;
-}
-
-.receipt-items-header span, .receipt-item-row span {
-    font-family: 'Courier New';
+  font-size: 7.5px;
 }
 
 .receipt-item-name {
@@ -243,6 +239,10 @@
 
 .receipt-total-amount {
   color: #666666;
+}
+
+.receipt-items-header span, .receipt-item-name span, .receipt-total span, .receipt-total-amount span {
+    font-family: 'Courier New';
 }
 
 .receipt-payment-info {
