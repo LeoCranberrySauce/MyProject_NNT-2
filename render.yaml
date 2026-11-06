@@ -1,7 +1,7 @@
 services:
   # 1. Frontend Application (React, Vue, Vite, etc.)
   - type: web
-    name: waynu-frontend-test
+    name: waynu-frontend
     runtime: node # Use 'static' if it is purely static HTML/JS without a custom server
     rootDir: frontend
     plan: free
@@ -17,9 +17,9 @@ services:
 
   # 2. Admin Panel (Separate Dashboard app)
   - type: web
-    name: waynu-admin-test
+    name: waynu-admin
     runtime: node
-    rootDir: frontend
+    rootDir: admin
     plan: free
     buildCommand: "npm install && npm run build"
     startCommand: "npm run dev"
@@ -33,7 +33,7 @@ services:
 
   # 3. Node.js Backend API
   - type: web
-    name: waynu-backend-test
+    name: waynu-backend
     runtime: node
     rootDir: backend
     plan: free
