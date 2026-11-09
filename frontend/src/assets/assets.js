@@ -4,7 +4,6 @@ import logo from './logo.png'
 import header_img from './header_img.png'
 import search_icon from './search_icon.png'
 
-import basket_icon_active from './basket_icon_a.png'
 import add_icon_white from './add_icon_white.png'
 import add_icon_green from './add_icon_green.png'
 import remove_icon_red from './remove_icon_red.png'
