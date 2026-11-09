@@ -92,7 +92,11 @@ const List = ({ url, setEditFoodList, setFoodsToEdit }) => {
     formData.append("image", image);
 
     try {
-      const response = await axios.post(`${baseURL}/api/food/add`, formData);
+      const response = await axios.post(`${baseURL}/api/food/add`, {
+        name: data.name,
+        type: data.type,
+        image: imageBase64
+      });
       if (response.data.success) {
         setData({
           name: "",
