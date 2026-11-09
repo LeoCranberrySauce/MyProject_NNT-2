@@ -10,6 +10,8 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true })
 }
 
+const foodRouter = express.Router();
+
 // Image Storage Engine
 const storage = multer.diskStorage({
     destination:"uploads",
