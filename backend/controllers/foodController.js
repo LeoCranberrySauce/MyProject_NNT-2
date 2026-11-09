@@ -5,7 +5,13 @@ import fs from 'fs'
 // add food item
 const addFood = async (req,res) => {
     
-    let image_filename = `${req.file.filename}`;
+    let image_filename = "";
+    if (req.file) {
+        image_filename = `${req.file.filename}`;
+    } else {
+        console.error("Multer file upload failed - no file received");
+        return res.json({ success: false, message: "Image upload failed. Please try again." });
+    }
 
     const food = new foodModel({
         name:req.body.name,

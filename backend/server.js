@@ -12,6 +12,18 @@ import adminUserRouter from "./routes/adminUserRoute.js"
 import locationRouter from "./routes/locationRoute.js"
 import promoCodeRouter from "./routes/promoCodeRoute.js"
 import tableRouter from "./routes/tableRoute.js"
+
+import fs from 'fs'
+import path from 'path'
+
+// Ensure uploads folder exists so static file serving and Multer work correctly
+const uploadDir = path.join(process.cwd(), 'uploads')
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true })
+  console.log('✅ Created "uploads" folder in backend directory')
+} else {
+  console.log('✅ "uploads" folder already exists')
+}
 import posRouter from "./routes/posRoute.js"
 
 
