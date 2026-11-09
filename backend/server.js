@@ -12,6 +12,7 @@ import adminUserRouter from "./routes/adminUserRoute.js"
 import locationRouter from "./routes/locationRoute.js"
 import promoCodeRouter from "./routes/promoCodeRoute.js"
 import tableRouter from "./routes/tableRoute.js"
+import posRouter from "./routes/posRoute.js"
 
 import fs from 'fs'
 import path from 'path'
@@ -24,8 +25,21 @@ if (!fs.existsSync(uploadDir)) {
 } else {
   console.log('✅ "uploads" folder already exists')
 }
-import posRouter from "./routes/posRoute.js"
 
+// Middleware to catch multer upload errors and log them
+const errorHandler = (err, req, res, next) => {
+  if (err) {
+    console.error('[UPLOAD ERROR]', err);
+    if (err.code === 'LIMIT_FILE_SIZE') {
+      return res.status(400).json({ success: false, message: 'Image too large. Max size is 5MB.' });
+    }
+    if (err.code === 'ENOENT') {
+      return res.status(500).json({ success: false, message: 'Upload folder not found. Please restart the server.' });
+    }
+    return res.status(500).json({ success: false, message: 'Upload failed. Please try again.' });
+  }
+  next();
+};
 
 // app config
 const app = express()
@@ -53,12 +67,12 @@ app.use(cors({
 // db connection
 connectDB();
 
-// api endpoints
-app.use("/api/food",foodRouter)
-app.use("/images",express.static('uploads'))
-app.use("/api/user",userRouter)
-app.use("/api/cart",cartRouter)
-app.use("/api/order",orderRouter)
+// api endpoints - mount routers with error handler
+app.use("/api/food", foodRouter)
+app.use("/images", express.static(path.join(process.cwd(), 'uploads')))
+app.use("/api/user", userRouter)
+app.use("/api/cart", cartRouter)
+app.use("/api/order", orderRouter)
 app.use("/api/admin", dashboardRouter)
 app.use("/api/category", categoryRouter)
 app.use("/api/admin-user", adminUserRouter)
