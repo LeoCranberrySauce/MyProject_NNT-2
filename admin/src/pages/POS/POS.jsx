@@ -32,6 +32,7 @@ const POS = ({ url }) => {
   const [completedOrder, setCompletedOrder] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [lastAddError, setLastAddError] = useState('');
   const [promoCode, setPromoCode] = useState(null);
   const [promoDiscount, setPromoDiscount] = useState(0);
   const [promoInput, setPromoInput] = useState('');
@@ -85,6 +86,12 @@ const POS = ({ url }) => {
 
   // Add item to cart
   const addToCart = (food) => {
+    // Prevent adding out-of-stock items
+    if (food.stock === 0) {
+      setLastAddError(`Cannot add "${food.name}" — this item is currently out of stock.`);
+      return;
+    }
+    setLastAddError('');
     setCart(prev => {
       const existing = prev.find(item => item._id === food._id);
       if (existing) {
@@ -336,11 +343,23 @@ const POS = ({ url }) => {
                 <div className="pos-loading">Loading menu...</div>
               ) : error ? (
                 <div className="pos-error">{error}</div>
+              ) : lastAddError ? (
+                <div className="pos-add-error">
+                  {lastAddError}
+                </div>
               ) : filteredFoods.length === 0 ? (
                 <div className="pos-empty">No items found</div>
               ) : (
                 filteredFoods.map(food => (
-                  <div key={food._id} className="pos-food-card" onClick={() => addToCart(food)}>
+                  <div
+                    key={food._id}
+                    className="pos-food-card"
+                    onClick={() => addToCart(food)}
+                    style={{
+                      opacity: food.stock === 0 ? 0.5 : 1,
+                      cursor: food.stock === 0 ? 'not-allowed' : 'pointer'
+                    }}
+                  >
                     <div className="pos-food-img-container">
                       <img
                         src={url + "/images/" + food.image}
@@ -359,9 +378,21 @@ const POS = ({ url }) => {
                       <span className="pos-food-price">₱{food.price}</span>
                     </div>
                     <div className="pos-quick-qty">
-                      <button onClick={(e) => { e.stopPropagation(); quickAdd(food, 1); }}>+1</button>
-                      <button onClick={(e) => { e.stopPropagation(); quickAdd(food, 2); }}>+2</button>
-                      <button onClick={(e) => { e.stopPropagation(); quickAdd(food, 3); }}>+3</button>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); quickAdd(food, 1); }}
+                        disabled={food.stock === 0}
+                        title={food.stock === 0 ? "Out of stock" : undefined}
+                      >+1</button>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); quickAdd(food, 2); }}
+                        disabled={food.stock === 0}
+                        title={food.stock === 0 ? "Out of stock" : undefined}
+                      >+2</button>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); quickAdd(food, 3); }}
+                        disabled={food.stock === 0}
+                        title={food.stock === 0 ? "Out of stock" : undefined}
+                      >+3</button>
                     </div>
                   </div>
                 ))
