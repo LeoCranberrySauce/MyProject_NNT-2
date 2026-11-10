@@ -69,6 +69,8 @@
   border: 1px solid #e9ecef;
   min-width: 200px;
   max-width: 450px;
+  max-height: 44vh;
+  overflow-y: auto;
 }
 
 .receipt-order-list h2 {

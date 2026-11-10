@@ -33,6 +33,8 @@
     border: 1px solid #e9ecef;
     min-width: 200px;
     max-width: 450px;
+    max-height: 75vh;
+    overflow-y: auto;
 }
 
 .list-right {
