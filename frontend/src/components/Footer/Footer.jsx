@@ -107,7 +107,7 @@ const Footer = () => {
                 </div>
             </div>
             <hr />
-            <p className="footer-copyright">&copy; {new Date().getFullYear()} Waynu Food Stall. All rights reserved. This food stall is afiliated with Purple Blend Franchise.</p>
+            <p className="footer-copyright">&copy; 2016 - {new Date().getFullYear()} Waynu Food Stall. All rights reserved. </p>
         </div>
     )
 }

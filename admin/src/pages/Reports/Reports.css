@@ -15,8 +15,11 @@
 .reports-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   margin-bottom: 16px;
+  flex-direction: column;
+  align-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .reports-header h1 {
@@ -46,7 +49,7 @@
 /* Controls */
 .reports-controls {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
@@ -54,11 +57,18 @@
   padding: 16px;
   background: #f8f9fa;
   border-radius: 8px;
+  flex-direction: column;
+  align-content: space-around;
 }
 
 .reports-type-select {
   display: flex;
   gap: 6px;
+  flex-direction: row;
+  align-items: stretch;
+  align-content: stretch;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .reports-type-btn {
@@ -84,12 +94,16 @@
 
 .reports-date-inputs {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 8px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
 }
 
 .reports-date-inputs input[type="date"] {
-  padding: 8px 12px;
+  padding: 8px 20px;
   border: 2px solid #e0e0e0;
   border-radius: 6px;
   font-size: 13px;
@@ -231,13 +245,40 @@
   font-weight: 600;
 }
 
-.status-food-processing { background: #fff3e0; color: #e65100; }
-.status-prepared { background: #e8f5e9; color: #2e7d32; }
-.status-out-for-delivery { background: #e3f2fd; color: #1565c0; }
-.status-delivered { background: #e8f5e9; color: #2e7d32; }
-.status-completed { background: #e8f5e9; color: #2e7d32; }
-.status-cancelled { background: #ffebee; color: #c62828; }
-.status-pending { background: #f3e5f5; color: #6a1b9a; }
+.status-food-processing {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.status-prepared {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-out-for-delivery {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.status-delivered {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-completed {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-cancelled {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.status-pending {
+  background: #f3e5f5;
+  color: #6a1b9a;
+}
 
 
 
@@ -274,7 +315,7 @@
   }
 
   .add {
-    width: 95%;
+    width: 80%;
     margin-left: 2.5%;
   }
 }
